@@ -234,6 +234,7 @@ namespace BIOMEDICO.Controllers
                         var DatosSucursal = db.Sucursal.FirstOrDefault(w => w.CodSucursal == cedula);
                         a.CitasPasaport.OficinaPasaporte = DatosSucursal.EspecialidadSucursal+":"+ DatosSucursal.Direcccion +" "+ DatosSucursal.Telefono;
                         a.CitasPasaport.EstadoCitas = "PENDIENTE";
+                        a.CitasPasaport.EstadoCitas = "PENDIENTE";
                         db.CitasPasaporte.Add(a.CitasPasaport);
                         db.SaveChanges();
                         Retorno.Error = false;
