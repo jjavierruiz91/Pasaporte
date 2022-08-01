@@ -63,7 +63,7 @@ namespace BIOMEDICO.Controllers
                 var SucursadlPasport = db.Sucursal.ToList();
                 foreach (var item in SucursadlPasport)
                 {
-                    var agendas = db.AgendarCitas.Where(w => w.CedEspecialistaCitas == item.CodSucursal.ToString() ).ToList();
+                    var agendas = db.AgendarCitas.Where(w => w.CedSucursalCitas == item.CodSucursal.ToString() ).ToList();
                     if (agendas.Count>0)
                     {
                         agendas = agendas.Where(w => w.FechaCitas.Value.Date >= DateTime.Now.Date).ToList();
@@ -87,7 +87,7 @@ namespace BIOMEDICO.Controllers
                         {
                             Horario = new HorariosSucursales
                             {
-                                cedula = item.CedEspecialistaCitas,
+                                cedula = item.CedSucursalCitas,
                                 Fecha = Convert.ToDateTime(item.FechaCitas).Date,
                                 Hora = Convert.ToDateTime(item.HoraIniciocitas).Hour,
                                 Minutos = Convert.ToDateTime(item.HoraIniciocitas).Minute,
@@ -99,7 +99,7 @@ namespace BIOMEDICO.Controllers
                             DateTime NewhOra = Convert.ToDateTime(item.HoraIniciocitas).AddMinutes(Contandorminutos);
                             Horario = new HorariosSucursales
                             {
-                                cedula = item.CedEspecialistaCitas,
+                                cedula = item.CedSucursalCitas,
                                 Fecha = Convert.ToDateTime(item.FechaCitas).Date,
                                 Hora = NewhOra.Hour,
                                 Minutos = NewhOra.Minute,

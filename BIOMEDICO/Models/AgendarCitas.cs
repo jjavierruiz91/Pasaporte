@@ -15,12 +15,9 @@ namespace BIOMEDICO.Models
     public partial class AgendarCitas
     {
         public int IdAgendarCitas { get; set; }
-        public string CedEspecialistaCitas { get; set; }
-        public string NombrEspecilistaCitas { get; set; }
-        public string NotificacionCampoCitas { get; set; }
+        public string CedSucursalCitas { get; set; }
         public Nullable<System.DateTime> HoraIniciocitas { get; set; }
         public Nullable<System.DateTime> HoraFinCitas { get; set; }
         public Nullable<System.DateTime> FechaCitas { get; set; }
-        public string ObservacionesCitasMedicas { get; set; }
     }
 }
