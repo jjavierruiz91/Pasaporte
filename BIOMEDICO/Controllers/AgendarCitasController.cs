@@ -117,13 +117,8 @@ namespace BIOMEDICO.Controllers
                 {
 
 
-                    ////a.Depor = db.Deportistas.Where(w => w.CodRol == a.CodRol).FirstOrDefault();
-                    //a.Deport.FechaCreacion = DateTime.Now;
-                    //a.Deport.FechaServicio = DateTime.Now;
-                    //a.Deport.UsuarioCreacion = Utilidades.ActiveUser.IdUsuario;
-                    //a.NutricionDeport.UsuarioRegistro = Utilidades.ActiveUser.ApeUsuario;
-                    //a.NutricionDeport.FechaRegistro = DateTime.Now;
-                    //a.NutricionDeport.FirmaDoctor = Utilidades.ActiveUser.NomUsuario;
+                    
+                    a.CitasDeport.CedSucursalCitas = "99998741";
                     db.AgendarCitas.Add(a.CitasDeport);
                     db.SaveChanges();
 
@@ -159,14 +154,10 @@ namespace BIOMEDICO.Controllers
                         {
 
                             AgendaCitasDeportivaExiste.IdAgendarCitas = a.CitasDeport.IdAgendarCitas;
-                            AgendaCitasDeportivaExiste.CedEspecialistaCitas = a.CitasDeport.CedEspecialistaCitas;
-                            AgendaCitasDeportivaExiste.NombrEspecilistaCitas = a.CitasDeport.NombrEspecilistaCitas;
-                            AgendaCitasDeportivaExiste.NotificacionCampoCitas = a.CitasDeport.NotificacionCampoCitas;
-
+                            AgendaCitasDeportivaExiste.CedSucursalCitas = a.CitasDeport.CedSucursalCitas;
                             AgendaCitasDeportivaExiste.HoraIniciocitas = a.CitasDeport.HoraIniciocitas;
                             AgendaCitasDeportivaExiste.HoraFinCitas = a.CitasDeport.HoraFinCitas;
                             AgendaCitasDeportivaExiste.FechaCitas = a.CitasDeport.FechaCitas;
-                            AgendaCitasDeportivaExiste.ObservacionesCitasMedicas = a.CitasDeport.ObservacionesCitasMedicas;
 
 
                         }

@@ -14,9 +14,9 @@
         <AssociationConnector Association="BIOMEDICOModel.FK_ASignar_permisos_Rol1" ManuallyRouted="false" />
         <AssociationConnector Association="BIOMEDICOModel.FK_Permisos_TipoPermiso" ManuallyRouted="false" />
         <AssociationConnector Association="BIOMEDICOModel.FK_Usuarios_Rol1" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="BIOMEDICOModel.AgendarCitas" Width="2.25" PointX="5.375" PointY="6" />
         <EntityTypeShape EntityType="BIOMEDICOModel.Sucursal" Width="1.5" PointX="8" PointY="1.25" />
         <EntityTypeShape EntityType="BIOMEDICOModel.CitasPasaporte" Width="1.5" PointX="9.75" PointY="4.875" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.AgendarCitas" Width="1.5" PointX="5.375" PointY="4.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
