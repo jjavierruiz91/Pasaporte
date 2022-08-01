@@ -2,14 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
 namespace BIOMEDICO.Controllers
 {
-    public class CitasMedicasController : Controller
+    public class CitasPasaporteController : Controller
     {
-        // GET: CitasMedicas
+        // GET: CitasPasaporte
         public ActionResult Index()
         {
             return View();
@@ -24,7 +25,11 @@ namespace BIOMEDICO.Controllers
         {
             return View();
         }
-
+        public ActionResult BuscarCitaPasaporte()
+        {
+            
+            return View();
+        }
         [HttpGet]
         public JsonResult GetListConsultaCitasPasaporte()
         {
@@ -63,16 +68,16 @@ namespace BIOMEDICO.Controllers
             public Object objeto { get; set; }
 
         }
-        //[HttpGet]
-        //public JsonResult BuscarDeportista(long cedula)
-        //{
-        //    var DatosdEportista = new Deportistas();
-        //    using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
-        //    {
-        //        DatosdEportista = db.Deportistas.FirstOrDefault(w => w.NumIdentificacion == cedula);
-        //    }
-        //    return Json(DatosdEportista, JsonRequestBehavior.AllowGet);
-        //}
+        [HttpGet]
+        public JsonResult BuscarDeportista(long cedula)
+        {
+            var DatosCitasPasaport = new CitasPasaporte();
+            using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+            {
+                DatosCitasPasaport = db.CitasPasaporte.FirstOrDefault(w => w.NumDocumentoPasaporte == cedula);
+            }
+            return Json(DatosCitasPasaport, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpGet]
 
@@ -150,7 +155,7 @@ namespace BIOMEDICO.Controllers
 
 
         [HttpGet]
-        public JsonResult GetListCitasMedicasDeportiva()
+        public JsonResult GetListCitasPasaporte()
         {
             Respuesta ret = new Respuesta();
             string result = "";
@@ -178,7 +183,7 @@ namespace BIOMEDICO.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetCitasMedicasDeportivaById(int IdCitasPaspor)
+        public JsonResult GetCitasPasaporteById(int IdCitasPaspor)
         {
             Respuesta ret = new Respuesta();
             using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
@@ -214,7 +219,7 @@ namespace BIOMEDICO.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public JsonResult Agregar(ObjCitasPasaporte a)
+        public JsonResult Agregar (ObjCitasPasaporte a)
         {
             Respuesta Retorno = new Respuesta();
 
@@ -229,23 +234,36 @@ namespace BIOMEDICO.Controllers
                 {
                         var EstadoCitaDeportivaExiste = db.CitasPasaporte.FirstOrDefault(w => w.EstadoCitas == "PENDIENTE" && w.Hora  == a.CitasPasaport.Hora && w.Minutos==a.CitasPasaport.Minutos );
                     if (EstadoCitaDeportivaExiste == null)
-                    { 
+                    {
+                        IPHostEntry host;
+                        string localIP = "";
+                        host = Dns.GetHostEntry(Dns.GetHostName());
+                        foreach (IPAddress ip in host.AddressList)
+                        {
+                            if (ip.AddressFamily.ToString() == "InterNetwork")
+                            {
+                                localIP = ip.ToString();
+                            }
+                        }
+
+                        a.CitasPasaport.DireccionIp = localIP;
+
                         int cedula = int.Parse(a.CitasPasaport.OficinaPasaporte);
                         var DatosSucursal = db.Sucursal.FirstOrDefault(w => w.CodSucursal == cedula);
-                        a.CitasPasaport.OficinaPasaporte = DatosSucursal.EspecialidadSucursal+":"+ DatosSucursal.Direcccion +" "+ DatosSucursal.Telefono;
-                        a.CitasPasaport.EstadoCitas = "PENDIENTE";
-                        a.CitasPasaport.EstadoCitas = "PENDIENTE";
+                        a.CitasPasaport.OficinaPasaporte = DatosSucursal.EspecialidadSucursal;
                         db.CitasPasaporte.Add(a.CitasPasaport);
                         db.SaveChanges();
                         Retorno.Error = false;
                         Retorno.mensaje = "Cita creada";
                     }
-                    else {
+                    else
+                    {
                         Retorno.Error = false;
                         Retorno.mensaje = "Error! ya existe una cita creada para esta hora";
                     }
 
-                      
+
+
                 }
             }
             catch (Exception ex)
@@ -258,64 +276,61 @@ namespace BIOMEDICO.Controllers
             return Json(Retorno, JsonRequestBehavior.AllowGet);
         }
 
-        //[HttpPost]
-        ////[ValidateAntiForgeryToken]
-        //public JsonResult Actualizar(ObjCitasPasaportiva a)
-        //{
-        //    Respuesta Retorno = new Respuesta();
-        //    //JsonConvert.DeserializeObject<List<ObjDeportista>>(a);
-        //    //if (!ModelState.IsValid)
-        //    //    Retorno.mensaje="Datos invalidos";
 
-        //    try
-        //    {
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public JsonResult Actualizar(ObjCitasPasaporte a)
+        {
+            Respuesta Retorno = new Respuesta();
+            //JsonConvert.DeserializeObject<List<ObjDeportista>>(a);
+            //if (!ModelState.IsValid)
+            //    Retorno.mensaje="Datos invalidos";
 
-        //        using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+            try
+            {
 
-        //        {
-        //            try
-        //            {
-        //                var CitasDeportivaExiste = db.CitasPasaporte.FirstOrDefault(w => w.IdCitaPasaporte == a.CitasPasaport.IdCitaPasaporte);
-        //                if (CitasDeportivaExiste != null)
-        //                {
+                using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
-        //                    CitasDeportivaExiste.IdCitaPasaporte = a.CitasPasaport.IdCitaPasaporte;
-        //                    CitasDeportivaExiste.Especialista = a.CitasPasaport.Especialista;
-        //                    CitasDeportivaExiste.Fecha = a.CitasPasaport.Fecha;
-        //                    CitasDeportivaExiste.Hora = a.CitasPasaport.Hora;
-        //                    CitasDeportivaExiste.Minutos = a.CitasPasaport.Minutos;
-        //                    CitasDeportivaExiste.Segundos = a.CitasPasaport.Segundos;
-        //                    CitasDeportivaExiste.EstadoCitas = "FINALIZADO";
+                {
+                    try
+                    {
+                        var CitasDeportivaExiste = db.CitasPasaporte.FirstOrDefault(w => w.IdCitasPasaporte == a.CitasPasaport.IdCitasPasaporte);
+                        if (CitasDeportivaExiste != null)
+                        {
 
-        //                }
+                            CitasDeportivaExiste.IdCitasPasaporte = a.CitasPasaport.IdCitasPasaporte;
 
-        //                db.SaveChanges();
+                            CitasDeportivaExiste.EstadoCitas = "FINALIZADO";
 
-        //                Retorno.Error = false;
-        //                Retorno.mensaje = "Actualizado";
+                        }
+
+                        db.SaveChanges();
+
+                        Retorno.Error = false;
+                        Retorno.mensaje = "Actualizado";
 
 
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                Retorno.Error = true;
-        //                Retorno.mensaje = "Error al Actualizar";
-        //            }
+                    }
+                    catch (Exception ex)
+                    {
+                        Retorno.Error = true;
+                        Retorno.mensaje = "Error al Actualizar";
+                    }
 
 
 
 
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        String Error = ex.Message;
-        //        //ModelState.AddModelError("", "Error al agregar deportistas" + ex.Message);
-        //        Retorno.Error = true;
-        //        Retorno.mensaje = "Error al agregar nutricionista";
-        //    }
-        //    return Json(Retorno);
-        //}
+                }
+            }
+            catch (Exception ex)
+            {
+                String Error = ex.Message;
+                //ModelState.AddModelError("", "Error al agregar deportistas" + ex.Message);
+                Retorno.Error = true;
+                Retorno.mensaje = "Error al agregar nutricionista";
+            }
+            return Json(Retorno);
+        }
 
         [HttpGet]
         public JsonResult Eliminar(int IdCitasPaspor)

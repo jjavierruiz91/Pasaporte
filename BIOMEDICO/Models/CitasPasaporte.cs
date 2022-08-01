@@ -34,5 +34,11 @@ namespace BIOMEDICO.Models
         public Nullable<int> Segundos { get; set; }
         public string EstadoCitas { get; set; }
         public Nullable<long> NumIdentificacion { get; set; }
+        public string EstadoPasaporte { get; set; }
+        public Nullable<System.DateTime> FechaRegistro { get; set; }
+        public Nullable<System.DateTime> FechaEstado { get; set; }
+        public string UsuarioRegistra { get; set; }
+        public string UsuarioEstado { get; set; }
+        public string DireccionIp { get; set; }
     }
 }

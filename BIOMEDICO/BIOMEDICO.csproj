@@ -159,20 +159,11 @@
     <Compile Include="Controllers\BiomedicoController.cs" />
     <Compile Include="Controllers\CerrarSesionController.cs" />
     <Compile Include="Controllers\CitasPasaporteController.cs" />
-    <Compile Include="Controllers\ControlFisioterapiaController.cs" />
-    <Compile Include="Controllers\ControlMedicinaDeporteController.cs" />
-    <Compile Include="Controllers\ControlNutricionController.cs" />
-    <Compile Include="Controllers\ControlPsicologiaDeportivaController.cs" />
     <Compile Include="Controllers\DeportistaController.cs" />
-    <Compile Include="Controllers\EncuestaDeportistasController.cs" />
-    <Compile Include="Controllers\FisioterapiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MedicinaDeportivaController.cs" />
     <Compile Include="Controllers\SucursalController.cs" />
-    <Compile Include="Controllers\NutricionController.cs" />
-    <Compile Include="Controllers\PsicologiaController.cs" />
-    <Compile Include="Controllers\RemisionController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RolController.cs" />
     <Compile Include="Controllers\TipoPermisoController.cs" />
@@ -184,67 +175,10 @@
     <Compile Include="Models\AgendarCitas.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AnamnesisNutricion.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AntecedentesFisioterapia.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AntecedentesMedicinaDelDeporte.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ASignarPermisos.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CitasPasaporte.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ControlNutricion.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DatosFamiliares.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DemograficoPsicologia.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Deportistas.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EncuestaDeportistas.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EncuestaFamiliar.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EncuestaSocioeconomica.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EnfermedadPersonalPsicologia.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EvaluacionFisioterapia.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Evolucionfisioterapia.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ExamenFisicoMedicinaDelDeporte.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FamiliaresPsicologia.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Fisioterapia.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HistoriaClinicaFisioterapia.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HistoriaFamiliaresPsicologia.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MedicinaDelDeporte.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelBiomedico.Context.cs">
@@ -262,44 +196,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelBiomedico.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Nutricion.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Ocupacion.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Permisos.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Remision.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ReporteModel.cs" />
     <Compile Include="Models\Rol.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SeguimientoMedicinaDeporte.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SeguimientoNutricion.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SeguimientoPsicologia.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Sucursal.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TestPsicologia.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoPermiso.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuarios.cs">
-      <DependentUpon>ModelBiomedico.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VidapersonalPsicologia.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2669,9 +2579,9 @@
     </Content>
     <Content Include="Scripts\APP\AgendarCitas\AgendarCitas.js" />
     <Content Include="Scripts\APP\AgendarCitas\ListaCitasAgendadas.js" />
-    <Content Include="Scripts\APP\CitasPasaporte\CitasMedicas.js" />
-    <Content Include="Scripts\APP\CitasPasaporte\ListasConsultasCitasMedicas.js" />
-    <Content Include="Scripts\APP\CitasPasaporte\ListasCitasMedicas.js" />
+    <Content Include="Scripts\APP\CitasPasaporte\CitasPasaporte.js" />
+    <Content Include="Scripts\APP\CitasPasaporte\ListasCitasPasaporte.js" />
+    <Content Include="Scripts\APP\CitasPasaporte\ListasConsultasCitasPasaporte.js" />
     <Content Include="Scripts\APP\ControlFisioterapia\ControlFisioterapia.js" />
     <Content Include="Scripts\APP\ControlFisioterapia\ListaControlFisioterapia.js" />
     <Content Include="Scripts\APP\ControlMedicinaDeportiva\ControlMedicinaDeportiva.js" />
@@ -2943,13 +2853,10 @@
     <Content Include="Views\MedicinaDeportiva\ListaMedicinaDeportiva.cshtml" />
     <Content Include="Views\Psicologia\ListaPsicologiaDeportiva.cshtml" />
     <Content Include="Views\Psicologia\Agregar.cshtml" />
-    <Content Include="Views\CitasMedicas\ListaCitasMedicasDeportiva.cshtml" />
-    <Content Include="Views\CitasMedicas\Agregar.cshtml" />
     <Content Include="Views\Sucursal\ListaSucursalPasaporte.cshtml" />
     <Content Include="Views\Sucursal\Agregar.cshtml" />
     <Content Include="Views\Remision\Agregar.cshtml" />
     <Content Include="Views\Remision\ListaRemisionMedicasDeportiva.cshtml" />
-    <Content Include="Views\CitasMedicas\ListaConsultaCitasMedicas.cshtml" />
     <Content Include="Views\AgendarCitas\ListaAgendaDeportiva.cshtml" />
     <Content Include="Views\AgendarCitas\Agregar.cshtml" />
     <Content Include="Views\Fisioterapia\ListaFisioterapiaDeportiva.cshtml" />
@@ -2967,6 +2874,10 @@
     <Content Include="Views\EncuestaDeportistas\ListaEncuestaDeportistas.cshtml" />
     <Content Include="Views\EncuestaDeportistas\Agregar.cshtml" />
     <Content Include="Views\EncuestaDeportistas\Encuesta.cshtml" />
+    <Content Include="Views\CitasPasaporte\Agregar.cshtml" />
+    <Content Include="Views\CitasPasaporte\ListaCitasPasaporte.cshtml" />
+    <Content Include="Views\CitasPasaporte\ListaConsultaCitasPasaporte.cshtml" />
+    <Content Include="Views\CitasPasaporte\BuscarCitaPasaporte.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
