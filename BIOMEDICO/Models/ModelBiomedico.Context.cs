@@ -30,34 +30,7 @@ namespace BIOMEDICO.Models
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<TipoPermiso> TipoPermiso { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
-        public virtual DbSet<Ocupacion> Ocupacion { get; set; }
-        public virtual DbSet<DatosFamiliares> DatosFamiliares { get; set; }
-        public virtual DbSet<Deportistas> Deportistas { get; set; }
-        public virtual DbSet<AntecedentesMedicinaDelDeporte> AntecedentesMedicinaDelDeporte { get; set; }
-        public virtual DbSet<MedicinaDelDeporte> MedicinaDelDeporte { get; set; }
-        public virtual DbSet<EnfermedadPersonalPsicologia> EnfermedadPersonalPsicologia { get; set; }
-        public virtual DbSet<FamiliaresPsicologia> FamiliaresPsicologia { get; set; }
-        public virtual DbSet<HistoriaFamiliaresPsicologia> HistoriaFamiliaresPsicologia { get; set; }
-        public virtual DbSet<TestPsicologia> TestPsicologia { get; set; }
-        public virtual DbSet<AnamnesisNutricion> AnamnesisNutricion { get; set; }
-        public virtual DbSet<ExamenFisicoMedicinaDelDeporte> ExamenFisicoMedicinaDelDeporte { get; set; }
-        public virtual DbSet<SeguimientoMedicinaDeporte> SeguimientoMedicinaDeporte { get; set; }
-        public virtual DbSet<AntecedentesFisioterapia> AntecedentesFisioterapia { get; set; }
-        public virtual DbSet<Evolucionfisioterapia> Evolucionfisioterapia { get; set; }
-        public virtual DbSet<SeguimientoPsicologia> SeguimientoPsicologia { get; set; }
-        public virtual DbSet<ControlNutricion> ControlNutricion { get; set; }
-        public virtual DbSet<DemograficoPsicologia> DemograficoPsicologia { get; set; }
-        public virtual DbSet<VidapersonalPsicologia> VidapersonalPsicologia { get; set; }
-        public virtual DbSet<Remision> Remision { get; set; }
         public virtual DbSet<AgendarCitas> AgendarCitas { get; set; }
-        public virtual DbSet<EvaluacionFisioterapia> EvaluacionFisioterapia { get; set; }
-        public virtual DbSet<Fisioterapia> Fisioterapia { get; set; }
-        public virtual DbSet<SeguimientoNutricion> SeguimientoNutricion { get; set; }
-        public virtual DbSet<Nutricion> Nutricion { get; set; }
-        public virtual DbSet<HistoriaClinicaFisioterapia> HistoriaClinicaFisioterapia { get; set; }
-        public virtual DbSet<EncuestaDeportistas> EncuestaDeportistas { get; set; }
-        public virtual DbSet<EncuestaFamiliar> EncuestaFamiliar { get; set; }
-        public virtual DbSet<EncuestaSocioeconomica> EncuestaSocioeconomica { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
         public virtual DbSet<CitasPasaporte> CitasPasaporte { get; set; }
     }

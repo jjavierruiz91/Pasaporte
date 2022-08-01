@@ -1,0 +1,245 @@
+﻿
+@{
+    ViewBag.Title = "BuscarCitaPasaporte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script defer src="~/Scripts/APP/CitasPasaporte/CitasPasaporte.js"></script>
+
+
+
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>CONSULTAR CITAS PASAPORTE</strong></h1>
+<hr width=100% align="right" size=200 color="black">
+
+<div class="">
+
+    <form id="FormCitasPasaporte" name="FormCitasPasaporte">
+
+        <div class="">
+
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <label><strong>Tipo Documento</strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Cedula de Ciudadania">Cedula de Ciudadania</option>
+                    <option value="Registro Civil">Registro Civil</option>
+                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                    <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <label><strong>Numero Documento</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="FechaNacimiento" name="" placeholder="Digite su numero de documento" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6" style="right:inherit">
+
+                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Buscar</button>
+            </div>
+
+        </div>
+
+    </form>
+
+
+
+</div>
+
+
+
+<footer id="footer">
+
+    <div class="">
+        <div class="container">
+            <div class="">
+                <div id="copyright">
+
+
+
+                    <!-- BEGIN: Custom advanced (www.pluginaria.com) -->
+                    <div style="text-align: center;">
+                        <hr style="color: #1051eae2;">
+                        <span style="color: #0d3c61;">
+                            <strong>Horario de Atención:</strong>
+                        </span>&nbsp;
+                        <span style="color: #000000;">Lunes a Viernes de 07:45 am - 12:45 pm y 02:45 pm - 05:45 pm</span>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="color: #000000;">
+                            <span style="color: #0d3c61;">
+                                <strong style="text-align: center;">Dirección:</strong>
+                            </span>&nbsp;Calle 16 # 12 - 120 Edificio
+                            Alfonso López Michelsen Valledupar - Cesar - Colombia
+                        </span>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="color: #000000;"></span>
+                        <span>
+                            <span style="color: #0d3c61;">
+                                <strong>
+                                    Líneas de Atención a la
+                                    Ciudadanía:
+                                </strong>
+                            </span>&nbsp;<span style="color: #000000;">
+                                01 8000 954 099 / (575)
+                                5748230
+                            </span>
+                        </span>
+                    </div>
+                    <div style="text-align: justify;">
+
+                        <div style="text-align: center;">
+                            <span style="color: #000000;">
+                                <strong>
+                                    <span style="color: #0d3c61;">Correo Institucional:</span>
+                                    &nbsp;
+                                </strong>
+                                <a href="mailto:contactenos@cesar.gov.co" style="color: #000000;">contactenos@cesar.gov.co</a>
+                                &nbsp;
+                            </span>
+                        </div>
+                        <div style="text-align: center;">
+                            <span style="color: #000000;">
+                                <span style="color: #0d3c61;">
+                                    <strong>Código Postal:</strong>&nbsp;
+                                </span>200001
+                            </span>
+                        </div>
+                        <div style="text-align: center;">
+                            <span style="color: #000000;">
+                                <span style="color: #0d3c61;">
+                                    <strong>Nit:</strong>
+                                    &nbsp;
+                                </span>892399999-1
+                            </span>
+                        </div>
+                        <div style="text-align: center;">
+                            <strong style="color: #0d3c61;">
+                                <a href="https://cesar.gov.co/d/index.php/es/2-uncategorised/2856-artpolpriv"
+                                   style="color: #0d3c61;">
+                                    Políticas
+                                    de Privacidad y Condiciones de Uso de la Información
+                                </a>
+                            </strong>
+                        </div>
+                    </div>
+                    <div>
+                        &nbsp;&nbsp;
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="~/images/banner_28.png" alt="0000 2020 imggbp 01" width="800" height="90" />
+
+                    </div>
+                    <br><br>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</footer>
+
+
+
+
+
+
+
+
+
+
+@*<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 col-md-12 col-sm-6 col-6">
+                <div class="card" style="background:#0d3c61; border-top:5px solid; border-top-color:red;">
+                    <div class="card-body">
+                        <form asp-action="ConsultarPersona" asp-controller="Solicitud" method="get">
+                            <div class="form-row mt-0 justify-content-center">
+                                <div class="col-12 col-sm-6 form-group mt-4">
+                                    <label class="text-white">No. Documento</label>
+                                    <input class="form-control" name="consultarPersona" type="text" placeholder="Digite No. de documento" />
+                                    <button class="btn btn-success text-white btn-block mt-3" type="submit">Consultar</button>
+                                    <button class="btn btn-outline-primary text-white btn-block mt-3" asp-action="ConsultarSolicitud">Volver</button>
+                                </div>
+                            </div>
+
+                            @if (ViewBag.consultarPersona != null)
+                            {
+                                <div class="row justify-content-center mt-4">
+                                    <span class="alert alert-danger text-center" role="alert"><strong>@ViewBag.consultarPersona</strong></span>
+                                </div>
+                            }
+                            @if (Model != null)
+                            {
+                                <br />
+                                <div class="card" style="background:#0d3c61; border-top:5px solid; border-top-color:red;">
+                                    <div class="card-header text-white">
+                                        <h6 class="text-center">INFORMACIÓN SOLICITADA</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        @foreach (var item in Model)
+                                        {
+                                            <ul class="list-group mt-3">
+                                                <li class="list-group-item">
+                                                    <p> <strong>Nombre de la institución:</strong>&nbsp;@Html.DisplayFor(modelItem => item.NombreInstitucion)</p>
+
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <p><strong>No. de Documento:</strong>&nbsp;@Html.DisplayFor(modelItem => item.NoDocumento)</p>
+
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <p> <strong>Nombre:</strong>&nbsp;@Html.DisplayFor(modelItem => item.NombreCompleto)</p>
+
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <p><strong>Profesión:</strong>&nbsp;@Html.DisplayFor(modelItem => item.Cargo)</p>
+
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>Estado de autorización del emblema Misión Médica:</strong>
+                                                    @if (item.Estado == "PENDIENTE")
+                                                    {
+                                                        <strong><p class="alert alert-warning text-center">PENDIENTE</p></strong>
+                                                    }
+                                                    @if (item.Estado == "AUTORIZADA")
+                                                    {
+                                                        <strong><p class="alert alert-success text-center">AUTORIZADA</p></strong>
+                                                    }
+                                                    @if (item.Estado == "RECHAZADA")
+                                                    {
+                                                        <strong><p class="alert alert-danger text-center">RECHAZADA</p></strong>
+                                                    }
+                                                </li>
+                                                @if (item.FechaVigencia == null)
+                                                {
+                                                    <span></span>
+                                                }
+                                                else
+                                                {
+                                                    <li class="list-group-item">
+                                                        <strong>Fecha de Vencimiento:</strong> <p>&nbsp;  @Html.DisplayFor(modelItem => item.FechaVigencia)</p>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </form>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
