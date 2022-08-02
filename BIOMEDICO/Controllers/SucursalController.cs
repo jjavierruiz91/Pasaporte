@@ -44,7 +44,7 @@ namespace BIOMEDICO.Controllers
         //    return Json(DatosdEportista, JsonRequestBehavior.AllowGet);
         //}
         public struct HorariosSucursales {
-            public string cedula { get; set; }
+            public string CodSucursal { get; set; }
             public DateTime Fecha { get; set; }
             public int Hora { get; set; }
             public int Minutos { get; set; }
@@ -87,7 +87,7 @@ namespace BIOMEDICO.Controllers
                         {
                             Horario = new HorariosSucursales
                             {
-                                cedula = item.CedSucursalCitas,
+                                CodSucursal = item.CedSucursalCitas,
                                 Fecha = Convert.ToDateTime(item.FechaCitas).Date,
                                 Hora = Convert.ToDateTime(item.HoraIniciocitas).Hour,
                                 Minutos = Convert.ToDateTime(item.HoraIniciocitas).Minute,
@@ -99,7 +99,7 @@ namespace BIOMEDICO.Controllers
                             DateTime NewhOra = Convert.ToDateTime(item.HoraIniciocitas).AddMinutes(Contandorminutos);
                             Horario = new HorariosSucursales
                             {
-                                cedula = item.CedSucursalCitas,
+                                CodSucursal = item.CedSucursalCitas,
                                 Fecha = Convert.ToDateTime(item.FechaCitas).Date,
                                 Hora = NewhOra.Hour,
                                 Minutos = NewhOra.Minute,

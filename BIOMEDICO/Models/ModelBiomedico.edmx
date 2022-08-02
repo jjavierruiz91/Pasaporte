@@ -42,6 +42,7 @@
           <Property Name="MenoresEdadPasaporte" Type="varchar(max)" />
           <Property Name="ParentescoMenor" Type="varchar(max)" />
           <Property Name="CuantosMenores" Type="varchar(max)" />
+          <Property Name="NombreSucursales" Type="varchar(max)" />
           <Property Name="Fecha" Type="datetime" />
           <Property Name="Hora" Type="int" />
           <Property Name="Minutos" Type="int" />
@@ -356,6 +357,7 @@
           <Property Name="UsuarioRegistra" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioEstado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DireccionIp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NombreSucursales" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="AgendarCitas">
           <Key>
@@ -442,6 +444,7 @@
           <EntitySetMapping Name="CitasPasaporte">
             <EntityTypeMapping TypeName="BIOMEDICOModel.CitasPasaporte">
               <MappingFragment StoreEntitySet="CitasPasaporte">
+                <ScalarProperty Name="NombreSucursales" ColumnName="NombreSucursales" />
                 <ScalarProperty Name="DireccionIp" ColumnName="DireccionIp" />
                 <ScalarProperty Name="UsuarioEstado" ColumnName="UsuarioEstado" />
                 <ScalarProperty Name="UsuarioRegistra" ColumnName="UsuarioRegistra" />

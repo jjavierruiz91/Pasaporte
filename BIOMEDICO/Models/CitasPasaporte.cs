@@ -40,5 +40,6 @@ namespace BIOMEDICO.Models
         public string UsuarioRegistra { get; set; }
         public string UsuarioEstado { get; set; }
         public string DireccionIp { get; set; }
+        public string NombreSucursales { get; set; }
     }
 }
