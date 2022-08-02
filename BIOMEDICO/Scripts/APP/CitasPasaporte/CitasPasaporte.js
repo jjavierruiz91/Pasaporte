@@ -17,7 +17,7 @@ $(document).ready(function () {//FUNCION INICIAL;
         IsUpdate = true;
     }
     if (NumDocumentoPasaporte > 0) {
-        $('#Cedula').val(NumDocumentoPasaporte);
+        $('#CodSucursal').val(NumDocumentoPasaporte);
         CargarInfoinicial();
     }
     if (VerDetalles == "SI") {
@@ -56,7 +56,7 @@ function LlenarCampos(data) {
     $('#Hora').val(data.objeto.Hora);
     $('#Minutos').val(data.objeto.Minutos);
     $('#Segundos').val(data.objeto.Segundos);
-    $('#Cedula').val(data.objeto.NumIdentificacion);
+    $('#CodSucursal').val(data.objeto.NumIdentificacion);
 
     CargarInfoinicial();
 }
@@ -68,6 +68,7 @@ function CargarSelectSucursales(data) {
     var HtmlEmp = "";
     HtmlEmp = "<option value=''>Seleccionar</option>"
     $.each(data.objeto.DatosSucursal, function (index, item) {
+    
         HtmlEmp += "<option value='" + item.CodSucursal + "'>" + item.EspecialidadSucursal + "</option>"
 
     //    HtmlEmp += "<option value='" + item.CodMedicos + "'>" + item.Especialidad + " - "+item.PrimerApellido+ "</option>"
@@ -80,7 +81,7 @@ function CargarSelectSucursales(data) {
 function CargarSelectFecha() {
     let ArrayFecha = [];
     let Sucursales = $('#Sucursales').val();
-    let agenda = DatosHorario.filter(w => w.cedula == Sucursales);
+    let agenda = DatosHorario.filter(w => w.CodSucursal == Sucursales);
     var HtmlEmp = "";
     HtmlEmp = "<option value='' >Seleccionar</option>"
     $.each(agenda, function (index, item) {
@@ -100,7 +101,7 @@ function CargarSelectHora() {
     let Arrayhra = [];
     let FechasElect = $('#Fecha').val();
     let Sucursales = $('#Sucursales').val();
-    let Horarios = DatosHorario.filter(w => w.Fecha == FechasElect && w.cedula == Sucursales);
+    let Horarios = DatosHorario.filter(w => w.Fecha == FechasElect && w.CodSucursal == Sucursales);
     var HtmlEmp = "";
     HtmlEmp = "<option value=''>Seleccionar</option>";
     $.each(Horarios, function (index, item) {
@@ -189,7 +190,7 @@ function Createobj() {
                     Hora: $('#Hora').val(),
                     Minutos: $('#Minutos').val(),
                     Segundos: $('#Segundos').val(),
-                    NumIdentificacion: $('#Cedula').val(),
+                    NumIdentificacion: $('#CodSucursal').val(),
                     FechaRegistro: JSONDateconverter($('#FechaRegistro').val()),
                     FechaEstado: JSONDateconverter($('#FechaEstado').val()),
                     UsuarioRegistra: $('#UsuarioRegistra').val(),

@@ -1,7 +1,7 @@
 ﻿var TablaAgendarcitasDeportiva = [];
 $(document).ready(function () {
 
-    RenderTable('datatable-agendarcitas', [0, 1, 2, 3, 4], null, {
+    RenderTable('datatable-agendarcitas', [0, 1, 2, 3, 4,5], null, {
         "paging": true,
         "ordering": false,
         "info": true,
@@ -38,7 +38,7 @@ function CargarTabla(data) {
     console.log(CitasDeport);
     $.each(CitasDeport, function (index, item) {
         TablaAgendarcitasDeportiva.row.add([
-            item.IdSucursal,
+            item.IdAgendarCitas,
             item.CedSucursalCitas,
                       
             item.HoraIniciocitas == undefined ? '' : JSONDateconverter(item.HoraIniciocitas, true),
