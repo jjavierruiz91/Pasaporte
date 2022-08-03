@@ -29,6 +29,7 @@ $(document).ready(function () {
         ]
     });
 
+
     tablaCitasPasaporte = $('#datatable-pasaporte').DataTable();
     Get_Data(CargarTabla, '/CitasPasaporte/GetListCitasPasaporte')
 

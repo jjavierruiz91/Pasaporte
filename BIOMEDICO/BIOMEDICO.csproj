@@ -2519,6 +2519,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\ANA_RAMIREZ.PNG" />
     <Content Include="images\ANDREA_PABA.PNG" />
+    <Content Include="images\banner_28.png" />
     <Content Include="images\ELIANA_ROA.PNG" />
     <Content Include="images\ELIANA_DAZA.PNG" />
     <Content Include="images\ENRIQUE_JIMENEZ.png" />
@@ -2546,6 +2547,7 @@
     <Content Include="images\Pasaporte.jpg" />
     <Content Include="images\Pasaporte2.jpg" />
     <Content Include="images\Pasaporte3.jpg" />
+    <Content Include="images\PasaporteFinal.jpg" />
     <Content Include="images\pass.png" />
     <Content Include="images\pierna1.jpg" />
     <Content Include="images\pierna2.jpg" />

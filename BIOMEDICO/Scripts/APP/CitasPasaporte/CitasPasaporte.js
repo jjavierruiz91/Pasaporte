@@ -39,26 +39,131 @@ function CargarInfoinicial() {
 
 
 
-function LlenarcamposInicial(data) {
-    $('#PrimerNombre').val(data.PrimerNombre)
-    $('#SegundoNombre').val(data.SegundoNombre)
-    $('#PrimerApellido').val(data.PrimerApellido)
-    $('#SegundoApellido').val(data.SegundoApellido)
-    $('#Genero').val(data.Genero)
-    $('#Edad').val(data.Edad)
-    $('#Deporte').val(data.Deporte)
-}
+//function LlenarcamposInicial(data) {
+//    $('#PrimerNombre').val(data.PrimerNombre)
+//    $('#SegundoNombre').val(data.SegundoNombre)
+//    $('#PrimerApellido').val(data.PrimerApellido)
+//    $('#SegundoApellido').val(data.SegundoApellido)
+//    $('#Genero').val(data.Genero)
+//    $('#Edad').val(data.Edad)
+//    $('#Deporte').val(data.Deporte)
+//}
 
-function LlenarCampos(data) {
-    $('#IdCitasPasaporte').val(data.objeto.IdCitasPasaporte);
-    $('#Sucursales').val(data.objeto.Sucursales);
-    $('#Fecha').val(JSONDateconverter(data.objeto.Fecha));
-    $('#Hora').val(data.objeto.Hora);
-    $('#Minutos').val(data.objeto.Minutos);
-    $('#Segundos').val(data.objeto.Segundos);
-    $('#CodSucursal').val(data.objeto.NumIdentificacion);
+//function LlenarCampos(data) {
+//    $('#IdCitasPasaporte').val(data.objeto.IdCitasPasaporte);
+//    $('#Sucursales').val(data.objeto.Sucursales);
+//    $('#Fecha').val(JSONDateconverter(data.objeto.Fecha));
+//    $('#Hora').val(data.objeto.Hora);
+//    $('#Minutos').val(data.objeto.Minutos);
+//    $('#Segundos').val(data.objeto.Segundos);
+//    $('#CodSucursal').val(data.objeto.NumIdentificacion);
 
-    CargarInfoinicial();
+//    CargarInfoinicial();
+//}
+
+var ListFechas = [];
+var fecha = [];
+var substringa = [];
+var fechabydisable = [];
+var fechaByDisable2 = [];
+function FechasMarcada() {
+    var formURL = '/InformeGotaGota/InformeGeneralFecha';
+    $.ajax(
+        {
+            url: formURL,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                if (!data.Is_Error) {
+                    ListFechas = data.Objeto;
+                    console.log(ListFechas);
+                    for (var i = 0; i < ListFechas.length; i++) {
+                        fecha.push(JSONDateconverter(ListFechas[i], false));
+                    }
+
+
+                    $.each(fecha, function (index, item) {
+                        substringa = item.split("-");
+                        fechabydisable.push(substringa);
+
+                        fechabydisable[index][1] = fechabydisable[index][1] * 1 - 1;
+                        fechabydisable[index][3] = "inverted";
+                        fechaByDisable2.push(fechabydisable);
+
+                    });
+                    fechabydisable.push({ from: [1800, 1, 1], to: [3000, 1, 1] })
+
+                    $(".pickdate").pickadate({
+                        disable: fechabydisable,
+                        labelMonthNext: 'Ir al siguiente mes',
+                        labelMonthPrev: 'Ir al mes anterior',
+                        labelMonthSelect: 'Seleccionar mes',
+                        labelYearSelect: 'Seleccionar año',
+                        labelDaySelect: 'aqui',
+                        klass: {
+                            navPrev: '',
+                            navNext: '',
+                        },
+
+                        selectMonths: true,
+                        selectYears: 100,
+                        min: new Date(1800, 1, 1),
+                        max: new Date(),
+                        max: new Date(),
+                        today: 'Hoy',
+                        close: 'Cerrar',
+                        clear: '',
+
+
+                        onSet: function (context) {
+                            if (context.select != undefined) {
+                                var date = new Date(context.select);
+                                var formatdate = formatDate(date);
+                                $(this.$node).val(formatdate).trigger("change");
+                            } else {
+
+                                var date = new Date(parseInt("" + context.highlight[0]), parseInt("" + context.highlight[1]), parseInt("" + context.highlight[2]));
+                                var finderdate = fechabydisable.find(function (val) {
+                                    var datedi = new Date(val[0] * 1, val[1] * 1, val[2] * 1);
+                                    return datedi == date;
+                                });
+                                if (finderdate != null && finderdate != undefined) {
+                                    var formatdate = formatDate(date);
+                                    $(this.$node).val(formatdate).trigger("change");
+                                } else {
+                                    var finderdate = fechabydisable.find(function (val) {
+                                        var datedi = new Date(val[0] * 1, val[1] * 1, val[2] * 1);
+                                        return datedi > date;
+                                    });
+                                    if (finderdate != null && finderdate != undefined)
+                                        this.set({ select: new Date(finderdate[0] * 1, finderdate[1] * 1, finderdate[2] * 1) });
+                                    else {
+                                        finderdate = fechabydisable[fechabydisable.length - 2];
+                                        this.set({ select: new Date(finderdate[0] * 1, finderdate[1] * 1, finderdate[2] * 1) });
+                                    }
+                                }
+
+                            }
+                        }
+                    });
+
+                } else {
+                    swal({
+                        title: "¡Advertencia!",
+                        text: data.Msj,
+                        type: "error",
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: " ACEPTAR ",
+                        closeOnConfirm: true
+                    });
+                }
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+
 }
 
 var DatosHorario = [];
