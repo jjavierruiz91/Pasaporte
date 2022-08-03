@@ -36,7 +36,7 @@ $(document).ready(function () {
 var Arraycitasglobal = [];
 function CargarTabla(data) {
     tablaCitasPasaporte.clear().draw();
-    let CitasPasaport = data.objeto.DatosSucursal;
+    let CitasPasaport = data.objeto;
     Arraycitasglobal = CitasPasaport;
     console.log(CitasPasaport);
     $.each(CitasPasaport, function (index, item) {
@@ -75,33 +75,33 @@ function ActualizardEportistaData(idCitasPasport) {
 
 }
 
-function RegistarCitasMEdicasData(idCitasPasport) {
-    let CitasSelect = Arraycitasglobal.find(w => w.IdCitasPasaporte == idCitasPasport);
-    if (CitasSelect != undefined) {
-        let Especialidad = CitasSelect.Especialista.split(':')[0];
-        switch (Especialidad) {
-            case "MEDICINA DEL DEPORTE":
-                window.location.href = '../MedicinaDeportiva/Agregar?IdCitasPasportReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
-                break;
-            case "FISIOTERAPIA":
-                window.location.href = '../ControlFisioterapia/Agregar?IdCitasPasportReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
-                break;
-            case "PSICOLOGIA":
+//function RegistarCitasMEdicasData(idCitasPasport) {
+//    let CitasSelect = Arraycitasglobal.find(w => w.IdCitasPasaporte == idCitasPasport);
+//    if (CitasSelect != undefined) {
+//        let Especialidad = CitasSelect.Especialista.split(':')[0];
+//        switch (Especialidad) {
+//            case "MEDICINA DEL DEPORTE":
+//                window.location.href = '../MedicinaDeportiva/Agregar?IdCitasPasportReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
+//                break;
+//            case "FISIOTERAPIA":
+//                window.location.href = '../ControlFisioterapia/Agregar?IdCitasPasportReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
+//                break;
+//            case "PSICOLOGIA":
                 
-                window.location.href = '../Psicologia/Agregar?IdCitasPasportReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
+//                window.location.href = '../Psicologia/Agregar?IdCitasPasportReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
                 
-                break;
-            case "NUTRICIÓN":
-                window.location.href = '../Nutricion/Agregar?IdCitasPasportReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
-                break;
-            default:
-                break;
-        }
+//                break;
+//            case "NUTRICIÓN":
+//                window.location.href = '../Nutricion/Agregar?IdCitasPasportReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
+//                break;
+//            default:
+//                break;
+//        }
        
-    }
+//    }
     
 
-}
+//}
 function DetalleData(idCitasPasport) {
     window.location.href = '../CitasPasaporte/Agregar?IdCitasPasportReg=' + idCitasPasport + "&Viewdetail=SI";
 

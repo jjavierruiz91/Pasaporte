@@ -16,6 +16,7 @@ namespace BIOMEDICO.Models
     {
         public int IdCitasPasaporte { get; set; }
         public string OficinaPasaporte { get; set; }
+        public string EstadoPasaporte { get; set; }
         public string TipoSolicitudPasaporte { get; set; }
         public string TipoDocumentoPasaporte { get; set; }
         public Nullable<int> NumDocumentoPasaporte { get; set; }
@@ -28,18 +29,16 @@ namespace BIOMEDICO.Models
         public string MenoresEdadPasaporte { get; set; }
         public string ParentescoMenor { get; set; }
         public string CuantosMenores { get; set; }
+        public string NombreSucursales { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<int> Hora { get; set; }
         public Nullable<int> Minutos { get; set; }
         public Nullable<int> Segundos { get; set; }
-        public string EstadoCitas { get; set; }
         public Nullable<long> NumIdentificacion { get; set; }
-        public string EstadoPasaporte { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
         public Nullable<System.DateTime> FechaEstado { get; set; }
         public string UsuarioRegistra { get; set; }
         public string UsuarioEstado { get; set; }
         public string DireccionIp { get; set; }
-        public string NombreSucursales { get; set; }
     }
 }

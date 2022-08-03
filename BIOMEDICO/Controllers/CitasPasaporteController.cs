@@ -90,7 +90,7 @@ namespace BIOMEDICO.Controllers
                 if (DatosAgentaDeportista != null)
                 {
 
-                    DatosAgentaDeportista.EstadoCitas = "FINALIZADO";
+                    DatosAgentaDeportista.EstadoPasaporte = "FINALIZADO";
 
                 }
 
@@ -121,7 +121,7 @@ namespace BIOMEDICO.Controllers
                         {
 
                             
-                            CitasDeportivaExiste.EstadoCitas = "FINALIZADO";
+                            CitasDeportivaExiste.EstadoPasaporte = "FINALIZADO";
 
                         }
 
@@ -163,7 +163,7 @@ namespace BIOMEDICO.Controllers
 
             {
 
-                var CitasPasaport = db.CitasPasaporte.Where(w => w.EstadoCitas == "PENDIENTE").ToList();
+                var CitasPasaport = db.CitasPasaporte.Where(w => w.EstadoPasaporte == "PENDIENTE").ToList();
                 foreach (var item in CitasPasaport)
                 {
 
@@ -232,7 +232,7 @@ namespace BIOMEDICO.Controllers
                 using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
                 {
-                        var EstadoCitaDeportivaExiste = db.CitasPasaporte.FirstOrDefault(w => w.EstadoCitas == "PENDIENTE" && w.Hora  == a.CitasPasaport.Hora && w.Minutos==a.CitasPasaport.Minutos );
+                        var EstadoCitaDeportivaExiste = db.CitasPasaporte.FirstOrDefault(w => w.EstadoPasaporte == "PENDIENTE" && w.Hora  == a.CitasPasaport.Hora && w.Minutos==a.CitasPasaport.Minutos );
                     if (EstadoCitaDeportivaExiste == null)
                     {
                         IPHostEntry host;
@@ -250,7 +250,10 @@ namespace BIOMEDICO.Controllers
 
                         //int cedula = int.Parse(a.CitasPasaport.OficinaPasaporte);
                         //var DatosSucursal = db.Sucursal.FirstOrDefault(w => w.CodSucursal == cedula);
-                        //a.CitasPasaport.OficinaPasaporte = DatosSucursal.EspecialidadSucursal;
+                        a.CitasPasaport.EstadoPasaporte= "PENDIENTE";
+                        a.CitasPasaport.FechaRegistro = DateTime.Now;
+                        a.CitasPasaport.FechaEstado = DateTime.Now;
+                        a.CitasPasaport.UsuarioRegistra = localIP;
                         db.CitasPasaporte.Add(a.CitasPasaport);
                         db.SaveChanges();
                         Retorno.Error = false;
@@ -300,7 +303,7 @@ namespace BIOMEDICO.Controllers
 
                             CitasDeportivaExiste.IdCitasPasaporte = a.CitasPasaport.IdCitasPasaporte;
 
-                            CitasDeportivaExiste.EstadoCitas = "FINALIZADO";
+                            CitasDeportivaExiste.EstadoPasaporte = "FINALIZADO";
 
                         }
 

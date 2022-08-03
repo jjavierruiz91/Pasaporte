@@ -31,7 +31,7 @@ namespace BIOMEDICO.Models
         public virtual DbSet<TipoPermiso> TipoPermiso { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Sucursal> Sucursal { get; set; }
-        public virtual DbSet<CitasPasaporte> CitasPasaporte { get; set; }
         public virtual DbSet<AgendarCitas> AgendarCitas { get; set; }
+        public virtual DbSet<CitasPasaporte> CitasPasaporte { get; set; }
     }
 }

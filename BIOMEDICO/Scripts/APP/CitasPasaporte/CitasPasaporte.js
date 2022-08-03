@@ -185,6 +185,7 @@ function Createobj() {
                     TipoPasaporte: $('#TipoPasaporte').val(),
                     MenoresEdadPasaporte: $('#MenoresEdadPasaporte').val(),
                     ParentescoMenor: $('#ParentescoMenor').val(),
+                    NombreSucursales: $('#Sucursales').val(),
                     CuantosMenores: $('#CuantosMenores').val(),
                     Fecha: JSONDateconverter($('#Fecha').val()),
                     Hora: $('#Hora').val(),

@@ -28,7 +28,7 @@ $(document).ready(function () {
     });
 
     tablaCitasPasaporte = $('#datatable-pasaporte').DataTable();
-    Get_Data(CargarTabla, '/CitasPasaporte/GetListConsultaCitasMedicas')
+    Get_Data(CargarTabla, '/CitasPasaporte/GetListConsultaCitasPasaporte')
 
 });
 var Arraycitasglobal = [];
@@ -48,7 +48,7 @@ function CargarTabla(data) {
                 item.OficinaPasaporte,
                 item.EstadoPasaporte,
                 Fecha,
-                item.Hora + ": " + item.Minutos + " :" + item.Segundos,
+                item.Hora + ": " + item.Minutos,
                 item.NombresPasaporte,
 
 
@@ -72,25 +72,25 @@ function ActualizardEportistaData(idCitasPasport) {
 
 }
 
-function RegistarCitasMEdicasData(idCitasPasport) {
-    let CitasSelect = Arraycitasglobal.find(w => w.IdCitaMedica == idCitasPasport);
-    if (CitasSelect != undefined) {
-        let Especialidad = CitasSelect.Especialista.split(':')[0];
-        switch (Especialidad) {
-            case "ABOGADA":
-                window.location.href = '../MedicinaDeportiva/Agregar?IdReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
-                break;
-            case "PSICOLOGA":
-                window.location.href = '../Fisioterapia/Agregar?IdReg=' + idCitasPasport;
-                break;
-            default:
-                break;
-        }
+//function RegistarCitasMEdicasData(idCitasPasport) {
+//    let CitasSelect = Arraycitasglobal.find(w => w.IdCitaMedica == idCitasPasport);
+//    if (CitasSelect != undefined) {
+//        let Especialidad = CitasSelect.Especialista.split(':')[0];
+//        switch (Especialidad) {
+//            case "ABOGADA":
+//                window.location.href = '../MedicinaDeportiva/Agregar?IdReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
+//                break;
+//            case "PSICOLOGA":
+//                window.location.href = '../Fisioterapia/Agregar?IdReg=' + idCitasPasport;
+//                break;
+//            default:
+//                break;
+//        }
        
-    }
+//    }
     
 
-}
+//}
 function DetalleData(idCitasPasport) {
     window.location.href = '../CitasPasaporte/Agregar?IdReg=' + idCitasPasport + "&Viewdetail=SI";
 
@@ -121,5 +121,5 @@ function Eliminar(idCitasPasport) {
 }
 
 function RecargarTabla() {
-    Get_Data(CargarTabla, '/CitasPasaporte/GetListCitasPasaporte')
+    Get_Data(CargarTabla, '/CitasPasaporte/GetListConsultaCitasPasaporte')
 }
