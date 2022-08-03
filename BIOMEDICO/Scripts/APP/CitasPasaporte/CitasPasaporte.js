@@ -21,12 +21,12 @@ $(document).ready(function () {//FUNCION INICIAL;
         CargarInfoinicial();
     }
     if (VerDetalles == "SI") {
-        $('#SavePasaporte').html('Atras')
+        $('#SaveCitasPasaporte').html('Atras')
         Get_Data(LlenarCampos, '/CitasPasaporte/GetCitasPasaporteById?IdCitasPaspor=' + idCitasPasaporteData);
     }
 
     if (IsUpdate && VerDetalles == 0) {
-        $('#SavePasaporte').html('Actualizar')
+        $('#SaveCitasPasaporte').html('Actualizar')
         Get_Data(LlenarCampos, '/CitasPasaporte/GetCitasPasaporteById?IdCitasPaspor=' + idCitasPasaporteData);
     }
 
@@ -111,7 +111,7 @@ function CargarSelectHora() {
             HtmlEmp += "<option value='" + item.Hora + "'>" + item.Hora + "</option>"
             Arrayhra.push(item.Hora);
         }
-           
+         
 
     })
     $('#Hora').html(HtmlEmp);
@@ -123,7 +123,7 @@ function CargarSelectMInutos() {
     let FechasElect = $('#Fecha').val();
     let Sucursales = $('#Sucursales').val();
     let hora = $('#Hora').val();
-    let Horarios = DatosHorario.filter(w => w.Fecha == FechasElect && w.cedula == Sucursales && w.Hora ==parseInt(hora));
+    let Horarios = DatosHorario.filter(w => w.Fecha == FechasElect && w.CodSucursal == Sucursales && w.Hora ==parseInt(hora));
     
     var HtmlMin = "";
     HtmlMin = "<option value=''>Seleccionar</option>"
@@ -156,7 +156,7 @@ function Atras() {
 }
 
 function Createobj() {
-    document.getElementById("SavePasaporte").disabled = true;
+    document.getElementById("SaveCitasPasaporte").disabled = true;
 
     // if (validadorFormMedicinaDeportiva.form()) {
     if (VerDetalles == "SI") {
@@ -191,8 +191,8 @@ function Createobj() {
                     Minutos: $('#Minutos').val(),
                     Segundos: $('#Segundos').val(),
                     NumIdentificacion: $('#CodSucursal').val(),
-                    FechaRegistro: JSONDateconverter($('#FechaRegistro').val()),
-                    FechaEstado: JSONDateconverter($('#FechaEstado').val()),
+                    //FechaRegistro: JSONDateconverter($('#FechaRegistro').val()),
+                    //FechaEstado: JSONDateconverter($('#FechaEstado').val()),
                     UsuarioRegistra: $('#UsuarioRegistra').val(),
                     UsuarioEstado: $('#UsuarioEstado').val(),
                     DireccionIp: $('#DireccionIp').val(),

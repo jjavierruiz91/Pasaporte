@@ -248,9 +248,9 @@ namespace BIOMEDICO.Controllers
 
                         a.CitasPasaport.DireccionIp = localIP;
 
-                        int cedula = int.Parse(a.CitasPasaport.OficinaPasaporte);
-                        var DatosSucursal = db.Sucursal.FirstOrDefault(w => w.CodSucursal == cedula);
-                        a.CitasPasaport.OficinaPasaporte = DatosSucursal.EspecialidadSucursal;
+                        //int cedula = int.Parse(a.CitasPasaport.OficinaPasaporte);
+                        //var DatosSucursal = db.Sucursal.FirstOrDefault(w => w.CodSucursal == cedula);
+                        //a.CitasPasaport.OficinaPasaporte = DatosSucursal.EspecialidadSucursal;
                         db.CitasPasaporte.Add(a.CitasPasaport);
                         db.SaveChanges();
                         Retorno.Error = false;
