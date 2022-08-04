@@ -4,7 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+ <script type="text/javascript" src="https://amsul.ca/pickadate.js/vendor/pickadate/lib/picker.js"></script>
+ <script type="text/javascript" src="https://amsul.ca/pickadate.js/vendor/pickadate/lib/picker.date.js"></script>
+ <script type="text/javascript" src="https://amsul.ca/pickadate.js/vendor/pickadate/lib/picker.time.js"></script>
 <script defer src="~/Scripts/APP/CitasPasaporte/CitasPasaporte.js"></script>
 
 <h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>SOLICITUD DE TRAMITE PASAPORTE</strong></h1>
@@ -147,6 +149,10 @@
 
                 </select>
 
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Fecha</strong></label>
+                <input type="text" name="Fecha" id="Fecha" class="pickdate form-control" />
             </div>
             @*<div class="col-xs-6 col-l-4 col-md-6" style="display:none">
                 <label><strong>Segundos</strong></label>

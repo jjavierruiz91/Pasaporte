@@ -66,16 +66,9 @@ var fecha = [];
 var substringa = [];
 var fechabydisable = [];
 var fechaByDisable2 = [];
-function FechasMarcada() {
-    var formURL = '/InformeGotaGota/InformeGeneralFecha';
-    $.ajax(
-        {
-            url: formURL,
-            type: "GET",
-            dataType: "json",
-            success: function (data) {
-                if (!data.Is_Error) {
-                    ListFechas = data.Objeto;
+function FechasMarcada(listafe) {
+    
+                    ListFechas = listafe;
                     console.log(ListFechas);
                     for (var i = 0; i < ListFechas.length; i++) {
                         fecha.push(JSONDateconverter(ListFechas[i], false));
@@ -94,7 +87,7 @@ function FechasMarcada() {
                     fechabydisable.push({ from: [1800, 1, 1], to: [3000, 1, 1] })
 
                     $(".pickdate").pickadate({
-                        disable: fechabydisable,
+                        disable:fechabydisable,
                         labelMonthNext: 'Ir al siguiente mes',
                         labelMonthPrev: 'Ir al mes anterior',
                         labelMonthSelect: 'Seleccionar mes',
@@ -147,22 +140,7 @@ function FechasMarcada() {
                         }
                     });
 
-                } else {
-                    swal({
-                        title: "¡Advertencia!",
-                        text: data.Msj,
-                        type: "error",
-                        confirmButtonClass: "btn-danger",
-                        confirmButtonText: " ACEPTAR ",
-                        closeOnConfirm: true
-                    });
-                }
-
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(errorThrown);
-            }
-        });
+               
 
 }
 
@@ -195,9 +173,13 @@ function CargarSelectFecha() {
         if (ExistefEcha == undefined) {
             HtmlEmp += "<option value='" + item.Fecha + "'>" + JSONDateconverter(item.Fecha) + "</option>"
             ArrayFecha.push(item.Fecha);
+
         }
-       
-    })
+     
+
+});
+
+    FechasMarcada(ArrayFecha);
     $('#Fecha').html(HtmlEmp);
     $('#Fecha').select2();
 }
