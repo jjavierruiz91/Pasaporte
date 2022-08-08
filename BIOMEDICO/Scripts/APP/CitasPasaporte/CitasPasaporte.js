@@ -9,15 +9,15 @@ var VerDetalles = 'NO';
 
 $(document).ready(function () {//FUNCION INICIAL;
     idCitasPasaporteData = getQueryVariable('IdCitasPasportReg');
-    let NumDocumentoPasaporte = getQueryVariable('Ced');
+    let DocumentoPasaporte = getQueryVariable('Ced');
     VerDetalles = getQueryVariable('Viewdetail');
     IdCitasPasaporte = getQueryVariable('IdReg');
     Get_DataGet(CargarSelectSucursales, '/Sucursal/GetListSucursalesPasaporte');
     if (idCitasPasaporteData > 0) {
         IsUpdate = true;
     }
-    if (NumDocumentoPasaporte > 0) {
-        $('#CodSucursal').val(NumDocumentoPasaporte);
+    if (DocumentoPasaporte > 0) {
+        $('#NumDocumentoPasaporte').val(DocumentoPasaporte);
         CargarInfoinicial();
     }
     if (VerDetalles == "SI") {
@@ -33,33 +33,27 @@ $(document).ready(function () {//FUNCION INICIAL;
 });
 
 function CargarInfoinicial() {
-    var Valuecedula = $('#IdPasaport').val();
-    Get_Data(LlenarcamposInicial, '/CitasPasaporte/BuscarCitasPasaporte?IdPasaport=' + Valuecedula)
+    var ValueCitaPasaporte = $('#NumDocumentoPasaporte').val();
+    Get_Data(LlenarcamposInicial, '/CitasPasaporte/BuscarCitas?Ducumento=' + ValueCitaPasaporte)
 }
 
 
 
-//function LlenarcamposInicial(data) {
-//    $('#PrimerNombre').val(data.PrimerNombre)
-//    $('#SegundoNombre').val(data.SegundoNombre)
-//    $('#PrimerApellido').val(data.PrimerApellido)
-//    $('#SegundoApellido').val(data.SegundoApellido)
-//    $('#Genero').val(data.Genero)
-//    $('#Edad').val(data.Edad)
-//    $('#Deporte').val(data.Deporte)
-//}
+function LlenarcamposInicial(data) {
+    
+    $('#TipoSolicitudPasaporte').val(data.TipoSolicitudPasaporte);
+    $('#CorreoPasaporte').val(data.CorreoPasaporte);
+    $('#NombresPasaporte').val(data.NombresPasaporte);
+    $('#ApellidosPasaporte').val(data.ApellidosPasaporte);
+   
+}
 
-//function LlenarCampos(data) {
-//    $('#IdCitasPasaporte').val(data.objeto.IdCitasPasaporte);
-//    $('#Sucursales').val(data.objeto.Sucursales);
-//    $('#Fecha').val(JSONDateconverter(data.objeto.Fecha));
-//    $('#Hora').val(data.objeto.Hora);
-//    $('#Minutos').val(data.objeto.Minutos);
-//    $('#Segundos').val(data.objeto.Segundos);
-//    $('#CodSucursal').val(data.objeto.NumIdentificacion);
+function LlenarCampos(data) {
+    $('#NombresPasaporte').val(data.objeto.NombresPasaporte);
+    $('#ApellidosPasaporte').val(data.objeto.ApellidosPasaporte);
 
-//    CargarInfoinicial();
-//}
+    CargarInfoinicial();
+}
 
 var ListFechas = [];
 var fecha = [];
@@ -278,7 +272,7 @@ function Createobj() {
                     Hora: $('#Hora').val(),
                     Minutos: $('#Minutos').val(),
                     Segundos: $('#Segundos').val(),
-                    NumIdentificacion: $('#CodSucursal').val(),
+                    NumIdentificacion: $('#NumDocumentoPasaporte').val(),
                     //FechaRegistro: JSONDateconverter($('#FechaRegistro').val()),
                     //FechaEstado: JSONDateconverter($('#FechaEstado').val()),
                     UsuarioRegistra: $('#UsuarioRegistra').val(),

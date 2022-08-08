@@ -19,7 +19,7 @@ namespace BIOMEDICO.Models
         public string EstadoPasaporte { get; set; }
         public string TipoSolicitudPasaporte { get; set; }
         public string TipoDocumentoPasaporte { get; set; }
-        public Nullable<int> NumDocumentoPasaporte { get; set; }
+        public Nullable<long> NumDocumentoPasaporte { get; set; }
         public Nullable<System.DateTime> FechaExpedicionDocumento { get; set; }
         public string NombresPasaporte { get; set; }
         public string ApellidosPasaporte { get; set; }

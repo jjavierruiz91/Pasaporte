@@ -69,12 +69,12 @@ namespace BIOMEDICO.Controllers
 
         }
         [HttpGet]
-        public JsonResult BuscarDeportista(long cedula)
+        public JsonResult BuscarCitas(long Ducumento)
         {
             var DatosCitasPasaport = new CitasPasaporte();
             using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
             {
-                DatosCitasPasaport = db.CitasPasaporte.FirstOrDefault(w => w.NumDocumentoPasaporte == cedula);
+                DatosCitasPasaport = db.CitasPasaporte.FirstOrDefault(w => w.NumDocumentoPasaporte == Ducumento);
             }
             return Json(DatosCitasPasaport, JsonRequestBehavior.AllowGet);
         }

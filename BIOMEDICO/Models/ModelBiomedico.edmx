@@ -32,7 +32,7 @@
           <Property Name="EstadoPasaporte" Type="varchar(max)" />
           <Property Name="TipoSolicitudPasaporte" Type="varchar(max)" />
           <Property Name="TipoDocumentoPasaporte" Type="varchar(max)" />
-          <Property Name="NumDocumentoPasaporte" Type="int" />
+          <Property Name="NumDocumentoPasaporte" Type="bigint" />
           <Property Name="FechaExpedicionDocumento" Type="date" />
           <Property Name="NombresPasaporte" Type="varchar(max)" />
           <Property Name="ApellidosPasaporte" Type="varchar(max)" />
@@ -345,7 +345,7 @@
           <Property Name="EstadoPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TipoSolicitudPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TipoDocumentoPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NumDocumentoPasaporte" Type="Int32" />
+          <Property Name="NumDocumentoPasaporte" Type="Int64" />
           <Property Name="FechaExpedicionDocumento" Type="DateTime" Precision="0" />
           <Property Name="NombresPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ApellidosPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
