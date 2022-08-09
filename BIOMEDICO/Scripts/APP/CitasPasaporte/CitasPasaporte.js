@@ -40,12 +40,13 @@ function CargarInfoinicial() {
 
 
 function LlenarcamposInicial(data) {
+
     
     $('#TipoSolicitudPasaporte').val(data.TipoSolicitudPasaporte);
     $('#CorreoPasaporte').val(data.CorreoPasaporte);
     $('#NombresPasaporte').val(data.NombresPasaporte);
     $('#ApellidosPasaporte').val(data.ApellidosPasaporte);
-   
+    Alternar(ConsultaPasaporte);
 }
 
 function LlenarCampos(data) {
@@ -55,6 +56,10 @@ function LlenarCampos(data) {
     CargarInfoinicial();
 }
 
+function Alternar(Seccion) {
+    if (Seccion.style.display == "none") { Seccion.style.display = "" }
+    else { Seccion.style.display = "show" }
+}
 
 
 function  FechasMarcada(ListFechas)
