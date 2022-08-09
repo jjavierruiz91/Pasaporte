@@ -55,12 +55,60 @@ function LlenarCampos(data) {
     CargarInfoinicial();
 }
 
+
+
+function  FechasMarcada(ListFechas)
+{
+   var $input = $(".pickdate").pickadate({
+		format: 'yyyy-mm-dd',
+		formatSubmit: 'yyyy-mm-dd',
+		editable: false, disable: [true],
+
+
+		min: new Date(),
+        firstDay: 0
+	});
+
+
+    for (var i = 0; i < ListFechas.length; i++) {
+        fecha.push(JSONDateconverter(ListFechas[i], false));
+    }
+
+    let fechaeneblearray=[];
+
+    fechaeneblearray.push(0);
+
+                    
+
+
+    $.each(fecha, function (index, item) {
+           substringa = item.split("-");
+           fechabydisable.push(substringa);
+           fechabydisable[index][1] = fechabydisable[index][1] * 1 - 1;
+           fechabydisable[index][2] = fechabydisable[index][2] * 1 ;
+           fechabydisable[index][0] = fechabydisable[index][0] * 1 ;
+
+
+    });
+
+    fechaeneblearray.push(...fechabydisable)
+
+    var picker = $input.pickadate('picker');
+	picker.set("disable", fechaeneblearray);
+
+
+    
+  
+}
+
 var ListFechas = [];
 var fecha = [];
 var substringa = [];
 var fechabydisable = [];
 var fechaByDisable2 = [];
-function FechasMarcada(listafe) {
+
+var fechaByEnable = [];
+function FechasMarcadaa(listafe) {
     
                     ListFechas = listafe;
                     console.log(ListFechas);
@@ -68,19 +116,42 @@ function FechasMarcada(listafe) {
                         fecha.push(JSONDateconverter(ListFechas[i], false));
                     }
 
+                    
+
 
                     $.each(fecha, function (index, item) {
                         substringa = item.split("-");
                         fechabydisable.push(substringa);
 
+
+
+
                         fechabydisable[index][1] = fechabydisable[index][1] * 1 - 1;
-                        fechabydisable[index][3] = "inverted";
+                        fechabydisable[index][2] = fechabydisable[index][2] * 1 ;
+                        fechabydisable[index][0] = fechabydisable[index][0] * 1 ;
+
+
+                        //fechabydisable[index][3] = "inverted";
+
+                        fechaByEnable.push(substringa);
+
+                        //fechaByEnable[index][1] = fechaByEnable[index][1] * 1 - 1;
+
+
+
+
+
+
                         fechaByDisable2.push(fechabydisable);
 
                     });
                     fechabydisable.push({ from: [1800, 1, 1], to: [3000, 1, 1] })
 
-                    $(".pickdate").pickadate({
+                    var $input=$(".pickdate").pickadate({
+
+                        format: 'dd-mm-yyyy',
+		                formatSubmit: 'dd-mm-yyyy',
+		                editable: false,
                         disable:fechabydisable,
                         labelMonthNext: 'Ir al siguiente mes',
                         labelMonthPrev: 'Ir al mes anterior',
@@ -94,9 +165,8 @@ function FechasMarcada(listafe) {
 
                         selectMonths: true,
                         selectYears: 100,
-                        min: new Date(1800, 1, 1),
-                        max: new Date(),
-                        max: new Date(),
+                        min: new Date(),
+                        firstDay: 0,
                         today: 'Hoy',
                         close: 'Cerrar',
                         clear: '',
@@ -132,7 +202,20 @@ function FechasMarcada(listafe) {
 
                             }
                         }
+
+
+
+
                     });
+
+
+console.log(fechaByEnable);
+var picker = $input.pickadate('picker');
+	picker.set("disable", [
+        1,
+	]);
+    
+    picker.set("enable", fechaByEnable);
 
                
 
@@ -180,9 +263,15 @@ function CargarSelectFecha() {
 
 function CargarSelectHora() {
     let Arrayhra = [];
-    let FechasElect = $('#Fecha').val();
+    let FechasElect = $('#FechaCalen').val();
     let Sucursales = $('#Sucursales').val();
-    let Horarios = DatosHorario.filter(w => w.Fecha == FechasElect && w.CodSucursal == Sucursales);
+    let Horarios = DatosHorario.filter(w =>{
+
+        let dateFormat=JSONDateconverter(w.Fecha,true);
+
+        return  dateFormat.split(' ')[0]== FechasElect && w.CodSucursal == Sucursales
+
+    });
     var HtmlEmp = "";
     HtmlEmp = "<option value=''>Seleccionar</option>";
     $.each(Horarios, function (index, item) {
@@ -201,10 +290,10 @@ function CargarSelectHora() {
 
 function CargarSelectMInutos() {
     let ArrayFecha = [];
-    let FechasElect = $('#Fecha').val();
+    let FechasElect = $('#FechaCalen').val();
     let Sucursales = $('#Sucursales').val();
     let hora = $('#Hora').val();
-    let Horarios = DatosHorario.filter(w => w.Fecha == FechasElect && w.CodSucursal == Sucursales && w.Hora ==parseInt(hora));
+    let Horarios = DatosHorario.filter(w => JSONDateconverter(w.Fecha,true).split(' ')[0] == FechasElect && w.CodSucursal == Sucursales && w.Hora ==parseInt(hora));
     
     var HtmlMin = "";
     HtmlMin = "<option value=''>Seleccionar</option>"
