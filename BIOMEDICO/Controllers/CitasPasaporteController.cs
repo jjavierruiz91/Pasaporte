@@ -41,13 +41,7 @@ namespace BIOMEDICO.Controllers
                 var CitasPasaport = db.CitasPasaporte.ToList().OrderByDescending(o => o.IdCitasPasaporte);
               
 
-                ret.objeto = CitasPasaport; //ocupacion = DAtosocupacion };//, datosFamiliar=DatosFamiliar };
-
-                //result = JsonConvert.SerializeObject(ret, Formatting.Indented,
-                //new JsonSerializerSettings
-                //{
-                //   ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                //});
+                ret.objeto = CitasPasaport;
 
             }
 
@@ -71,10 +65,25 @@ namespace BIOMEDICO.Controllers
         [HttpGet]
         public JsonResult BuscarCitas(long Ducumento)
         {
+            Respuesta respuesta = new Respuesta();
+
             var DatosCitasPasaport = new CitasPasaporte();
             using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
             {
-                DatosCitasPasaport = db.CitasPasaporte.FirstOrDefault(w => w.NumDocumentoPasaporte == Ducumento);
+                try
+                {
+                    DatosCitasPasaport = db.CitasPasaporte.FirstOrDefault(w => w.NumDocumentoPasaporte == Ducumento);
+                    if (DatosCitasPasaport == null)
+                    {
+                        respuesta.Error = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    respuesta.mensaje = ex.Message;
+                    respuesta.Error = true;
+                }
+
             }
             return Json(DatosCitasPasaport, JsonRequestBehavior.AllowGet);
         }
@@ -86,6 +95,7 @@ namespace BIOMEDICO.Controllers
             var DatosAgentaDeportista = new CitasPasaporte();
             using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
             {
+
                 DatosAgentaDeportista = db.CitasPasaporte.FirstOrDefault(w => w.IdCitasPasaporte == IdAgenda);
                 if (DatosAgentaDeportista != null)
                 {

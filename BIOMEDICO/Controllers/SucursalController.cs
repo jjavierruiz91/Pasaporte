@@ -185,7 +185,7 @@ namespace BIOMEDICO.Controllers
                 String Error = ex.Message;
                 //ModelState.AddModelError("", "Error al agregar deportistas" + ex.Message);
                 Retorno.Error = true;
-                Retorno.mensaje = "Error al agregar";
+                Retorno.mensaje = "mensaje";
             }
             return Json(Retorno, JsonRequestBehavior.AllowGet);
         }
