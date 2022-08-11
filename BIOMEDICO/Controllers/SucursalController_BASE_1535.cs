@@ -45,7 +45,6 @@ namespace BIOMEDICO.Controllers
         //}
         public struct HorariosSucursales {
             public string CodSucursal { get; set; }
-            public string HorarioUsados { get; set; }
             public DateTime Fecha { get; set; }
             public int Hora { get; set; }
             public int Minutos { get; set; }
@@ -57,7 +56,6 @@ namespace BIOMEDICO.Controllers
             Respuesta ret = new Respuesta();
             string result = "";
             List<AgendarCitas> Listaagenda = new List<AgendarCitas>();
-            List<CitasPasaporte> ListaPasaporte = new List<CitasPasaporte>();
             List<HorariosSucursales> listaHorario = new List<HorariosSucursales>();
             using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 

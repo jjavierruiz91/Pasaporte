@@ -57,7 +57,6 @@ namespace BIOMEDICO.Controllers
             Respuesta ret = new Respuesta();
             string result = "";
             List<AgendarCitas> Listaagenda = new List<AgendarCitas>();
-            List<CitasPasaporte> ListaPasaporte = new List<CitasPasaporte>();
             List<HorariosSucursales> listaHorario = new List<HorariosSucursales>();
             using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
@@ -73,6 +72,7 @@ namespace BIOMEDICO.Controllers
                     }
                    
                 }
+                
                 foreach (var item in Listaagenda)
                 {
                     int HOraInt = Convert.ToDateTime(item.HoraIniciocitas).Hour;

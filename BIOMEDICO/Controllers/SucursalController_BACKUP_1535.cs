@@ -73,6 +73,21 @@ namespace BIOMEDICO.Controllers
                     }
                    
                 }
+<<<<<<< HEAD
+                
+=======
+                var CitasPasaport = db.CitasPasaporte.ToList();
+                foreach (var item in CitasPasaport)
+                {
+                    var Citasagendas = db.CitasPasaporte.Where(w => w.HoraUsada == item.Hora && w.MinutosUsados== item.Minutos).ToList();
+                    if (Citasagendas.Count > 0)
+                    {
+                        
+                         ListaPasaporte.AddRange(Citasagendas);
+                    }
+
+                }
+>>>>>>> 1d7211362efb2859aa44e91c143bbaad2e6b1f7b
                 foreach (var item in Listaagenda)
                 {
                     int HOraInt = Convert.ToDateTime(item.HoraIniciocitas).Hour;

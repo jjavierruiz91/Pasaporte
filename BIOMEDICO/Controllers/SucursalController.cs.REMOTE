@@ -45,7 +45,6 @@ namespace BIOMEDICO.Controllers
         //}
         public struct HorariosSucursales {
             public string CodSucursal { get; set; }
-            public string HorarioUsados { get; set; }
             public DateTime Fecha { get; set; }
             public int Hora { get; set; }
             public int Minutos { get; set; }
@@ -72,6 +71,17 @@ namespace BIOMEDICO.Controllers
 ;                       Listaagenda.AddRange(agendas);
                     }
                    
+                }
+                var CitasPasaport = db.CitasPasaporte.ToList();
+                foreach (var item in CitasPasaport)
+                {
+                    var Citasagendas = db.CitasPasaporte.Where(w => w.HoraUsada == item.Hora && w.MinutosUsados== item.Minutos).ToList();
+                    if (Citasagendas.Count > 0)
+                    {
+                        
+                         ListaPasaporte.AddRange(Citasagendas);
+                    }
+
                 }
                 foreach (var item in Listaagenda)
                 {
