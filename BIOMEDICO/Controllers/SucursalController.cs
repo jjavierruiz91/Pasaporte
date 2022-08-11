@@ -77,8 +77,8 @@ namespace BIOMEDICO.Controllers
                 var CitasPasaport = db.CitasPasaporte.ToList();
                 foreach (var item in CitasPasaport)
                 {
-                    var Citasagendas = db.CitasPasaporte.Where(w => w.HoraUsada == item.Hora && w.MinutosUsados == item.Minutos).ToList();
-                    if (Citasagendas.Count > 10)
+                    var Citasagendas = db.CitasPasaporte.Where(w => w.HoraUsadas == item.Hora && w.MinutosUsados == item.Minutos).ToList();
+                    if (Citasagendas.Count>0)
                     {
 
                         ListaPasaporte.AddRange(Citasagendas);
