@@ -14,6 +14,11 @@ namespace BIOMEDICO.Models
     
     public partial class CitasPasaporte
     {
+        internal readonly string CedSucursalCitas;
+        internal readonly string SucursalCitas;
+        internal readonly int? HoraUsada;
+        internal readonly int? MinutosUsados;
+
         public int IdCitasPasaporte { get; set; }
         public string OficinaPasaporte { get; set; }
         public string EstadoPasaporte { get; set; }

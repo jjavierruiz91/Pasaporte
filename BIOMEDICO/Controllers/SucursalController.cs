@@ -56,6 +56,7 @@ namespace BIOMEDICO.Controllers
             Respuesta ret = new Respuesta();
             string result = "";
             List<AgendarCitas> Listaagenda = new List<AgendarCitas>();
+            List<CitasPasaporte> ListaPasaporte = new List<CitasPasaporte>();
             List<HorariosSucursales> listaHorario = new List<HorariosSucursales>();
             using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
@@ -70,6 +71,17 @@ namespace BIOMEDICO.Controllers
 ;                       Listaagenda.AddRange(agendas);
                     }
                    
+                }
+                var CitasPasaport = db.CitasPasaporte.ToList();
+                foreach (var item in CitasPasaport)
+                {
+                    var Citasagendas = db.CitasPasaporte.Where(w => w.HoraUsada == item.Hora && w.MinutosUsados== item.Minutos).ToList();
+                    if (Citasagendas.Count > 0)
+                    {
+                        
+                         ListaPasaporte.AddRange(Citasagendas);
+                    }
+
                 }
                 foreach (var item in Listaagenda)
                 {
