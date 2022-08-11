@@ -45,6 +45,7 @@ namespace BIOMEDICO.Controllers
         //}
         public struct HorariosSucursales {
             public string CodSucursal { get; set; }
+            public string HorarioUsados { get; set; }
             public DateTime Fecha { get; set; }
             public int Hora { get; set; }
             public int Minutos { get; set; }
@@ -71,6 +72,7 @@ namespace BIOMEDICO.Controllers
                     }
                    
                 }
+                
                 foreach (var item in Listaagenda)
                 {
                     int HOraInt = Convert.ToDateTime(item.HoraIniciocitas).Hour;

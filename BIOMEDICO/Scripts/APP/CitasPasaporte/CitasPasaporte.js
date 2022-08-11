@@ -362,7 +362,7 @@ function Createobj() {
                     ParentescoMenor: $('#ParentescoMenor').val(),
                     NombreSucursales: $('#Sucursales').val(),
                     CuantosMenores: $('#CuantosMenores').val(),
-                    Fecha: JSONDateconverter($('#Fecha').val()),
+                    Fecha: JSONDateconverter($('#FechaCalen').val()),
                     Hora: $('#Hora').val(),
                     Minutos: $('#Minutos').val(),
                     Segundos: $('#Segundos').val(),
@@ -413,7 +413,7 @@ function LimpiarFormulario() {
 
     $('#IdCitasPasaporte').val('')
     $('#Sucursales').val('')
-    $('#Fecha').val('')
+    $('#FechaCalen').val('')
     $('#Hora').val('')
     $('#Minutos').val(''),
     $('#Segundos').val('')
