@@ -49,90 +49,111 @@ namespace BIOMEDICO.Controllers
             public DateTime Fecha { get; set; }
             public int Hora { get; set; }
             public int Minutos { get; set; }
+            
         }
 
         [HttpGet]
         public JsonResult GetListSucursalesPasaporte()
         {
             Respuesta ret = new Respuesta();
-            string result = "";
-            List<AgendarCitas> Listaagenda = new List<AgendarCitas>();
-            List<CitasPasaporte> ListaPasaporte = new List<CitasPasaporte>();
-            List<HorariosSucursales> listaHorario = new List<HorariosSucursales>();
-            using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
+
+            try
             {
-                var SucursadlPasport = db.Sucursal.ToList();
-                foreach (var item in SucursadlPasport)
+                string result = "";
+                List<AgendarCitas> Listaagenda = new List<AgendarCitas>();
+                List<CitasPasaporte> ListaPasaporte = new List<CitasPasaporte>();
+                List<HorariosSucursales> listaHorario = new List<HorariosSucursales>();
+                using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+
                 {
-                    var agendas = db.AgendarCitas.Where(w => w.CedSucursalCitas == item.CodSucursal.ToString() ).ToList();
-                    if (agendas.Count>0)
+                    var SucursadlPasport = db.Sucursal.ToList();
+                    foreach (var item in SucursadlPasport)
                     {
-                        agendas = agendas.Where(w => w.FechaCitas.Value.Date >= DateTime.Now.Date).ToList();
-;                       Listaagenda.AddRange(agendas);
-                    }
-                   
-                }
-
-                var CitasPasaport = db.CitasPasaporte.ToList();
-                foreach (var item in CitasPasaport)
-                {
-                    var Citasagendas = db.CitasPasaporte.Where(w => w.HoraUsadas == item.Hora && w.MinutosUsados == item.Minutos).ToList();
-                    if (Citasagendas.Count>0)
-                    {
-
-                        ListaPasaporte.AddRange(Citasagendas);
-                    }
-
-                }
-                foreach (var item in Listaagenda)
-                {
-                    int HOraInt = Convert.ToDateTime(item.HoraIniciocitas).Hour;
-                    int Horafin= Convert.ToDateTime(item.HoraFinCitas).Hour;
-
-                    int SumeMinutos= (Horafin-HOraInt)*60;
-
-                    int NUmCitas= SumeMinutos / 20;
-                    HorariosSucursales Horario = new HorariosSucursales();
-                    int Contandorminutos = 0;
-                    for (int i = 0; i < NUmCitas; i++)
-                    {
-                        if (i==0)
+                        var agendas = db.AgendarCitas.Where(w => w.CedSucursalCitas == item.CodSucursal.ToString()).ToList();
+                        if (agendas.Count > 0)
                         {
-                            Horario = new HorariosSucursales
-                            {
-                                CodSucursal = item.CedSucursalCitas,
-                                Fecha = Convert.ToDateTime(item.FechaCitas).Date,
-                                Hora = Convert.ToDateTime(item.HoraIniciocitas).Hour,
-                                Minutos = Convert.ToDateTime(item.HoraIniciocitas).Minute,
-                            };
+                            agendas = agendas.Where(w => w.FechaCitas.Value.Date >= DateTime.Now.Date).ToList();
+                            ; Listaagenda.AddRange(agendas);
                         }
-                        else 
-                        {
-                            Contandorminutos += 20;
-                            DateTime NewhOra = Convert.ToDateTime(item.HoraIniciocitas).AddMinutes(Contandorminutos);
-                            Horario = new HorariosSucursales
-                            {
-                                CodSucursal = item.CedSucursalCitas,
-                                Fecha = Convert.ToDateTime(item.FechaCitas).Date,
-                                Hora = NewhOra.Hour,
-                                Minutos = NewhOra.Minute,
-                            };
-                        }
-                        listaHorario.Add(Horario);
+
                     }
-                   
+
+
+                    foreach (var item in Listaagenda)
+                    {
+                        int HOraInt = Convert.ToDateTime(item.HoraIniciocitas).Hour;
+                        int Horafin = Convert.ToDateTime(item.HoraFinCitas).Hour;
+
+                        int SumeMinutos = (Horafin - HOraInt) * 60;
+
+                        int NUmCitas = SumeMinutos / 20;
+                        HorariosSucursales Horario = new HorariosSucursales();
+                        int Contandorminutos = 0;
+                        for (int i = 0; i < NUmCitas; i++)
+                        {
+                            if (i == 0)
+                            {
+                                Horario = new HorariosSucursales
+                                {
+                                    CodSucursal = item.CedSucursalCitas,
+                                    Fecha = Convert.ToDateTime(item.FechaCitas).Date,
+                                    Hora = Convert.ToDateTime(item.HoraIniciocitas).Hour,
+                                    Minutos = Convert.ToDateTime(item.HoraIniciocitas).Minute,
+                                };
+                            }
+                            else
+                            {
+                                Contandorminutos += 20;
+                                DateTime NewhOra = Convert.ToDateTime(item.HoraIniciocitas).AddMinutes(Contandorminutos);
+                                Horario = new HorariosSucursales
+                                {
+                                    CodSucursal = item.CedSucursalCitas,
+                                    Fecha = Convert.ToDateTime(item.FechaCitas).Date,
+                                    Hora = NewhOra.Hour,
+                                    Minutos = NewhOra.Minute,
+                                };
+                            }
+                            listaHorario.Add(Horario);
+                        }
+
+                    }
+
+
+                    #region Filtro horarios
+
+                    List<HorariosSucursales> listaHorarioFiltrado = new List<HorariosSucursales>();
+                    var CitasPasaport = db.CitasPasaporte.ToList().Where(w => w.Fecha.Value.Date >= DateTime.Now.Date).ToList();
+                    foreach (var item in listaHorario)
+                    {
+                        var Citasagendas = CitasPasaport.Where(w => w.Hora == item.Hora && w.Minutos == item.Minutos && w.Fecha == item.Fecha).ToList();
+                        if (Citasagendas.Count == 0)
+                        {
+                            listaHorarioFiltrado.Add(item);
+                        }
+
+                    }
+
+                    #endregion
+
+
+
+                    ret.objeto = new { DatosSucursal = SucursadlPasport, ListaHorario = listaHorarioFiltrado }; //ocupacion = DAtosocupacion };//, datosFamiliar=DatosFamiliar };
+
+                    //result = JsonConvert.SerializeObject(ret, Formatting.Indented,
+                    //new JsonSerializerSettings
+                    //{
+                    //   ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                    //});
+
                 }
-
-                ret.objeto =new { DatosSucursal = SucursadlPasport , ListaHorario= listaHorario }; //ocupacion = DAtosocupacion };//, datosFamiliar=DatosFamiliar };
-
-                //result = JsonConvert.SerializeObject(ret, Formatting.Indented,
-                //new JsonSerializerSettings
-                //{
-                //   ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                //});
-
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+           
 
             return Json(ret, JsonRequestBehavior.AllowGet);
         }

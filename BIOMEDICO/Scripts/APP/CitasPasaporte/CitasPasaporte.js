@@ -41,8 +41,16 @@ function CargarInfoinicial() {
 
 function LlenarcamposInicial(data) {
 
-    
-    $('#TipoSolicitudPasaporte').val(data.TipoSolicitudPasaporte);
+    if(data.objeto==null){
+
+        swal("Good job!", "You clicked the button!", "success");
+
+    return;
+
+
+
+    }
+    $('#TipoSolicitudPasaporte').val(data.objeto.TipoSolicitudPasaporte);
     $('#CorreoPasaporte').val(data.CorreoPasaporte);
     $('#NombresPasaporte').val(data.NombresPasaporte);
     $('#ApellidosPasaporte').val(data.ApellidosPasaporte);

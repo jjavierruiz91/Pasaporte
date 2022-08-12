@@ -76,6 +76,12 @@ namespace BIOMEDICO.Controllers
                     if (DatosCitasPasaport == null)
                     {
                         respuesta.Error = false;
+                        respuesta.mensaje = "ni verga";
+                    }
+                    else
+                    {
+                        respuesta.Error = false;
+                        respuesta.objeto = DatosCitasPasaport;
                     }
                 }
                 catch (Exception ex)
@@ -85,7 +91,7 @@ namespace BIOMEDICO.Controllers
                 }
 
             }
-            return Json(DatosCitasPasaport, JsonRequestBehavior.AllowGet);
+            return Json(respuesta, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

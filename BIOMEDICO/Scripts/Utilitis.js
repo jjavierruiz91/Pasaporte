@@ -119,7 +119,7 @@ function soloNumeros(e) {
 function SwalErrorMsj(data) {
     swal({
         title: "¡Atencion!",
-        text: data,
+        text: data.mensaje,
         //confirmButtonColor: "#ab2328",
         type: "error",
         closeOnConfirm: true,
@@ -127,20 +127,20 @@ function SwalErrorMsj(data) {
 }
 
 
-function SwalErrorMsj(data, IrUrl) {
-    swal({
-        title: "¡Atencion!",
-        text: data,
-        //confirmButtonColor: "#ab2328",
-        type: "error",
-        closeOnConfirm: true,
-    },
-        function (isConfirm) {
-            if (isConfirm) {
-                window.location.href = IrUrl;
-            }
-        });
-}
+//function SwalErrorMsj(data, IrUrl) {
+//    swal({
+//        title: "¡Atencion!",
+//        text: data,
+//        //confirmButtonColor: "#ab2328",
+//        type: "error",
+//        closeOnConfirm: true,
+//    },
+//        function (isConfirm) {
+//            if (isConfirm) {
+//                window.location.href = IrUrl;
+//            }
+//        });
+//}
 
 function RenderTable(id, ncol, anchoColum, parametros, orden) {
 
