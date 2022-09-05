@@ -51,7 +51,7 @@ function CargarTabla(data) {
                 item.OficinaPasaporte,
                 item.EstadoPasaporte,
                 Fecha,
-                item.Hora + ": " + item.Minutos + " :" + item.Segundos,
+                item.Hora + ": " + item.Minutos,
                 item.NombresPasaporte,
 
 
