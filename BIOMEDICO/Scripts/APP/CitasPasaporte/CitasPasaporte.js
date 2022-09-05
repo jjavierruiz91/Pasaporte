@@ -46,7 +46,7 @@ function LlenarcamposInicial(data) {
         /*swal("Good job!", "You clicked the button!", "success");*/
         swal({
             title: "Oficina Pasaporte Gobernación Del Cesar",
-            text: "No tienes citas agendadas!",
+            text: "Usted no tiene citas agendadas!",
             type: "warning",
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Muchas Gacias!",
