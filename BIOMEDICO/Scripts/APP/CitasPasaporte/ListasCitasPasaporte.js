@@ -19,12 +19,12 @@ $(document).ready(function () {
                 filename: "CitasPasaporte",
                 titleAttr: 'Excel',
             },
-            //{
-            //    extend: 'pdfHtml5',
-            //    text: " <b>&ensp;<i class=' icon-download4 position-left'></i></b> PDF ",
-            //    filename: "CitasPasaporte",
-            //    titleAttr: 'Excel',
-            //},
+            {
+                extend: 'pdfHtml5',
+                text: " <b>&ensp;<i class=' icon-download4 position-left'></i></b> PDF ",
+                filename: "CitasPasaporte",
+                titleAttr: 'Pdf',
+            },
 
         ]
     });

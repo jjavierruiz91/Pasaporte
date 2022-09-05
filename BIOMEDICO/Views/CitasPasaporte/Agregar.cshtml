@@ -18,7 +18,7 @@
 
         <div class="row m-1">
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Oficina de Pasaporte</strong> </label>
+                <label><strong>Oficina de Pasaporte<span style="color: red;"> *</span></strong> </label>
                 <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="OficinaPasaporte" name="OficinaPasaporte">
                     <option value="">Seleccionar</option>
                     <option value="Gobernacion Del Cesar">Gobernacion Del Cesar</option>
@@ -27,7 +27,7 @@
                 </select>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Tipo Solicitud</strong> </label>
+                <label><strong>Tipo Solicitud <span style="color: red;"> *</span></strong> </label>
                 <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoSolicitudPasaporte" name="TipoSolicitudPasaporte">
                     <option value="">Seleccionar</option>
                     <option value="Pasaporte Primera Vez">Pasaporte Primera Vez</option>
@@ -56,7 +56,7 @@
 
 
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Tipo Documento</strong> </label>
+                <label><strong>Tipo Documento <span style="color: red;"> *</span></strong> </label>
                 <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoDocumentoPasaporte" name="TipoDocumentoPasaporte">
                     <option value="">Seleccionar</option>
                     <option value="Ducumento de Ciudadania">Cedula de Ciudadania</option>
@@ -68,15 +68,15 @@
                 </select>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Numero Documento</strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="NumDocumentoPasaporte" name="" placeholder="Digite su numero de documento" />
+                <label><strong>Numero Documento <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="NumDocumentoPasaporte" name="" placeholder="Digite su numero de documento"  required />
             </div>
             @*<div class="col-xs-4 col-sm-4 col-md-4" style="right:inherit">
 
             <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Buscar</button>
         </div>*@
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Tipo Pasaporte</strong> </label>
+                <label><strong>Tipo Pasaporte <span style="color: red;"> *</span></strong> </label>
                 <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoPasaporte" name="TipoPasaporte">
                     <option value="">Seleccionar</option>
                     <option value="Pasaporte Ordinario">Pasaporte Ordinario ($ 271.000)Pesos colombianos</option>
@@ -87,34 +87,34 @@
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Nombres</strong></label>
+                <label><strong>Nombres <span style="color: red;"> *</span></strong></label>
                 <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPasaporte" name="NombresPasaporte" placeholder="Digite su nombre completo" />
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Apellidos</strong></label>
+                <label><strong>Apellidos<span style="color: red;"> *</span></strong></label>
                 <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPasaporte" name="ApellidosPasaporte" placeholder="Digite sus apellidos completos" />
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Fecha Expedición Documento</strong></label>
+                <label><strong>Fecha Expedición Documento<span style="color: red;"> *</span></strong></label>
                 <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaExpedicionDocumento" name="FechaExpedicionDocumento" placeholder="Digite la fecha de expedicion de su documento" />
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Telefono / Celular</strong> </label>
+                <label><strong>Telefono / Celular <span style="color: red;"> *</span></strong> </label>
                 <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="CelularPasaporte" name="CelularPasaporte" placeholder="Digite su numero de celular" />
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Correo electrónico</strong> </label>
+                <label><strong>Correo electrónico<span style="color: red;"> *</span></strong> </label>
                 <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CorreoPasaporte" name="CorreoPasaporte" placeholder="Digite su correo electronico" type="email" />
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Confirmar su correo electrónico</strong> </label>
+                <label><strong>Confirmar su correo electrónico<span style="color: red;"> *</span></strong> </label>
                 <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CorreoPasaporte" name="CorreoPasaporte" placeholder="Digite su correo electronico" type="email" />
             </div>
 
 
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Sucursal</strong> </label>
+                <label><strong>Sucursal<span style="color: red;"> *</span></strong> </label>
 
                 <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Sucursales" name="Sucursales" onchange="CargarSelectFecha()">
                     <option value="">Seleccionar</option>
@@ -134,19 +134,19 @@
         </select>
     </div>-->
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Fecha</strong></label>
+                <label><strong>Fecha <span style="color: red;"> *</span></strong></label>
                 <input type="text" name="FechaCalen" id="FechaCalen" class="pickdate form-control" onchange="CargarSelectHora()" />
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Hora</strong></label>
+                <label><strong>Hora <span style="color: red;"> *</span></strong></label>
                 <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Hora" name="Hora" onchange="CargarSelectMInutos()">
                     <option value="">Seleccionar</option>
 
                 </select>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Minutos</strong>   </label>
+                <label><strong>Minutos<span style="color: red;"> *</span></strong>   </label>
                 <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Minutos" name="Minutos">
                     <option value="">Seleccionar</option>
 
@@ -255,7 +255,7 @@
         </div>
 
         <div class="col-xs-6 col-sm-6 col-md-6">
-            <label><strong>Cuantos menores de edad</strong></label>
+            <label><strong>Nombre del responsable del menor</strong></label>
             <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="CuantosMenores" name="CuantosMenores" placeholder="Digite su nombre completo" />
         </div>
     </form>
