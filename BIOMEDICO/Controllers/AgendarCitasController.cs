@@ -154,7 +154,7 @@ namespace BIOMEDICO.Controllers
                         {
 
                             AgendaCitasDeportivaExiste.IdAgendarCitas = a.CitasDeport.IdAgendarCitas;
-                            AgendaCitasDeportivaExiste.CedSucursalCitas = a.CitasDeport.CedSucursalCitas;
+                            AgendaCitasDeportivaExiste.CedSucursalCitas = "99998741";
                             AgendaCitasDeportivaExiste.HoraIniciocitas = a.CitasDeport.HoraIniciocitas;
                             AgendaCitasDeportivaExiste.HoraFinCitas = a.CitasDeport.HoraFinCitas;
                             AgendaCitasDeportivaExiste.FechaCitas = a.CitasDeport.FechaCitas;

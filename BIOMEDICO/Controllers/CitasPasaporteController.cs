@@ -76,7 +76,7 @@ namespace BIOMEDICO.Controllers
                     if (DatosCitasPasaport == null)
                     {
                         respuesta.Error = false;
-                        respuesta.mensaje = "ni verga";
+                        respuesta.mensaje = "No existe el registro";
                     }
                     else
                     {
