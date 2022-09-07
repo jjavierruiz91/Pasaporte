@@ -17,6 +17,7 @@
         <EntityTypeShape EntityType="BIOMEDICOModel.Sucursal" Width="1.5" PointX="8" PointY="1.25" />
         <EntityTypeShape EntityType="BIOMEDICOModel.AgendarCitas" Width="1.5" PointX="5.375" PointY="4.75" />
         <EntityTypeShape EntityType="BIOMEDICOModel.CitasPasaporte" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.AgendaExcepciones" Width="1.5" PointX="4.375" PointY="8.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

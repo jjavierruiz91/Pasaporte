@@ -248,7 +248,7 @@ namespace BIOMEDICO.Controllers
                 using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
                 {
-                        var EstadoCitaDeportivaExiste = db.CitasPasaporte.FirstOrDefault(w => w.EstadoPasaporte == "PENDIENTE" && w.Hora  == a.CitasPasaport.Hora && w.Minutos==a.CitasPasaport.Minutos );
+                    var EstadoCitaDeportivaExiste = db.CitasPasaporte.FirstOrDefault(w => w.EstadoPasaporte == "PENDIENTE" && w.Hora  == a.CitasPasaport.Hora && w.Minutos==a.CitasPasaport.Minutos );
                     if (EstadoCitaDeportivaExiste == null)
                     {
                         IPHostEntry host;

@@ -33,5 +33,6 @@ namespace BIOMEDICO.Models
         public virtual DbSet<Sucursal> Sucursal { get; set; }
         public virtual DbSet<AgendarCitas> AgendarCitas { get; set; }
         public virtual DbSet<CitasPasaporte> CitasPasaporte { get; set; }
+        public virtual DbSet<AgendaExcepciones> AgendaExcepciones { get; set; }
     }
 }

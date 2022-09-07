@@ -5,6 +5,26 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BIOMEDICOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AgendaExcepciones">
+          <Key>
+            <PropertyRef Name="IdAgendaExcepciones" />
+          </Key>
+          <Property Name="IdAgendaExcepciones" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstadoAgendaExcepciones" Type="varchar(max)" />
+          <Property Name="TipoSolicitudAgendaExcepciones" Type="varchar(max)" />
+          <Property Name="TipoDocumentoAgendaExcepciones" Type="varchar(max)" />
+          <Property Name="NumeroDocumentoAgendaExcepciones" Type="bigint" />
+          <Property Name="NombresAgendaExcepciones" Type="varchar(max)" />
+          <Property Name="ApellidosAgendaExcepciones" Type="varchar(max)" />
+          <Property Name="TipoPasaporteAgendaExcepciones" Type="varchar(max)" />
+          <Property Name="FechaAgendaExcepciones" Type="datetime" />
+          <Property Name="ObservacionesAgendaExcepciones" Type="varchar(max)" />
+          <Property Name="FechaRegistroAgendaExcepciones" Type="datetime" />
+          <Property Name="FechaEstadoAgendaExcepciones" Type="datetime" />
+          <Property Name="UsuarioRegistraAgendaExcepciones" Type="varchar(max)" />
+          <Property Name="UsuarioEstadoAgendaExcepciones" Type="varchar(max)" />
+          <Property Name="DireccionIpAgendaExcepciones" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="AgendarCitas">
           <Key>
             <PropertyRef Name="IdAgendarCitas" />
@@ -155,6 +175,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BIOMEDICOModelStoreContainer">
+          <EntitySet Name="AgendaExcepciones" EntityType="Self.AgendaExcepciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AgendarCitas" EntityType="Self.AgendarCitas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ASignarPermisos" EntityType="Self.ASignarPermisos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CitasPasaporte" EntityType="Self.CitasPasaporte" Schema="dbo" store:Type="Tables" />
@@ -313,6 +334,7 @@
           <EntitySet Name="Sucursal" EntityType="BIOMEDICOModel.Sucursal" />
           <EntitySet Name="AgendarCitas" EntityType="BIOMEDICOModel.AgendarCitas" />
           <EntitySet Name="CitasPasaporte" EntityType="BIOMEDICOModel.CitasPasaporte" />
+          <EntitySet Name="AgendaExcepciones" EntityType="BIOMEDICOModel.AgendaExcepciones" />
           </EntityContainer>
         <EntityType Name="Sucursal">
           <Key>
@@ -366,6 +388,26 @@
           <Property Name="UsuarioRegistra" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioEstado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DireccionIp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AgendaExcepciones">
+          <Key>
+            <PropertyRef Name="IdAgendaExcepciones" />
+          </Key>
+          <Property Name="IdAgendaExcepciones" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstadoAgendaExcepciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoSolicitudAgendaExcepciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDocumentoAgendaExcepciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroDocumentoAgendaExcepciones" Type="Int64" />
+          <Property Name="NombresAgendaExcepciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidosAgendaExcepciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoPasaporteAgendaExcepciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaAgendaExcepciones" Type="DateTime" Precision="3" />
+          <Property Name="ObservacionesAgendaExcepciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistroAgendaExcepciones" Type="DateTime" Precision="3" />
+          <Property Name="FechaEstadoAgendaExcepciones" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioRegistraAgendaExcepciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioEstadoAgendaExcepciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionIpAgendaExcepciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -479,6 +521,27 @@
                 <ScalarProperty Name="EstadoPasaporte" ColumnName="EstadoPasaporte" />
                 <ScalarProperty Name="OficinaPasaporte" ColumnName="OficinaPasaporte" />
                 <ScalarProperty Name="IdCitasPasaporte" ColumnName="IdCitasPasaporte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgendaExcepciones">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.AgendaExcepciones">
+              <MappingFragment StoreEntitySet="AgendaExcepciones">
+                <ScalarProperty Name="DireccionIpAgendaExcepciones" ColumnName="DireccionIpAgendaExcepciones" />
+                <ScalarProperty Name="UsuarioEstadoAgendaExcepciones" ColumnName="UsuarioEstadoAgendaExcepciones" />
+                <ScalarProperty Name="UsuarioRegistraAgendaExcepciones" ColumnName="UsuarioRegistraAgendaExcepciones" />
+                <ScalarProperty Name="FechaEstadoAgendaExcepciones" ColumnName="FechaEstadoAgendaExcepciones" />
+                <ScalarProperty Name="FechaRegistroAgendaExcepciones" ColumnName="FechaRegistroAgendaExcepciones" />
+                <ScalarProperty Name="ObservacionesAgendaExcepciones" ColumnName="ObservacionesAgendaExcepciones" />
+                <ScalarProperty Name="FechaAgendaExcepciones" ColumnName="FechaAgendaExcepciones" />
+                <ScalarProperty Name="TipoPasaporteAgendaExcepciones" ColumnName="TipoPasaporteAgendaExcepciones" />
+                <ScalarProperty Name="ApellidosAgendaExcepciones" ColumnName="ApellidosAgendaExcepciones" />
+                <ScalarProperty Name="NombresAgendaExcepciones" ColumnName="NombresAgendaExcepciones" />
+                <ScalarProperty Name="NumeroDocumentoAgendaExcepciones" ColumnName="NumeroDocumentoAgendaExcepciones" />
+                <ScalarProperty Name="TipoDocumentoAgendaExcepciones" ColumnName="TipoDocumentoAgendaExcepciones" />
+                <ScalarProperty Name="TipoSolicitudAgendaExcepciones" ColumnName="TipoSolicitudAgendaExcepciones" />
+                <ScalarProperty Name="EstadoAgendaExcepciones" ColumnName="EstadoAgendaExcepciones" />
+                <ScalarProperty Name="IdAgendaExcepciones" ColumnName="IdAgendaExcepciones" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

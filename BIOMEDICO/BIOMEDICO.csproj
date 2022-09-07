@@ -154,6 +154,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Clases\Encriptardor.cs" />
     <Compile Include="Clases\Utilidades.cs" />
+    <Compile Include="Controllers\AgendaExcepcionesController.cs" />
     <Compile Include="Controllers\AgendarCitasController.cs" />
     <Compile Include="Controllers\ASignarPermisosController.cs" />
     <Compile Include="Controllers\BiomedicoController.cs" />
@@ -171,6 +172,9 @@
     <Compile Include="Filters\Verificaciones.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AgendaExcepciones.cs">
+      <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AgendarCitas.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
@@ -2579,6 +2583,8 @@
       <DependentUpon>ModelBiomedico.edmx</DependentUpon>
       <LastGenOutput>ModelBiomedico.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\APP\AgendaExcepciones\AgendaExcepciones.js" />
+    <Content Include="Scripts\APP\AgendaExcepciones\ListasAgendaExcepciones.js" />
     <Content Include="Scripts\APP\AgendarCitas\AgendarCitas.js" />
     <Content Include="Scripts\APP\AgendarCitas\ListaCitasAgendadas.js" />
     <Content Include="Scripts\APP\CitasPasaporte\CitasPasaporte.js" />
@@ -2880,6 +2886,8 @@
     <Content Include="Views\CitasPasaporte\ListaCitasPasaporte.cshtml" />
     <Content Include="Views\CitasPasaporte\ListaConsultaCitasPasaporte.cshtml" />
     <Content Include="Views\CitasPasaporte\BuscarCitaPasaporte.cshtml" />
+    <Content Include="Views\AgendaExcepciones\ListaAgendaExcepciones.cshtml" />
+    <Content Include="Views\AgendaExcepciones\Agregar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

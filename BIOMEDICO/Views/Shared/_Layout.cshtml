@@ -206,18 +206,18 @@
 
 
                         @*@{
-                            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "DEPORTISTA") != null)
-                            {
-                                <li id="C0001" class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link"><i class="icon-vcard"></i> <span>DEPORTISTA</span></a>
-                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                                        <li class="nav-item"><a href="~/Deportista/Agregar" class="nav-link">AGREGAR</a></li>
-                                        <li class="nav-item"><a href="~/Deportista/ListaDeportista" class="nav-link">LISTADO</a></li>
+            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "DEPORTISTA") != null)
+            {
+                <li id="C0001" class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-vcard"></i> <span>DEPORTISTA</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <li class="nav-item"><a href="~/Deportista/Agregar" class="nav-link">AGREGAR</a></li>
+                        <li class="nav-item"><a href="~/Deportista/ListaDeportista" class="nav-link">LISTADO</a></li>
 
-                                    </ul>
-                                </li>
-                            }
-                        }*@
+                    </ul>
+                </li>
+            }
+        }*@
 
                         @{
                             if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "ESPECIALIDAD") != null)
@@ -248,21 +248,21 @@
                                 </li>
                             }
                         }
-                        @*@{
-                            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "REMISIONES") != null)
+                        @{
+                            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "VERCITAS") != null)
                             {
                                 <li id="C0001" class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link"><i class="fa fa-ambulance"></i> <span>REMISIONES</span></a>
+                                    <a href="#" class="nav-link"><i class="icon-aid-kit"></i> <span>AGENDA EXCEPCIONES</span></a>
                                     <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-
-                                        <li class="nav-item"><a href="~/Remision/Agregar" class="nav-link">REMISIONES</a></li>
-                                        <li class="nav-item"><a href="~/Remision/ListaRemisionMedicasDeportiva" class="nav-link">LISTADO REMISIONES</a></li>
-
+                                        <li class="nav-item"><a href="~/AgendaExcepciones/Agregar" class="nav-link">AGENDA</a></li>
+                                        <li class="nav-item"><a href="~/AgendaExcepciones/ListaAgendaExcepciones" class="nav-link">LISTADO</a></li>
+                                        <li class="nav-item"><a href="~/AgendaExcepciones/ListaConsultaCitasPasaporte" class="nav-link">REGISTRO EXTENDIDO</a></li>
 
                                     </ul>
                                 </li>
                             }
-                        }*@
+                        }
+
                         @{
                             if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "VERCITAS") != null)
                             {
@@ -276,47 +276,14 @@
                                 </li>
                             }
                         }
-                        @*@{
-                            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "ENCUESTASDEPORTISTAS") != null)
-                            {
-                                <li id="C0001" class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link"><i class="icon-calendar"></i> <span>ENCUESTA DEPORTISTAS</span></a>
-                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-
-                                        <li class="nav-item"><a href="~/EncuestaDeportistas/Encuesta" class="nav-link">PANEL GRAFICO</a></li>
-                                        <li class="nav-item"><a href="~/EncuestaDeportistas/Agregar" class="nav-link">ENCUESTA DEPORTISTAS</a></li>
-                                        <li class="nav-item"><a href="~/EncuestaDeportistas/ListaEncuestaDeportistas" class="nav-link">LISTADO ENCUESTA DEPORTISTAS</a></li>
-                                    </ul>
-                                </li>*@
-                            <!--}
-                        }-->
+                    
                     </ul>
                     
                     
                 </div>
-                <!-- /main navigation -->
+                
             </div>
-            @*<div class="modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">alerta!</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Sin conexion a Internet.!</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">ok</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
-
-            <!-- /sidebar content -->
+           
 
         </div>
         <!-- /main sidebar -->
