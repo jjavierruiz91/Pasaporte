@@ -72,7 +72,7 @@ function Createobj() {
                 NombresAgendaExcepciones: $('#NombresAgendaExcepciones').val(),
                 ApellidosAgendaExcepciones: $('#ApellidosAgendaExcepciones').val(),
                 TipoPasaporteAgendaExcepciones: $('#TipoPasaporteAgendaExcepciones').val(),
-                FechaAgendaExcepciones: JSONDateconverter($('#FechaAgendaExcepciones').val()),
+                FechaAgendaExcepciones: $('#FechaAgendaExcepciones').val(),
                 ObservacionesAgendaExcepciones: $('#ObservacionesAgendaExcepciones').val(),
                 UsuarioRegistraAgendaExcepciones: $('#UsuarioRegistraAgendaExcepciones').val(),
                 UsuarioEstadoAgendaExcepciones: $('#UsuarioEstadoAgendaExcepciones').val(),

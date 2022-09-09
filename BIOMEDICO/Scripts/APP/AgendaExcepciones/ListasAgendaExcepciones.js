@@ -1,9 +1,9 @@
 ﻿
 
-var TablaAgendaExcepciones = [];
+var tablaAgendaExcepciones = [];
 $(document).ready(function () {
 
-    RenderTable('datatable-Agenda', [0, 1, 2, 3, 4, 5,6], null, {
+    RenderTable('datatable-agendapasaporte', [0, 1, 2, 3, 4, 5,6,7,8], null, {
         "paging": true,
         "ordering": false,
         "info": true,
@@ -30,63 +30,59 @@ $(document).ready(function () {
     });
 
 
-    TablaAgendaExcepciones = $('#datatable-Agenda').DataTable();
+    tablaAgendaExcepciones = $('#datatable-agendapasaporte').DataTable();
     Get_Data(CargarTabla, '/AgendaExcepciones/GetListAgendaExcepciones')
 
 });
-var Arraycitasglobal = [];
+
 function CargarTabla(data) {
-    TablaAgendaExcepciones.clear().draw();
+    tablaAgendaExcepciones.clear().draw();
     let AgendaExcepcionesPassport = data.objeto;
-    Arraycitasglobal = AgendaExcepcionesPassport;
-    console.log(AgendaExcepcionesPassport);
+      console.log(AgendaExcepcionesPassport);
     $.each(AgendaExcepcionesPassport, function (index, item) {
-        if (item.Fecha != null) {
-            let Fecha;
-            if (item.Fecha != null) {
-                Fecha = JSONDateconverter(item.Fecha);
-            }
-            TablaAgendaExcepciones.row.add([
-                
+          tablaAgendaExcepciones.row.add([
+                /* item.IdAgendaExcepciones,*/
                 item.TipoSolicitudAgendaExcepciones,
-                item.NumeroDocumentoAgendaExcepciones,
+                item.TipoDocumentoAgendaExcepciones,
+              item.NumeroDocumentoAgendaExcepciones,
+              item.EstadoAgendaExcepciones,
                 item.NombresAgendaExcepciones,
+                
                 item.ApellidosAgendaExcepciones,
                 item.TipoPasaporteAgendaExcepciones,
-                item.FechaAgendaExcepciones,
-                
+                item.FechaAgendaExcepciones == undefined ? '' : JSONDateconverter(item.FechaAgendaExcepciones),
 
 
 
-                '<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdAgendaExcepciones + ')" ></i>&ensp;' +
-                '<i class="btn btn-warning btn-group-sm fa fa-medkit" title="CambiarEstado" onclick="CambiarEstado(' + item.IdAgendaExcepciones + ')" ></i>&ensp;' +
-                '<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizarAgendaCitas(' + item.IdAgendaExcepciones + ')"></i>&ensp;' +
-                '<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdAgendaExcepciones + ')" ></i>&ensp;' +
-                '<i class="btn btn-primary btn-group-sm icon-calendar52" id="edit_ActEco_' + index + '" title="RegistrarCita" style="fontsize:90px !important" onclick="RegistarCitasMEdicasData(' + item.IdAgendaExcepciones + ')" ></i>&ensp;'
+               /* '<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdAgendaExcepciones + ')" ></i>&ensp;' +*/
+                '<i class="btn btn-warning btn-group-sm fa fa-medkit" title="CambiarEstado" onclick="CambiarEstado(' + item.IdAgendaExcepciones + ')" ></i>&ensp;' 
+                ////'<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizardEportistaData(' + item.IdAgendaExcepciones + ')"></i>&ensp;' +
+                //'<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdAgendaExcepciones + ')" ></i>&ensp;' +
+                //'<i class="btn btn-primary btn-group-sm icon-calendar52" id="edit_ActEco_' + index + '" title="RegistrarCita" style="fontsize:90px !important" onclick="RegistarCitasMEdicasData(' + item.IdAgendaExcepciones + ')" ></i>&ensp;'
             ]).draw(false);
 
 
 
-        }
+        
 
     });
 }
 
 
-function ActualizarAgendaCitas(IdAgendaExcepcionesPassport) {
-    window.location.href = '../AgendaExcepciones/Agregar?IdAgendaReg=' + IdAgendaExcepcionesPassport + '&IsUpdate=true';
+function ActualizardEportistaData(IdCitaAgendaExcepciones) {
+    window.location.href = '../AgendaExcepciones/Agregar?IdCitasPasportReg=' + IdCitaAgendaExcepciones + '&IsUpdate=true';
 
 }
 
 
-function DetalleData(IdAgendaExcepcionesPassport) {
-    window.location.href = '../AgendaExcepciones/Agregar?IdAgendaReg=' + IdAgendaExcepcionesPassport + "&Viewdetail=SI";
+function DetalleData(IdCitaAgendaExcepciones) {
+    window.location.href = '../AgendaExcepciones/Agregar?IdCitasPasportReg=' + IdCitaAgendaExcepciones + "&Viewdetail=SI";
 
 }
-function CambiarEstado(IdAgendaExcepcionesPassport) {
+function CambiarEstado(IdCitaAgendaExcepciones) {
     swal({
         title: "Atención",
-        text: "¿Estas seguro de actualizar el estado de la cita medica?",
+        text: "¿Estas seguro de actualizar el estado de la cita de pasaporte?",
         type: "warning",
         showCancelButton: true,
         confirmButtonClass: "btn-danger",
@@ -98,7 +94,7 @@ function CambiarEstado(IdAgendaExcepcionesPassport) {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(RecargarTabla, '/AgendaExcepciones/ActualizarEstado?IdAgendaExcepciones=' + IdAgendaExcepcionesPassport);
+                Get_Data(RecargarTabla, '/AgendaExcepciones/ActualizarEstado?IdCitaAgendaExcepciones=' + IdCitaAgendaExcepciones);
             }
             else {
                 swal.close()
@@ -107,7 +103,7 @@ function CambiarEstado(IdAgendaExcepcionesPassport) {
 }
 
 
-function Eliminar(IdAgendaExcepcionesPassport) {
+function Eliminar(IdCitaAgendaExcepciones) {
     swal({
         title: "Atención",
         text: "¿Estas seguro de eliminar este registro?",
@@ -122,7 +118,7 @@ function Eliminar(IdAgendaExcepcionesPassport) {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(RecargarTabla, '/AgendaExcepciones/Eliminar?IdCitasDepor=' + IdAgendaExcepcionesPassport);
+                Get_Data(RecargarTabla, '/AgendaExcepciones/Eliminar?IdCitasDepor=' + IdCitaAgendaExcepciones);
             }
             else {
                 swal.close()

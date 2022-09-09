@@ -85,7 +85,7 @@ namespace BIOMEDICO.Controllers
                         {
 
 
-                            CitasAgendaExcepcionesExiste.EstadoAgendaExcepciones = "ASIGNADA";
+                            CitasAgendaExcepcionesExiste.EstadoAgendaExcepciones = "TRAMITADA";
 
                         }
 
