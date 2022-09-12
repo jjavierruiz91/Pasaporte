@@ -31,6 +31,7 @@ $(document).ready(function () {//FUNCION INICIAL;
 
 
 
+
 function getQueryVariable(variable) {//saca los valores de la uRL
     var query = window.location.search.substring(1);
     var vars = query.split("&");

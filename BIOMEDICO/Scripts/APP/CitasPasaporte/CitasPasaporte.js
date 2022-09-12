@@ -32,6 +32,25 @@ $(document).ready(function () {//FUNCION INICIAL;
 
 });
 
+function ValidarCedula() {
+    let Cedula = $('#NumDocumentoPasaporte').val();
+    Get_Data(MostrarAlerta, '/CitasPasaporte/BuscarCitas?Ducumento=' + Cedula)
+}
+function MostrarAlerta(data) {
+    if (data != null || data != undefined) {
+        swal({
+            title: "Atención",
+            text: "¡El usuario ya tiene una cita agendada.!",
+            type: "warning",
+            /*showCancelButton: true,*/
+            /*   confirmButtonClass: "btn-danger",*/
+            confirmButtonText: "Ok",
+        });
+    }
+
+}
+
+
 function CargarInfoinicial() {
     var ValueCitaPasaporte = $('#NumDocumentoPasaporte').val();
     Get_Data(LlenarcamposInicial, '/CitasPasaporte/BuscarCitas?Ducumento=' + ValueCitaPasaporte)

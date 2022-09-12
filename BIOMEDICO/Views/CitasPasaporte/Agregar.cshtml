@@ -17,15 +17,7 @@
     <form id="FormCitasMedicasDeportiva" name="FormCitasMedicasDeportiva">
 
         <div class="row m-1">
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Oficina de Pasaporte<span style="color: red;"> *</span></strong> </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="OficinaPasaporte" name="OficinaPasaporte">
-                    <option value="">Seleccionar</option>
-                    <option value="Gobernacion Del Cesar">Gobernacion Del Cesar</option>
-
-
-                </select>
-            </div>
+            
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <label><strong>Tipo Solicitud <span style="color: red;"> *</span></strong> </label>
                 <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoSolicitudPasaporte" name="TipoSolicitudPasaporte">
@@ -69,7 +61,7 @@
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <label><strong>Numero Documento <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="NumDocumentoPasaporte" name="" placeholder="Digite su numero de documento"  required />
+                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="NumDocumentoPasaporte" name="" placeholder="Digite su numero de documento"  required onchange="ValidarCedula()" />
             </div>
             @*<div class="col-xs-4 col-sm-4 col-md-4" style="right:inherit">
 
@@ -79,8 +71,8 @@
                 <label><strong>Tipo Pasaporte <span style="color: red;"> *</span></strong> </label>
                 <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoPasaporte" name="TipoPasaporte">
                     <option value="">Seleccionar</option>
-                    <option value="Pasaporte Ordinario">Pasaporte Ordinario ($ 271.000)Pesos colombianos</option>
-                    <option value="Pasaporte Ejecutivo">Pasaporte Ejecutivo ($ 361.000)Pesos colombianos</option>
+                    <option value="Pasaporte Ordinario">Pasaporte Ordinario 32 páginas ($ 271.000)Pesos colombianos</option>
+                    <option value="Pasaporte Ejecutivo">Pasaporte Ejecutivo 48 páginas ($ 361.000)Pesos colombianos</option>
                     <option value="Pasaporte Emergencia">Pasaporte Emergencia ($ 317.000)Pesos colombianos</option>
 
                 </select>
