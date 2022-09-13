@@ -1,9 +1,9 @@
 ﻿
 
-var tablaAgendaExcepciones = [];
+var tablaAgendaExcepcionesTramites = [];
 $(document).ready(function () {
 
-    RenderTable('datatable-agendapasaporte', [0, 1, 2, 3, 4, 5,6,7,8], null, {
+    RenderTable('datatable-agendapasaportetramite', [0, 1, 2, 3, 4, 5, 6, 7, 8], null, {
         "paging": true,
         "ordering": false,
         "info": true,
@@ -30,40 +30,40 @@ $(document).ready(function () {
     });
 
 
-    tablaAgendaExcepciones = $('#datatable-agendapasaporte').DataTable();
-    Get_Data(CargarTabla, '/AgendaExcepciones/GetListAgendaExcepciones')
+    tablaAgendaExcepcionesTramites = $('#datatable-agendapasaportetramite').DataTable();
+    Get_Data(CargarTabla, '/AgendaExcepciones/GetListAgendaExcepcionesTramitadas')
 
 });
 
 function CargarTabla(data) {
-    tablaAgendaExcepciones.clear().draw();
-    let AgendaExcepcionesPassport = data.objeto;
-      console.log(AgendaExcepcionesPassport);
-    $.each(AgendaExcepcionesPassport, function (index, item) {
-          tablaAgendaExcepciones.row.add([
-                /* item.IdAgendaExcepciones,*/
-                item.TipoSolicitudAgendaExcepciones,
-                item.TipoDocumentoAgendaExcepciones,
-              item.NumeroDocumentoAgendaExcepciones,
-              item.EstadoAgendaExcepciones,
-                item.NombresAgendaExcepciones,
-                
-                item.ApellidosAgendaExcepciones,
-                item.TipoPasaporteAgendaExcepciones,
-                item.FechaAgendaExcepciones == undefined ? '' : JSONDateconverter(item.FechaAgendaExcepciones),
+    tablaAgendaExcepcionesTramites.clear().draw();
+    let AgendaExcepcionesPass = data.objeto;
+    console.log(AgendaExcepcionesPass);
+    $.each(AgendaExcepcionesPass, function (index, item) {
+        tablaAgendaExcepcionesTramites.row.add([
+            /* item.IdAgendaExcepciones,*/
+            item.TipoSolicitudAgendaExcepciones,
+            item.TipoDocumentoAgendaExcepciones,
+            item.NumeroDocumentoAgendaExcepciones,
+            item.EstadoAgendaExcepciones,
+            item.NombresAgendaExcepciones,
+
+            item.ApellidosAgendaExcepciones,
+            item.TipoPasaporteAgendaExcepciones,
+            item.FechaAgendaExcepciones == undefined ? '' : JSONDateconverter(item.FechaAgendaExcepciones),
 
 
 
-               /* '<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdAgendaExcepciones + ')" ></i>&ensp;' +*/
-                '<i class="btn btn-warning btn-group-sm fa fa-calendar-check-o" title="Tramitar Cita" onclick="CambiarEstado(' + item.IdAgendaExcepciones + ')" >Tramitar</i>&ensp;' 
-                ////'<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizardEportistaData(' + item.IdAgendaExcepciones + ')"></i>&ensp;' +
-                //'<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdAgendaExcepciones + ')" ></i>&ensp;' +
-                //'<i class="btn btn-primary btn-group-sm icon-calendar52" id="edit_ActEco_' + index + '" title="RegistrarCita" style="fontsize:90px !important" onclick="RegistarCitasMEdicasData(' + item.IdAgendaExcepciones + ')" ></i>&ensp;'
-            ]).draw(false);
+            /* '<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdAgendaExcepciones + ')" ></i>&ensp;' +*/
+            '<i class="btn btn-warning btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="CambiarEstado(' + item.IdAgendaExcepciones + ')" ></i>&ensp;'
+            ////'<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizardEportistaData(' + item.IdAgendaExcepciones + ')"></i>&ensp;' +
+            //'<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdAgendaExcepciones + ')" ></i>&ensp;' +
+            //'<i class="btn btn-primary btn-group-sm icon-calendar52" id="edit_ActEco_' + index + '" title="RegistrarCita" style="fontsize:90px !important" onclick="RegistarCitasMEdicasData(' + item.IdAgendaExcepciones + ')" ></i>&ensp;'
+        ]).draw(false);
 
 
 
-        
+
 
     });
 }
@@ -127,5 +127,5 @@ function Eliminar(IdCitaAgendaExcepciones) {
 }
 
 function RecargarTabla() {
-    Get_Data(CargarTabla, '/AgendaExcepciones/GetListAgendaExcepciones')
+    Get_Data(CargarTabla, '/AgendaExcepciones/GetListAgendaExcepcionesTramitadas')
 }

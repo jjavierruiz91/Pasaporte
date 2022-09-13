@@ -20,7 +20,7 @@ namespace BIOMEDICO.Controllers
             return View();
         }
 
-        public ActionResult ListaConsultaAgendaExcepciones()
+        public ActionResult ListaConsultaAgendaExcepcionesTramitadas()
         {
             return View();
         }
@@ -146,6 +146,34 @@ namespace BIOMEDICO.Controllers
             return Json(ret, JsonRequestBehavior.AllowGet);
         }
 
+
+        [HttpGet]
+        public JsonResult GetListAgendaExcepcionesTramitadas()
+        {
+            Respuesta ret = new Respuesta();
+            string result = "";
+            using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+
+            {
+
+                var AgendaExcepcionesPass = db.AgendaExcepciones.Where(w => w.EstadoAgendaExcepciones == "TRAMITADA").ToList();
+                foreach (var item in AgendaExcepcionesPass)
+                {
+
+                }
+
+                ret.objeto = AgendaExcepcionesPass; //ocupacion = DAtosocupacion };//, datosFamiliar=DatosFamiliar };
+
+                //result = JsonConvert.SerializeObject(ret, Formatting.Indented,
+                //new JsonSerializerSettings
+                //{
+                //   ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                //});
+
+            }
+
+            return Json(ret, JsonRequestBehavior.AllowGet);
+        }
         [HttpGet]
         public JsonResult GetAgendaExcepcionesById(int IDAgendaExcepciones)
         {
