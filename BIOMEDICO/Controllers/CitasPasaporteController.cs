@@ -179,7 +179,7 @@ namespace BIOMEDICO.Controllers
 
             {
 
-                var CitasPasaport = db.CitasPasaporte.Where(w => w.EstadoPasaporte == "PENDIENTE").ToList();
+                var CitasPasaport = db.CitasPasaporte.Where(w => w.EstadoPasaporte == "ASIGNADA").ToList();
                 foreach (var item in CitasPasaport)
                 {
 
@@ -248,7 +248,7 @@ namespace BIOMEDICO.Controllers
                 using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
                 {
-                    var EstadoCitaDeportivaExiste = db.CitasPasaporte.FirstOrDefault(w => w.EstadoPasaporte == "PENDIENTE" && w.Hora  == a.CitasPasaport.Hora && w.Minutos==a.CitasPasaport.Minutos );
+                    var EstadoCitaDeportivaExiste = db.CitasPasaporte.FirstOrDefault(w => w.EstadoPasaporte == "ASIGNADA" && w.Hora  == a.CitasPasaport.Hora && w.Minutos==a.CitasPasaport.Minutos );
                     if (EstadoCitaDeportivaExiste == null)
                     {
                         IPHostEntry host;
@@ -266,7 +266,7 @@ namespace BIOMEDICO.Controllers
 
                         //int cedula = int.Parse(a.CitasPasaport.OficinaPasaporte);
                         //var DatosSucursal = db.Sucursal.FirstOrDefault(w => w.CodSucursal == cedula);
-                        a.CitasPasaport.EstadoPasaporte= "PENDIENTE";
+                        a.CitasPasaport.EstadoPasaporte= "ASIGNADA";
                         a.CitasPasaport.FechaRegistro = DateTime.Now;
                         a.CitasPasaport.FechaEstado = DateTime.Now;
                         a.CitasPasaport.UsuarioRegistra = localIP;
