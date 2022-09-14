@@ -3,7 +3,7 @@
 var tablaCitasPasaporte = [];
 $(document).ready(function () {
 
-    RenderTable('datatable-pasaporte', [0, 1, 2, 3, 4, 5], null, {
+    RenderTable('datatable-pasaporte', [0, 1, 2, 3, 4, 5,6,7,8], null, {
         "paging": true,
         "ordering": false,
         "info": true,
@@ -48,11 +48,14 @@ function CargarTabla(data) {
             }
             tablaCitasPasaporte.row.add([
                 /* item.IdCitasPasaporte,*/
-                item.OficinaPasaporte,
+                item.TipoSolicitudPasaporte,
                 item.EstadoPasaporte,
-                Fecha,
+                item.Fecha == undefined ? '' : JSONDateconverter(item.Fecha),
                 item.Hora + ": " + item.Minutos,
+                item.TipoDocumentoPasaporte,
                 item.NombresPasaporte,
+                item.ApellidosPasaporte,
+                item.TipoPasaporte,
 
 
 

@@ -4,8 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @*<link href="~/Content/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
-<script src="~/Scripts/sweetalert/sweetalert.min.js"></script>
-<script src='https://www.google.com/recaptcha/api.js'></script>*@
+    <script src="~/Scripts/sweetalert/sweetalert.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>*@
 <script defer src="~/Scripts/APP/CitasPasaporte/CitasPasaporte.js"></script>
 
 
@@ -39,7 +39,7 @@
 
             <div class="col-xs-6 col-sm-6 col-md-6" style="right:inherit">
 
-                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Buscar</button>
+                <button type="button" id="boton" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Buscar</button>
                 @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
 
             </div>
@@ -49,6 +49,16 @@
         </div>
 
     </form>
+    <script>
+        $(document).ready(function () {
+            $("#boton").click(function (event) {
+                event.preventDefault();
+                $("#boton").prop('disabled', true)
+
+                return false;
+            })
+        })
+    </script>
     <br />
     <br />
     @*<div class="row" id="ConsultaPasaporte" style="display:none">*@
@@ -78,7 +88,7 @@
 
         <div class="col-xs-3 col-sm-3 col-md-3" style="right:inherit">
 
-            <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Editar</button>
+            <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="CargarInfoinicial()">Reprogramar Cita</button>
             @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
 
         </div>
@@ -95,6 +105,7 @@
 
 
 </div>
+
 
 
 
@@ -196,27 +207,27 @@
 </footer>
 
 @*<script>
-    if (respuesta == null){
-                Swal.fire({
-          title: '<strong>HTML <u>example</u></strong>',
-          icon: 'info',
-          html:
-            'You can use <b>bold text</b>, ' +
-            '<a href="//sweetalert2.github.io">links</a> ' +
-            'and other HTML tags',
-          showCloseButton: true,
-          showCancelButton: true,
-          focusConfirm: false,
-          confirmButtonText:
-            '<i class="fa fa-thumbs-up"></i> Great!',
-          confirmButtonAriaLabel: 'Thumbs up, great!',
-          cancelButtonText:
-            '<i class="fa fa-thumbs-down"></i>',
-          cancelButtonAriaLabel: 'Thumbs down'
-        })
+        if (respuesta == null){
+                    Swal.fire({
+              title: '<strong>HTML <u>example</u></strong>',
+              icon: 'info',
+              html:
+                'You can use <b>bold text</b>, ' +
+                '<a href="//sweetalert2.github.io">links</a> ' +
+                'and other HTML tags',
+              showCloseButton: true,
+              showCancelButton: true,
+              focusConfirm: false,
+              confirmButtonText:
+                '<i class="fa fa-thumbs-up"></i> Great!',
+              confirmButtonAriaLabel: 'Thumbs up, great!',
+              cancelButtonText:
+                '<i class="fa fa-thumbs-down"></i>',
+              cancelButtonAriaLabel: 'Thumbs down'
+            })
 
 
-</script>*@
+    </script>*@
 
 
 
