@@ -94,6 +94,17 @@ namespace BIOMEDICO.Controllers
             return Json(respuesta, JsonRequestBehavior.AllowGet);
         }
 
+
+        [HttpGet]
+        public JsonResult BuscarCedulaPass(long Identificacion)
+        {
+            var DatosCitasPass = new CitasPasaporte();
+            using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+            {
+                DatosCitasPass = db.CitasPasaporte.FirstOrDefault(w => w.NumDocumentoPasaporte == Identificacion);
+            }
+            return Json(DatosCitasPass, JsonRequestBehavior.AllowGet);
+        }
         [HttpGet]
 
         public JsonResult BuscarAgendaCitas(long IdAgenda)

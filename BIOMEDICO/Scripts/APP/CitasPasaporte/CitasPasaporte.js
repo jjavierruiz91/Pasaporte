@@ -34,7 +34,7 @@ $(document).ready(function () {//FUNCION INICIAL;
 
 function ValidarCedula() {
     let Cedula = $('#NumDocumentoPasaporte').val();
-    Get_Data(MostrarAlerta, '/CitasPasaporte/BuscarCitas?Ducumento=' + Cedula)
+    Get_Data(MostrarAlerta, '/CitasPasaporte/BuscarCedulaPass?Identificacion=' + Cedula)
 }
 function MostrarAlerta(data) {
     if (data != null || data != undefined) {
@@ -60,7 +60,7 @@ function CargarInfoinicial() {
 
 function LlenarcamposInicial(data) {
 
-    if(data.objeto==null){
+    if(data.objeto == null){
 
         /*swal("Good job!", "You clicked the button!", "success");*/
         swal({
@@ -398,7 +398,7 @@ function Createobj() {
                     ParentescoMenor: $('#ParentescoMenor').val(),
                     NombreSucursales: $('#Sucursales').val(),
                     CuantosMenores: $('#CuantosMenores').val(),
-                    Fecha: JSONDateconverter($('#FechaCalen').val()),
+                    FechaCalen: JSONDateconverter($('#FechaCalen').val()),
                     Hora: $('#Hora').val(),
                     Minutos: $('#Minutos').val(),
                     Segundos: $('#Segundos').val(),
