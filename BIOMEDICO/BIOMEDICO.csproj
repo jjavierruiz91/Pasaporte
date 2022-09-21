@@ -2584,6 +2584,7 @@
       <LastGenOutput>ModelBiomedico.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\APP\AgendaExcepciones\AgendaExcepciones.js" />
+    <Content Include="Scripts\APP\AgendaExcepciones\ListaConsultaAgendaExcepcionesEntregadas.js" />
     <Content Include="Scripts\APP\AgendaExcepciones\ListaConsultaAgendaExcepcionesTramitadas.js" />
     <Content Include="Scripts\APP\AgendaExcepciones\ListasAgendaExcepciones.js" />
     <Content Include="Scripts\APP\AgendarCitas\AgendarCitas.js" />
@@ -2890,6 +2891,7 @@
     <Content Include="Views\AgendaExcepciones\ListaAgendaExcepciones.cshtml" />
     <Content Include="Views\AgendaExcepciones\Agregar.cshtml" />
     <Content Include="Views\AgendaExcepciones\ListaConsultaAgendaExcepcionesTramitadas.cshtml" />
+    <Content Include="Views\AgendaExcepciones\ListaConsultaAgendaExcepcionesEntregadas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

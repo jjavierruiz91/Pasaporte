@@ -55,7 +55,7 @@ function CargarTabla(data) {
 
 
             /* '<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdAgendaExcepciones + ')" ></i>&ensp;' +*/
-            '<i class="btn btn-warning btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="CambiarEstado(' + item.IdAgendaExcepciones + ')" ></i>&ensp;'
+            '<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="CambiarEstado(' + item.IdAgendaExcepciones + ')" > Tramitar</i>&ensp;'
             ////'<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizardEportistaData(' + item.IdAgendaExcepciones + ')"></i>&ensp;' +
             //'<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdAgendaExcepciones + ')" ></i>&ensp;' +
             //'<i class="btn btn-primary btn-group-sm icon-calendar52" id="edit_ActEco_' + index + '" title="RegistrarCita" style="fontsize:90px !important" onclick="RegistarCitasMEdicasData(' + item.IdAgendaExcepciones + ')" ></i>&ensp;'
@@ -94,7 +94,7 @@ function CambiarEstado(IdCitaAgendaExcepciones) {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(RecargarTabla, '/AgendaExcepciones/ActualizarEstado?IdCitaAgendaExcepciones=' + IdCitaAgendaExcepciones);
+                Get_Data(RecargarTabla, '/AgendaExcepciones/ActualizarEstadoTramitada?IdCitaAgendaExcepciones=' + IdCitaAgendaExcepciones);
             }
             else {
                 swal.close()

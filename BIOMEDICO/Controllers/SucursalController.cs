@@ -12,9 +12,9 @@ namespace BIOMEDICO.Controllers
         // GET: Usuarios
         public ActionResult Sucursal()
         {
-             return View();
+            return View();
 
-            }
+        }
         public ActionResult ListaSucursalPasaporte()
         {
             return View();
@@ -43,13 +43,14 @@ namespace BIOMEDICO.Controllers
         //    }
         //    return Json(DatosdEportista, JsonRequestBehavior.AllowGet);
         //}
-        public struct HorariosSucursales {
+        public struct HorariosSucursales
+        {
             public string CodSucursal { get; set; }
             public string HorarioUsados { get; set; }
             public DateTime Fecha { get; set; }
             public int Hora { get; set; }
             public int Minutos { get; set; }
-            
+
         }
 
         [HttpGet]
@@ -153,7 +154,7 @@ namespace BIOMEDICO.Controllers
                 Console.WriteLine(ex.Message);
             }
 
-           
+
 
             return Json(ret, JsonRequestBehavior.AllowGet);
         }
@@ -253,7 +254,7 @@ namespace BIOMEDICO.Controllers
                             SucursalPasaporExiste.Direcccion = a.SucursadlPasport.Direcccion;
                             SucursalPasaporExiste.Telefono = a.SucursadlPasport.Telefono;
                             SucursalPasaporExiste.Correo = a.SucursadlPasport.Correo;
-                            
+
 
                         }
 

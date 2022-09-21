@@ -48,7 +48,6 @@
             <PropertyRef Name="IdCitasPasaporte" />
           </Key>
           <Property Name="IdCitasPasaporte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OficinaPasaporte" Type="varchar(max)" />
           <Property Name="EstadoPasaporte" Type="varchar(max)" />
           <Property Name="TipoSolicitudPasaporte" Type="varchar(max)" />
           <Property Name="TipoDocumentoPasaporte" Type="varchar(max)" />
@@ -66,7 +65,6 @@
           <Property Name="Fecha" Type="datetime" />
           <Property Name="Hora" Type="int" />
           <Property Name="Minutos" Type="int" />
-          <Property Name="Segundos" Type="int" />
           <Property Name="NumIdentificacion" Type="bigint" />
           <Property Name="FechaRegistro" Type="datetime" />
           <Property Name="FechaEstado" Type="datetime" />
@@ -333,8 +331,8 @@
           </AssociationSet>
           <EntitySet Name="Sucursal" EntityType="BIOMEDICOModel.Sucursal" />
           <EntitySet Name="AgendarCitas" EntityType="BIOMEDICOModel.AgendarCitas" />
-          <EntitySet Name="CitasPasaporte" EntityType="BIOMEDICOModel.CitasPasaporte" />
           <EntitySet Name="AgendaExcepciones" EntityType="BIOMEDICOModel.AgendaExcepciones" />
+          <EntitySet Name="CitasPasaporte" EntityType="BIOMEDICOModel.CitasPasaporte" />
           </EntityContainer>
         <EntityType Name="Sucursal">
           <Key>
@@ -358,37 +356,6 @@
           <Property Name="HoraFinCitas" Type="DateTime" Precision="3" />
           <Property Name="FechaCitas" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="CitasPasaporte">
-          <Key>
-            <PropertyRef Name="IdCitasPasaporte" />
-          </Key>
-          <Property Name="IdCitasPasaporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OficinaPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="EstadoPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TipoSolicitudPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TipoDocumentoPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NumDocumentoPasaporte" Type="Int64" />
-          <Property Name="FechaExpedicionDocumento" Type="DateTime" Precision="0" />
-          <Property Name="NombresPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ApellidosPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CelularPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CorreoPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TipoPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="MenoresEdadPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ParentescoMenor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CuantosMenores" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NombreSucursales" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Fecha" Type="DateTime" Precision="3" />
-          <Property Name="Hora" Type="Int32" />
-          <Property Name="Minutos" Type="Int32" />
-          <Property Name="Segundos" Type="Int32" />
-          <Property Name="NumIdentificacion" Type="Int64" />
-          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
-          <Property Name="FechaEstado" Type="DateTime" Precision="3" />
-          <Property Name="UsuarioRegistra" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioEstado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DireccionIp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="AgendaExcepciones">
           <Key>
             <PropertyRef Name="IdAgendaExcepciones" />
@@ -408,6 +375,35 @@
           <Property Name="UsuarioRegistraAgendaExcepciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioEstadoAgendaExcepciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DireccionIpAgendaExcepciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CitasPasaporte">
+          <Key>
+            <PropertyRef Name="IdCitasPasaporte" />
+          </Key>
+          <Property Name="IdCitasPasaporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstadoPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoSolicitudPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDocumentoPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NumDocumentoPasaporte" Type="Int64" />
+          <Property Name="FechaExpedicionDocumento" Type="DateTime" Precision="0" />
+          <Property Name="NombresPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidosPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CelularPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CorreoPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MenoresEdadPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ParentescoMenor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CuantosMenores" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NombreSucursales" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Hora" Type="Int32" />
+          <Property Name="Minutos" Type="Int32" />
+          <Property Name="NumIdentificacion" Type="Int64" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="FechaEstado" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioRegistra" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioEstado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionIp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -492,38 +488,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CitasPasaporte">
-            <EntityTypeMapping TypeName="BIOMEDICOModel.CitasPasaporte">
-              <MappingFragment StoreEntitySet="CitasPasaporte">
-                <ScalarProperty Name="DireccionIp" ColumnName="DireccionIp" />
-                <ScalarProperty Name="UsuarioEstado" ColumnName="UsuarioEstado" />
-                <ScalarProperty Name="UsuarioRegistra" ColumnName="UsuarioRegistra" />
-                <ScalarProperty Name="FechaEstado" ColumnName="FechaEstado" />
-                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
-                <ScalarProperty Name="NumIdentificacion" ColumnName="NumIdentificacion" />
-                <ScalarProperty Name="Segundos" ColumnName="Segundos" />
-                <ScalarProperty Name="Minutos" ColumnName="Minutos" />
-                <ScalarProperty Name="Hora" ColumnName="Hora" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="NombreSucursales" ColumnName="NombreSucursales" />
-                <ScalarProperty Name="CuantosMenores" ColumnName="CuantosMenores" />
-                <ScalarProperty Name="ParentescoMenor" ColumnName="ParentescoMenor" />
-                <ScalarProperty Name="MenoresEdadPasaporte" ColumnName="MenoresEdadPasaporte" />
-                <ScalarProperty Name="TipoPasaporte" ColumnName="TipoPasaporte" />
-                <ScalarProperty Name="CorreoPasaporte" ColumnName="CorreoPasaporte" />
-                <ScalarProperty Name="CelularPasaporte" ColumnName="CelularPasaporte" />
-                <ScalarProperty Name="ApellidosPasaporte" ColumnName="ApellidosPasaporte" />
-                <ScalarProperty Name="NombresPasaporte" ColumnName="NombresPasaporte" />
-                <ScalarProperty Name="FechaExpedicionDocumento" ColumnName="FechaExpedicionDocumento" />
-                <ScalarProperty Name="NumDocumentoPasaporte" ColumnName="NumDocumentoPasaporte" />
-                <ScalarProperty Name="TipoDocumentoPasaporte" ColumnName="TipoDocumentoPasaporte" />
-                <ScalarProperty Name="TipoSolicitudPasaporte" ColumnName="TipoSolicitudPasaporte" />
-                <ScalarProperty Name="EstadoPasaporte" ColumnName="EstadoPasaporte" />
-                <ScalarProperty Name="OficinaPasaporte" ColumnName="OficinaPasaporte" />
-                <ScalarProperty Name="IdCitasPasaporte" ColumnName="IdCitasPasaporte" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AgendaExcepciones">
             <EntityTypeMapping TypeName="BIOMEDICOModel.AgendaExcepciones">
               <MappingFragment StoreEntitySet="AgendaExcepciones">
@@ -542,6 +506,36 @@
                 <ScalarProperty Name="TipoSolicitudAgendaExcepciones" ColumnName="TipoSolicitudAgendaExcepciones" />
                 <ScalarProperty Name="EstadoAgendaExcepciones" ColumnName="EstadoAgendaExcepciones" />
                 <ScalarProperty Name="IdAgendaExcepciones" ColumnName="IdAgendaExcepciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CitasPasaporte">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.CitasPasaporte">
+              <MappingFragment StoreEntitySet="CitasPasaporte">
+                <ScalarProperty Name="DireccionIp" ColumnName="DireccionIp" />
+                <ScalarProperty Name="UsuarioEstado" ColumnName="UsuarioEstado" />
+                <ScalarProperty Name="UsuarioRegistra" ColumnName="UsuarioRegistra" />
+                <ScalarProperty Name="FechaEstado" ColumnName="FechaEstado" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="NumIdentificacion" ColumnName="NumIdentificacion" />
+                <ScalarProperty Name="Minutos" ColumnName="Minutos" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="NombreSucursales" ColumnName="NombreSucursales" />
+                <ScalarProperty Name="CuantosMenores" ColumnName="CuantosMenores" />
+                <ScalarProperty Name="ParentescoMenor" ColumnName="ParentescoMenor" />
+                <ScalarProperty Name="MenoresEdadPasaporte" ColumnName="MenoresEdadPasaporte" />
+                <ScalarProperty Name="TipoPasaporte" ColumnName="TipoPasaporte" />
+                <ScalarProperty Name="CorreoPasaporte" ColumnName="CorreoPasaporte" />
+                <ScalarProperty Name="CelularPasaporte" ColumnName="CelularPasaporte" />
+                <ScalarProperty Name="ApellidosPasaporte" ColumnName="ApellidosPasaporte" />
+                <ScalarProperty Name="NombresPasaporte" ColumnName="NombresPasaporte" />
+                <ScalarProperty Name="FechaExpedicionDocumento" ColumnName="FechaExpedicionDocumento" />
+                <ScalarProperty Name="NumDocumentoPasaporte" ColumnName="NumDocumentoPasaporte" />
+                <ScalarProperty Name="TipoDocumentoPasaporte" ColumnName="TipoDocumentoPasaporte" />
+                <ScalarProperty Name="TipoSolicitudPasaporte" ColumnName="TipoSolicitudPasaporte" />
+                <ScalarProperty Name="EstadoPasaporte" ColumnName="EstadoPasaporte" />
+                <ScalarProperty Name="IdCitasPasaporte" ColumnName="IdCitasPasaporte" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

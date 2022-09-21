@@ -15,7 +15,6 @@ namespace BIOMEDICO.Models
     public partial class CitasPasaporte
     {
         public int IdCitasPasaporte { get; set; }
-        public string OficinaPasaporte { get; set; }
         public string EstadoPasaporte { get; set; }
         public string TipoSolicitudPasaporte { get; set; }
         public string TipoDocumentoPasaporte { get; set; }
@@ -33,7 +32,6 @@ namespace BIOMEDICO.Models
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<int> Hora { get; set; }
         public Nullable<int> Minutos { get; set; }
-        public Nullable<int> Segundos { get; set; }
         public Nullable<long> NumIdentificacion { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
         public Nullable<System.DateTime> FechaEstado { get; set; }

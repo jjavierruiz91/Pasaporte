@@ -24,6 +24,10 @@ namespace BIOMEDICO.Controllers
         {
             return View();
         }
+        public ActionResult ListaConsultaAgendaExcepcionesEntregadas()
+        {
+            return View();
+        }
         public ActionResult BuscarAgendaExcepciones()
         {
 
@@ -119,6 +123,59 @@ namespace BIOMEDICO.Controllers
 
 
         [HttpGet]
+        //[ValidateAntiForgeryToken]
+        public JsonResult ActualizarEstadoTramitada(int IdCitaAgendaExcepciones)
+        {
+            Respuesta Retorno = new Respuesta();
+            //JsonConvert.DeserializeObject<List<ObjDeportista>>(a);
+            //if (!ModelState.IsValid)
+            //    Retorno.mensaje="Datos invalidos";
+
+            try
+            {
+
+                using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+
+                {
+                    try
+                    {
+                        var CitasAgendaExcepcionesExiste = db.AgendaExcepciones.FirstOrDefault(w => w.IdAgendaExcepciones == IdCitaAgendaExcepciones);
+                        if (CitasAgendaExcepcionesExiste != null)
+                        {
+
+
+                            CitasAgendaExcepcionesExiste.EstadoAgendaExcepciones = "ENTREGADO";
+
+                        }
+
+                        db.SaveChanges();
+
+                        Retorno.Error = false;
+                        Retorno.mensaje = "Actualizado";
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Retorno.Error = true;
+                        Retorno.mensaje = "Error al Actualizar";
+                    }
+
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                String Error = ex.Message;
+                //ModelState.AddModelError("", "Error al agregar deportistas" + ex.Message);
+                Retorno.Error = true;
+                Retorno.mensaje = "Error al agregar ";
+            }
+            return Json(Retorno, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
         public JsonResult GetListAgendaExcepciones()
         {
             Respuesta ret = new Respuesta();
@@ -163,6 +220,33 @@ namespace BIOMEDICO.Controllers
                 }
 
                 ret.objeto = AgendaExcepcionesPass; //ocupacion = DAtosocupacion };//, datosFamiliar=DatosFamiliar };
+
+                //result = JsonConvert.SerializeObject(ret, Formatting.Indented,
+                //new JsonSerializerSettings
+                //{
+                //   ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                //});
+
+            }
+
+            return Json(ret, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult GetListAgendaExcepcionesEntregado()
+        {
+            Respuesta ret = new Respuesta();
+            string result = "";
+            using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+
+            {
+
+                var AgendaExcepcionesEntregadoPass = db.AgendaExcepciones.Where(w => w.EstadoAgendaExcepciones == "ENTREGADO").ToList();
+                foreach (var item in AgendaExcepcionesEntregadoPass)
+                {
+
+                }
+
+                ret.objeto = AgendaExcepcionesEntregadoPass; //ocupacion = DAtosocupacion };//, datosFamiliar=DatosFamiliar };
 
                 //result = JsonConvert.SerializeObject(ret, Formatting.Indented,
                 //new JsonSerializerSettings
