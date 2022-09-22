@@ -1,7 +1,7 @@
 ﻿var tablaCitasPasaporte = [];
 $(document).ready(function () {
 
-    RenderTable('datatable-pasaporte', [0, 1, 2, 3, 4, 5], null, {
+    RenderTable('datatable-pasaportetramitadas', [0, 1, 2, 3, 4, 5, 6, 7, 8], null, {
         "paging": true,
         "ordering": false,
         "info": true,
@@ -27,7 +27,7 @@ $(document).ready(function () {
         ]
     });
 
-    tablaCitasPasaporte = $('#datatable-pasaporte').DataTable();
+    tablaCitasPasaporte = $('#datatable-pasaportetramitadas').DataTable();
     Get_Data(CargarTabla, '/CitasPasaporte/GetListConsultaCitasPasaporte')
 
 });
@@ -44,19 +44,23 @@ function CargarTabla(data) {
                 Fecha = JSONDateconverter(item.Fecha);
             }
             tablaCitasPasaporte.row.add([
-                /* item.IdCitaMedica,*/
-                item.OficinaPasaporte,
+
+                item.TipoSolicitudPasaporte,
                 item.EstadoPasaporte,
-                Fecha,
+                item.Fecha == undefined ? '' : JSONDateconverter(item.Fecha),
                 item.Hora + ": " + item.Minutos,
+                item.TipoDocumentoPasaporte,
                 item.NombresPasaporte,
+                item.ApellidosPasaporte,
+                item.TipoPasaporte,
 
 
 
                 //'<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdCitaMedica + ')" ></i>&ensp;' +
-                '<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizardEportistaData(' + item.IdCitasPasaporte + ')"></i>&ensp;' +
-                '<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdCitasPasaporte + ')" ></i>&ensp;' +
-                '<i class="btn btn-primary btn-group-sm icon-calendar52" id="edit_ActEco_' + index + '" title="RegistrarCita" style="fontsize:90px !important" onclick="RegistarCitasMEdicasData(' + item.IdCitasPasaporte + ')" ></i>&ensp;'
+                //'<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizardEportistaData(' + item.IdCitasPasaporte + ')"></i>&ensp;' +
+                //'<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdCitasPasaporte + ')" ></i>&ensp;' +
+                '<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="ActualizarEstadoEntregado(' + item.IdCitasPasaporte + ')" > Entregar</i>&ensp;'
+
             ]).draw(false);
 
 
@@ -72,32 +76,14 @@ function ActualizardEportistaData(idCitasPasport) {
 
 }
 
-//function RegistarCitasMEdicasData(idCitasPasport) {
-//    let CitasSelect = Arraycitasglobal.find(w => w.IdCitaMedica == idCitasPasport);
-//    if (CitasSelect != undefined) {
-//        let Especialidad = CitasSelect.Especialista.split(':')[0];
-//        switch (Especialidad) {
-//            case "ABOGADA":
-//                window.location.href = '../MedicinaDeportiva/Agregar?IdReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
-//                break;
-//            case "PSICOLOGA":
-//                window.location.href = '../Fisioterapia/Agregar?IdReg=' + idCitasPasport;
-//                break;
-//            default:
-//                break;
-//        }
-       
-//    }
-    
 
-//}
 function DetalleData(idCitasPasport) {
     window.location.href = '../CitasPasaporte/Agregar?IdReg=' + idCitasPasport + "&Viewdetail=SI";
 
 }
 
 
-function Eliminar(idCitasPasport) {
+function ActualizarEstadoEntregado(idCitasPasport) {
     swal({
         title: "Atención",
         text: "¿Estas seguro de eliminar este registro?",
@@ -112,7 +98,7 @@ function Eliminar(idCitasPasport) {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(RecargarTabla, '/CitasPasaporte/Eliminar?IdCitasDepor=' + idCitasPasport);
+                Get_Data(RecargarTabla, '/CitasPasaporte/GetListCitasPasaporteEntregado?IdCitasDepor=' + idCitasPasport);
             }
             else {
                 swal.close()

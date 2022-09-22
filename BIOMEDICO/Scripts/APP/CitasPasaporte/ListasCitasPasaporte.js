@@ -59,11 +59,11 @@ function CargarTabla(data) {
 
 
 
-                '<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdCitasPasaporte + ')" ></i>&ensp;' +
-                '<i class="btn btn-warning btn-group-sm fa fa-medkit" title="CambiarEstado" onclick="CambiarEstado(' + item.IdCitasPasaporte + ')" ></i>&ensp;' +
+               /* '<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdCitasPasaporte + ')" ></i>&ensp;' +*/
+                '<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="ActualizarEstadoTramitados(' + item.IdCitasPasaporte + ')" > Tramitar</i>&ensp;' 
                 //'<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizardEportistaData(' + item.IdCitasPasaporte + ')"></i>&ensp;' +
-                '<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdCitasPasaporte + ')" ></i>&ensp;' +
-                '<i class="btn btn-primary btn-group-sm icon-calendar52" id="edit_ActEco_' + index + '" title="RegistrarCita" style="fontsize:90px !important" onclick="RegistarCitasMEdicasData(' + item.IdCitasPasaporte + ')" ></i>&ensp;'
+                //'<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdCitasPasaporte + ')" ></i>&ensp;' +
+                //'<i class="btn btn-primary btn-group-sm icon-calendar52" id="edit_ActEco_' + index + '" title="RegistrarCita" style="fontsize:90px !important" onclick="RegistarCitasMEdicasData(' + item.IdCitasPasaporte + ')" ></i>&ensp;'
             ]).draw(false);
 
 
@@ -79,41 +79,15 @@ function ActualizardEportistaData(idCitasPasport) {
 
 }
 
-//function RegistarCitasMEdicasData(idCitasPasport) {
-//    let CitasSelect = Arraycitasglobal.find(w => w.IdCitasPasaporte == idCitasPasport);
-//    if (CitasSelect != undefined) {
-//        let Especialidad = CitasSelect.Especialista.split(':')[0];
-//        switch (Especialidad) {
-//            case "MEDICINA DEL DEPORTE":
-//                window.location.href = '../MedicinaDeportiva/Agregar?IdCitasPasportReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
-//                break;
-//            case "FISIOTERAPIA":
-//                window.location.href = '../ControlFisioterapia/Agregar?IdCitasPasportReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
-//                break;
-//            case "PSICOLOGIA":
-                
-//                window.location.href = '../Psicologia/Agregar?IdCitasPasportReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
-                
-//                break;
-//            case "NUTRICIÓN":
-//                window.location.href = '../Nutricion/Agregar?IdCitasPasportReg=' + idCitasPasport + '&IsUpdate=false&Ced=' + CitasSelect.NumIdentificacion;
-//                break;
-//            default:
-//                break;
-//        }
-       
-//    }
-    
 
-//}
 function DetalleData(idCitasPasport) {
     window.location.href = '../CitasPasaporte/Agregar?IdCitasPasportReg=' + idCitasPasport + "&Viewdetail=SI";
 
 }
-function CambiarEstado(idCitasPasport) {
+function ActualizarEstadoTramitados(idCitasPasport) {
     swal({
         title: "Atención",
-        text: "¿Estas seguro de actualizar el estado de la cita medica?",
+        text: "¿Estas seguro de tramitar la cita ?",
         type: "warning",
         showCancelButton: true,
         confirmButtonClass: "btn-danger",
@@ -125,7 +99,7 @@ function CambiarEstado(idCitasPasport) {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(RecargarTabla, '/CitasPasaporte/ActualizarEstado?IdCitasPasaporte=' + idCitasPasport);
+                Get_Data(RecargarTabla, '/CitasPasaporte/ActualizarEstadoTramitado?IdCitaPasaporte=' + idCitasPasport);
             }
             else {
                 swal.close()
@@ -134,28 +108,8 @@ function CambiarEstado(idCitasPasport) {
 }
 
 
-function Eliminar(idCitasPasport) {
-    swal({
-        title: "Atención",
-        text: "¿Estas seguro de eliminar este registro?",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonClass: "btn-danger",
-        confirmButtonText: "Si",
-        cancelButtonText: "No",
-        closeOnConfirm: false,
-        closeOnCancel: false
-    },
-        function (isConfirm) {
-            if (isConfirm) {
-                swal.close()
-                Get_Data(RecargarTabla, '/CitasPasaporte/Eliminar?IdCitasDepor=' + idCitasPasport);
-            }
-            else {
-                swal.close()
-            }
-        });
-}
+
+
 
 function RecargarTabla() {
     Get_Data(CargarTabla, '/CitasPasaporte/GetListCitasPasaporte')

@@ -2590,6 +2590,8 @@
     <Content Include="Scripts\APP\AgendarCitas\AgendarCitas.js" />
     <Content Include="Scripts\APP\AgendarCitas\ListaCitasAgendadas.js" />
     <Content Include="Scripts\APP\CitasPasaporte\CitasPasaporte.js" />
+    <Content Include="Scripts\APP\CitasPasaporte\ListaConsultaCitasPasaporteEntregado.js" />
+    <Content Include="Scripts\APP\CitasPasaporte\ListaConsultaCitasPasaporteIncumplidas.js" />
     <Content Include="Scripts\APP\CitasPasaporte\ListasCitasPasaporte.js" />
     <Content Include="Scripts\APP\CitasPasaporte\ListasConsultasCitasPasaporte.js" />
     <Content Include="Scripts\APP\ControlFisioterapia\ControlFisioterapia.js" />
@@ -2892,6 +2894,8 @@
     <Content Include="Views\AgendaExcepciones\Agregar.cshtml" />
     <Content Include="Views\AgendaExcepciones\ListaConsultaAgendaExcepcionesTramitadas.cshtml" />
     <Content Include="Views\AgendaExcepciones\ListaConsultaAgendaExcepcionesEntregadas.cshtml" />
+    <Content Include="Views\CitasPasaporte\ListaConsultaCitasPasaporteIncumplidas.cshtml" />
+    <Content Include="Views\CitasPasaporte\ListaConsultaCitasPasaporteEntregado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

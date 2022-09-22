@@ -180,26 +180,82 @@
         visibility: visible;
     }
 </STYLE>
+<style type="text/css" media="screen">
+    :root {
+        --color-green: #00a878;
+        --color-red: #fe5e41;
+        --color-button: #fdffff;
+        --color-black: #000;
+    }
+
+    .switch-button {
+        display: inline-block;
+    }
+
+        .switch-button .switch-button__checkbox {
+            display: none;
+        }
+
+        .switch-button .switch-button__label {
+            background-color: var(--color-red);
+            width: 5rem;
+            height: 3rem;
+            border-radius: 3rem;
+            display: inline-block;
+            position: relative;
+        }
+
+            .switch-button .switch-button__label:before {
+                transition: .2s;
+                display: block;
+                position: absolute;
+                width: 3rem;
+                height: 3rem;
+                background-color: var(--color-button);
+                content: '';
+                border-radius: 50%;
+                box-shadow: inset 0px 0px 0px 1px var(--color-black);
+            }
+
+        .switch-button .switch-button__checkbox:checked + .switch-button__label {
+            background-color: var(--color-green);
+        }
+
+            .switch-button .switch-button__checkbox:checked + .switch-button__label:before {
+                transform: translateX(2rem);
+            }
+</style>
 <SCRIPT>
-    function Mostrar_Ocultar(hide) {
+    function Mostrar_Ocultar(show) {
         if (document.layers)
             /*aqui se cambian los valores 'show' y 'hide' para cultarlo o mostrarlo
             aqui la variable  (hide) esta en show para ver los campos
             document.contenido.visibility = ****variable(hide)**** ? ****estado('show') ****y despues *****: 'hide'; */
-            document.contenido.visibility = hide ? 'show' : 'hide';
+            document.contenido.visibility = show ? 'show' : 'hide';
         else {
             var g = document.all ? document.all.contenido :
                 document.getElementById('contenido');
-            g.style.visibility = hide ? 'visible' : 'hidden';
+            g.style.visibility = show ? 'visible' : 'hidden';
         }
     }
 </SCRIPT>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#hide").on('click', function () {
+            $("#element").hide();
+            return false;
+        });
 
+        $("#show").on('click', function () {
+            $("#element").show();
+            return false;
+        });
+    });
+</script>
 
 <br />
 <br />
-<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>DATOS MENORES DE EDAD</strong></h1>
-<hr width=100% align="right" size=200 color="black">
+
 
 <div class="">
 
@@ -207,21 +263,64 @@
 
 
 
-        <div class="col-xs-6 col-sm-6 col-md-6">
+        <div >
             <label><strong>¿La cita es para un menor de edad?</strong> </label>
-            <div class="form-check">
-                <input class="form-check-input" value="SI" type="checkbox" name="Accion" id="MenoresEdadPasaporte" ONCLICK="Mostrar_Ocultar(this.checked)" checked >
+            <p><a class="btn btn-outline-primary" href="#" id="show"><i class="fa fa-eye"></i> Registrar</a></p>
+            <div id="content" class="">
+                <div id="element" style="display: none;">
+                    <div id="close"><a class="btn btn-outline-primary" href="#" id="hide" title="Cerrar"><i class="fa fa-close"></i>Cerrar</a></div>
+                    <br />
+                   
+                    <div class="">
+
+                        <h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>DATOS MENORES DE EDAD</strong></h1>
+                        <hr width=100% align="right" size=200 color="black">
+                        <div>
+                            <label><strong>Cual es su parentesco con el menor de edad Documento</strong> </label>
+                            <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="ParentescoMenor" name="ParentescoMenor">
+                                <option value="">Seleccionar</option>
+                                <option value="Madre">Madre</option>
+                                <option value="Padre">Padre</option>
+                                <option value="Tutor Legal">Tutor Legal</option>
+
+                            </select>
+                        </div>
+
+                        <div>
+                            <label><strong>Nombre del responsable del menor</strong></label>
+                            <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="CuantosMenores" name="CuantosMenores" placeholder="Digite su nombre completo" />
+                        </div>
+
+                        <br />
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            @*<div class="form-check">
+                <input class="form-check-input" value="SI" type="radio" name="Accion" id="MenoresEdadPasaporte" ONCLICK="Mostrar_Ocultar(this.checked)" checked >
                 <label class="form-check-label" for="flexRadioDefault1">
                     SI
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" value="NO" type="checkbox" name="Accion" id="MenoresEdadPasaporte"  >
+                <input class="form-check-input" value="NO" type="radio" name="Accion" id="MenoresEdadPasaporte"  >
                 <label class="form-check-label" for="flexRadioDefault1">
                     NO
                 </label>
-            </div>
+            </div>*@
 
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+            <label class="form-check-label" for="inlineCheckbox2">
+                <strong>
+                    ACEPTO: La información suministrada en el formulario será utilizada por la Oficina de Pasaportes para el manejo y gestión de servicios o trámites efectuados por la entidad de acuerdo a lo establecido en la Ley 1581 de 2012.
+
+                </strong>
+            </label>
         </div>
 
 
@@ -233,38 +332,7 @@
 
 </div>
 
-<div class="">
-    <form action="" method="post" ID="contenido" CLASS="hideable">
-        <div class="col-xs-6 col-sm-6 col-md-6">
-            <label><strong>Cual es su parentesco con el menor de edad Documento</strong> </label>
-            <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="ParentescoMenor" name="ParentescoMenor">
-                <option value="">Seleccionar</option>
-                <option value="Madre">Madre</option>
-                <option value="Padre">Padre</option>
-                <option value="Tutor Legal">Tutor Legal</option>
 
-            </select>
-        </div>
-
-        <div class="col-xs-6 col-sm-6 col-md-6">
-            <label><strong>Nombre del responsable del menor</strong></label>
-            <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="CuantosMenores" name="CuantosMenores" placeholder="Digite su nombre completo" />
-        </div>
-    </form>
-    <br />
-
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-        <label class="form-check-label" for="inlineCheckbox2">
-            <strong>
-                ACEPTO: La información suministrada en el formulario será utilizada por la Oficina de Pasaportes para el manejo y gestión de servicios o trámites efectuados por la entidad de acuerdo a lo establecido en la Ley 1581 de 2012.
-
-            </strong>
-        </label>
-    </div>
-
-
-</div>
 
 
     <div class="col-xs-6 col-sm-6 col-md-6">

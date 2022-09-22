@@ -25,28 +25,21 @@ namespace BIOMEDICO.Controllers
         {
             return View();
         }
+
+        public ActionResult ListaConsultaCitasPasaporteIncumplidas()
+        {
+            return View();
+        }
+        public ActionResult ListaConsultaCitasPasaporteEntregado()
+        {
+            return View();
+        }
         public ActionResult BuscarCitaPasaporte()
         {
             
             return View();
         }
-        [HttpGet]
-        public JsonResult GetListConsultaCitasPasaporte()
-        {
-            Respuesta ret = new Respuesta();
-            string result = "";
-            using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
-
-            {
-                var CitasPasaport = db.CitasPasaporte.ToList().OrderByDescending(o => o.IdCitasPasaporte);
-              
-
-                ret.objeto = CitasPasaport;
-
-            }
-
-            return Json(ret, JsonRequestBehavior.AllowGet);
-        }
+       
 
         public struct ObjCitasPasaporte
         {
@@ -128,7 +121,7 @@ namespace BIOMEDICO.Controllers
 
         [HttpGet]
         //[ValidateAntiForgeryToken]
-        public JsonResult ActualizarEstado(int IdCitaPasaporte)
+        public JsonResult ActualizarEstadoTramitado(int IdCitaPasaporte)
         {
             Respuesta Retorno = new Respuesta();
             //JsonConvert.DeserializeObject<List<ObjDeportista>>(a);
@@ -148,7 +141,7 @@ namespace BIOMEDICO.Controllers
                         {
 
                             
-                            CitasDeportivaExiste.EstadoPasaporte = "FINALIZADO";
+                            CitasDeportivaExiste.EstadoPasaporte = "TRAMITADA";
 
                         }
 
@@ -208,7 +201,89 @@ namespace BIOMEDICO.Controllers
 
             return Json(ret, JsonRequestBehavior.AllowGet);
         }
+        
+        [HttpGet]
+        public JsonResult GetListConsultaCitasPasaporte()
+        {
+            Respuesta ret = new Respuesta();
+            string result = "";
+            using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
+            {
+
+                var CitasPasaport = db.CitasPasaporte.Where(w => w.EstadoPasaporte == "TRAMITADA").ToList();
+                foreach (var item in CitasPasaport)
+                {
+
+                }
+
+                ret.objeto = CitasPasaport; //ocupacion = DAtosocupacion };//, datosFamiliar=DatosFamiliar };
+
+                //result = JsonConvert.SerializeObject(ret, Formatting.Indented,
+                //new JsonSerializerSettings
+                //{
+                //   ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                //});
+
+            }
+
+            return Json(ret, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetListCitasPasaporteImcumplida()
+        {
+            Respuesta ret = new Respuesta();
+            string result = "";
+            using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+
+            {
+
+                var CitasPasaportImcumplidas = db.CitasPasaporte.Where(w => w.EstadoPasaporte == "NO ASISTIO").ToList();
+                foreach (var item in CitasPasaportImcumplidas)
+                {
+
+                }
+
+                ret.objeto = CitasPasaportImcumplidas; //ocupacion = DAtosocupacion };//, datosFamiliar=DatosFamiliar };
+
+                //result = JsonConvert.SerializeObject(ret, Formatting.Indented,
+                //new JsonSerializerSettings
+                //{
+                //   ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                //});
+
+            }
+
+            return Json(ret, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult GetListCitasPasaporteEntregado()
+        {
+            Respuesta ret = new Respuesta();
+            string result = "";
+            using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+
+            {
+
+                var CitasPasaportEntregado = db.CitasPasaporte.Where(w => w.EstadoPasaporte == "ENTREGADO").ToList();
+                foreach (var item in CitasPasaportEntregado)
+                {
+
+                }
+
+                ret.objeto = CitasPasaportEntregado; //ocupacion = DAtosocupacion };//, datosFamiliar=DatosFamiliar };
+
+                //result = JsonConvert.SerializeObject(ret, Formatting.Indented,
+                //new JsonSerializerSettings
+                //{
+                //   ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                //});
+
+            }
+
+            return Json(ret, JsonRequestBehavior.AllowGet);
+        }
         [HttpGet]
         public JsonResult GetCitasPasaporteById(int IdCitasPaspor)
         {
