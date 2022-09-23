@@ -175,6 +175,59 @@ namespace BIOMEDICO.Controllers
 
 
         [HttpGet]
+        //[ValidateAntiForgeryToken]
+        public JsonResult ActualizarEstadoEntregado(int IdCitaPasaporte)
+        {
+            Respuesta Retorno = new Respuesta();
+            //JsonConvert.DeserializeObject<List<ObjDeportista>>(a);
+            //if (!ModelState.IsValid)
+            //    Retorno.mensaje="Datos invalidos";
+
+            try
+            {
+
+                using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+
+                {
+                    try
+                    {
+                        var CitasDeportivaExiste = db.CitasPasaporte.FirstOrDefault(w => w.IdCitasPasaporte == IdCitaPasaporte);
+                        if (CitasDeportivaExiste != null)
+                        {
+
+
+                            CitasDeportivaExiste.EstadoPasaporte = "ENTREGADO";
+
+                        }
+
+                        db.SaveChanges();
+
+                        Retorno.Error = false;
+                        Retorno.mensaje = "Actualizado";
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Retorno.Error = true;
+                        Retorno.mensaje = "Error al Actualizar";
+                    }
+
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                String Error = ex.Message;
+                //ModelState.AddModelError("", "Error al agregar deportistas" + ex.Message);
+                Retorno.Error = true;
+                Retorno.mensaje = "Error al agregar ";
+            }
+            return Json(Retorno, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
         public JsonResult GetListCitasPasaporte()
         {
             Respuesta ret = new Respuesta();
