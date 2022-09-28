@@ -313,14 +313,18 @@ function CargarSelectHora() {
         return  dateFormat.split(' ')[0]== FechasElect && w.CodSucursal == Sucursales
 
     });
+
+
+
+    let Disponiblehorario=joinTime(Horarios);;
     var HtmlEmp = "";
     HtmlEmp = "<option value=''>Seleccionar</option>";
-    $.each(Horarios, function (index, item) {
-        let ExisteHOra = Arrayhra.find(w => w == item.Hora);
+    $.each(Disponiblehorario, function (index, item) {
+        let ExisteHOra = Arrayhra.find(w => w == item.Hora +'_'+item.minutos);
 
         if (ExisteHOra == undefined) {
-            HtmlEmp += "<option value='" + item.Hora + "'>" + item.Hora + "</option>"
-            Arrayhra.push(item.Hora);
+            HtmlEmp += "<option value='" + item.Hora +'_'+item.minutos+ "'>" + item.Hora +':'+item.minutos+ "</option>"
+            Arrayhra.push(item.Hora +'_'+item.minutos);
         }
          
 
@@ -329,12 +333,65 @@ function CargarSelectHora() {
     $('#Hora').select2();
 }
 
+
+
+
+
+
+
+function joinTime(horario){
+
+    let Arrayhorario=[];
+
+
+    let FechasElect = $('#FechaCalen').val();
+    let Sucursales = $('#Sucursales').val();
+   
+
+    $.each(horario, function (index, item) {
+         let hora =item.Hora;
+         let HorariosMInutos = DatosHorario.filter(w => JSONDateconverter(w.Fecha,true).split(' ')[0] == FechasElect && w.CodSucursal == Sucursales && w.Hora ==parseInt(hora));
+    
+
+        $.each(HorariosMInutos, function (indexminutos, itemMinutos) {
+                let objHorario={Hora:hora, minutos:itemMinutos.Minutos};
+
+
+
+                Arrayhorario.push(objHorario)
+
+         })
+         
+
+    })
+
+    
+
+
+
+    return Arrayhorario;
+
+
+}
+
 function CargarSelectMInutos() {
     let ArrayFecha = [];
     let FechasElect = $('#FechaCalen').val();
     let Sucursales = $('#Sucursales').val();
     let hora = $('#Hora').val();
-    let Horarios = DatosHorario.filter(w => JSONDateconverter(w.Fecha,true).split(' ')[0] == FechasElect && w.CodSucursal == Sucursales && w.Hora ==parseInt(hora));
+
+
+
+    let min=hora.split('_')[1];
+
+
+
+    $('#Minutos').val(min);
+
+
+
+
+    /*let Horarios = DatosHorario.filter(w => JSONDateconverter(w.Fecha,true).split(' ')[0] == FechasElect && w.CodSucursal == Sucursales && w.Hora ==parseInt(hora));
     
     var HtmlMin = "";
     HtmlMin = "<option value=''>Seleccionar</option>"
@@ -345,7 +402,7 @@ function CargarSelectMInutos() {
 
     })
     $('#Minutos').html(HtmlMin);
-    $('#Minutos').select2();
+    $('#Minutos').select2();*/
 }
 
 
