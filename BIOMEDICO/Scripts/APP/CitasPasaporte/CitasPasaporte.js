@@ -282,25 +282,53 @@ function CargarSelectSucursales(data) {
 function CargarSelectFecha() {
     let ArrayFecha = [];
     let Sucursales = $('#Sucursales').val();
-    let agenda = DatosHorario.filter(w => w.CodSucursal == Sucursales);
-    var HtmlEmp = "";
-    HtmlEmp = "<option value='' >Seleccionar</option>"
-    $.each(agenda, function (index, item) {
-        let ExistefEcha = ArrayFecha.find(w => w == item.Fecha);
 
-        if (ExistefEcha == undefined) {
-            HtmlEmp += "<option value='" + item.Fecha + "'>" + JSONDateconverter(item.Fecha) + "</option>"
-            ArrayFecha.push(item.Fecha);
 
-        }
+    if(DatosHorario.length==0){
+        swal({
+            title: "Oficina Pasaporte Gobernación Del Cesar",
+            text: "Usted no tiene citas agendadas!",
+            type: "warning",
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Muchas Gacias!",
+            
+           
+        });
+
+            return;
+
+
+
+    }
+
+
+
+
+
+
+
+
+    
+
+        let agenda = DatosHorario.filter(w => w.CodSucursal == Sucursales);
+        var HtmlEmp = "";
+        HtmlEmp = "<option value='' >Seleccionar</option>"
+        $.each(agenda, function (index, item) {
+            let ExistefEcha = ArrayFecha.find(w => w == item.Fecha);
+
+            if (ExistefEcha == undefined) {
+                HtmlEmp += "<option value='" + item.Fecha + "'>" + JSONDateconverter(item.Fecha) + "</option>"
+                ArrayFecha.push(item.Fecha);
+
+            }
      
 
-});
+        });
 
-    FechasMarcada(ArrayFecha);
-    $('#Fecha').html(HtmlEmp);
-    $('#Fecha').select2();
-}
+        FechasMarcada(ArrayFecha);
+        $('#Fecha').html(HtmlEmp);
+        $('#Fecha').select2();
+    }
 
 function CargarSelectHora() {
     let Arrayhra = [];
@@ -323,7 +351,7 @@ function CargarSelectHora() {
         let ExisteHOra = Arrayhra.find(w => w == item.Hora +'_'+item.minutos);
 
         if (ExisteHOra == undefined) {
-            HtmlEmp += "<option value='" + item.Hora +'_'+item.minutos+ "'>" + item.Hora +':'+item.minutos+ "</option>"
+            HtmlEmp += "<option value='" + item.Hora +'_'+item.minutos+ "'>" + ConvertFormatDate(item) +"</option>"
             Arrayhra.push(item.Hora +'_'+item.minutos);
         }
          
@@ -331,6 +359,41 @@ function CargarSelectHora() {
     })
     $('#Hora').html(HtmlEmp);
     $('#Hora').select2();
+}
+
+
+
+
+
+
+
+function ConvertFormatDate(Horarios){
+
+     let HoraSet=Horarios.Hora;
+     switch(Horarios.Hora){
+        case 14:
+         HoraSet=02;
+        break;
+
+        case 15:
+        HoraSet=03;
+        break;
+
+        case 16:
+        HoraSet=04;
+        break;
+
+        case 17:
+        HoraSet=05;
+        break;
+    }
+
+    if(Horarios.Hora>12){
+        return HoraSet+":"+Horarios.minutos +' PM';
+
+    }else{
+        return HoraSet+":"+Horarios.minutos +' AM';;
+    }
 }
 
 
@@ -455,8 +518,8 @@ function Createobj() {
                     ParentescoMenor: $('#ParentescoMenor').val(),
                     NombreSucursales: $('#Sucursales').val(),
                     CuantosMenores: $('#CuantosMenores').val(),
-                    FechaCalen: JSONDateconverter($('#FechaCalen').val()),
-                    Hora: $('#Hora').val(),
+                    Fecha: JSONDateconverter($('#FechaCalen').val()),
+                    Hora: $('#Hora').val().split('_')[0],
                     Minutos: $('#Minutos').val(),
                     Segundos: $('#Segundos').val(),
                     NumIdentificacion: $('#NumDocumentoPasaporte').val(),
