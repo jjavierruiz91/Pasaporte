@@ -287,7 +287,7 @@ function CargarSelectFecha() {
     if(DatosHorario.length==0){
         swal({
             title: "Oficina Pasaporte Gobernación Del Cesar",
-            text: "Usted no tiene citas agendadas!",
+            text: "No tenemos agenda disponibles!",
             type: "warning",
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Muchas Gacias!",
