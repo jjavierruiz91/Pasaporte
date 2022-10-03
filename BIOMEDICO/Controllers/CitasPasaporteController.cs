@@ -378,9 +378,10 @@ namespace BIOMEDICO.Controllers
         {
             Respuesta Retorno = new Respuesta();
 
-            //if (!ModelState.IsValid)
-            //    Retorno.mensaje="Datos invalidos";
-
+            if (!ModelState.IsValid)
+               Retorno.mensaje="Datos invalidos";
+            
+           
             try
             {
 
@@ -429,7 +430,7 @@ namespace BIOMEDICO.Controllers
                 String Error = ex.Message;
                 //ModelState.AddModelError("", "Error al agregar deportistas" + ex.Message);
                 Retorno.Error = true;
-                Retorno.mensaje = "Error al agregar";
+                Retorno.mensaje = "Debes completar todos los registros de la cita!";
             }
             return Json(Retorno, JsonRequestBehavior.AllowGet);
         }

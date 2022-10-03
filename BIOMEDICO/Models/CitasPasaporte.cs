@@ -11,15 +11,28 @@ namespace BIOMEDICO.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CitasPasaporte
     {
         public int IdCitasPasaporte { get; set; }
+       
         public string EstadoPasaporte { get; set; }
+       
         public string TipoSolicitudPasaporte { get; set; }
+        
+        
         public string TipoDocumentoPasaporte { get; set; }
+       
+        
         public Nullable<long> NumDocumentoPasaporte { get; set; }
+        
         public Nullable<System.DateTime> FechaExpedicionDocumento { get; set; }
+
+        [Required(ErrorMessage = "El campo Nombre no puede estar vacio")]
+        [MinLength(length: 1)]
+        [MaxLength(length: 50)]
+        public string Nombre { get; set; }
         public string NombresPasaporte { get; set; }
         public string ApellidosPasaporte { get; set; }
         public string CelularPasaporte { get; set; }
