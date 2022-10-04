@@ -153,6 +153,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Clases\Encriptardor.cs" />
+    <Compile Include="Clases\SendEmail.cs" />
     <Compile Include="Clases\Utilidades.cs" />
     <Compile Include="Controllers\AgendaExcepcionesController.cs" />
     <Compile Include="Controllers\AgendarCitasController.cs" />
