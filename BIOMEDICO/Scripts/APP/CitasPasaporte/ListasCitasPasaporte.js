@@ -61,7 +61,7 @@ function CargarTabla(data) {
 
                /* '<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdCitasPasaporte + ')" ></i>&ensp;' +*/
                 '<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="ActualizarEstadoTramitados(' + item.IdCitasPasaporte + ')" > Tramitar</i>&ensp;' 
-                //'<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizardEportistaData(' + item.IdCitasPasaporte + ')"></i>&ensp;' +
+                //'<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizarCitasPasaporte(' + item.IdCitasPasaporte + ')"></i>&ensp;' 
                 //'<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdCitasPasaporte + ')" ></i>&ensp;' +
                 //'<i class="btn btn-primary btn-group-sm icon-calendar52" id="edit_ActEco_' + index + '" title="RegistrarCita" style="fontsize:90px !important" onclick="RegistarCitasMEdicasData(' + item.IdCitasPasaporte + ')" ></i>&ensp;'
             ]).draw(false);
@@ -109,7 +109,28 @@ function ActualizarEstadoTramitados(idCitasPasport) {
 
 
 
-
+function ActualizarCitasPasaporte(idCitasPasport) {
+    swal({
+        title: "Atención",
+        text: "¿Estas seguro de actualizar la cita ?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "Si",
+        cancelButtonText: "No",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },
+        function (isConfirm) {
+            if (isConfirm) {
+                swal.close()
+                Get_Data(RecargarTabla, '/CitasPasaporte/ActualizarCitasPasaporte?IdCitaPasaporte=' + idCitasPasport);
+            }
+            else {
+                swal.close()
+            }
+        });
+}
 
 function RecargarTabla() {
     Get_Data(CargarTabla, '/CitasPasaporte/GetListCitasPasaporte')

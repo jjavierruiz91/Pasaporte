@@ -65,7 +65,7 @@ namespace BIOMEDICO.Controllers
             {
                 try
                 {
-                    DatosCitasPasaport = db.CitasPasaporte.FirstOrDefault(w => w.NumDocumentoPasaporte == Ducumento);
+                    DatosCitasPasaport = db.CitasPasaporte.FirstOrDefault(w => w.NumDocumentoPasaporte == Ducumento && w.EstadoPasaporte== "ASIGNADA");
                     if (DatosCitasPasaport == null)
                     {
                         respuesta.Error = false;
@@ -438,7 +438,7 @@ namespace BIOMEDICO.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public JsonResult Actualizar(ObjCitasPasaporte a)
+        public JsonResult ActualizarCitasPasaporte(ObjCitasPasaporte a)
         {
             Respuesta Retorno = new Respuesta();
             //JsonConvert.DeserializeObject<List<ObjDeportista>>(a);

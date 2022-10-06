@@ -29,9 +29,9 @@ namespace BIOMEDICO.Models
         
         public Nullable<System.DateTime> FechaExpedicionDocumento { get; set; }
 
-        [Required(ErrorMessage = "El campo Nombre no puede estar vacio")]
-        [MinLength(length: 1)]
-        [MaxLength(length: 50)]
+        //[Required(ErrorMessage = "El campo Nombre no puede estar vacio")]
+        //[MinLength(length: 1)]
+        //[MaxLength(length: 50)]
         public string Nombre { get; set; }
         public string NombresPasaporte { get; set; }
         public string ApellidosPasaporte { get; set; }

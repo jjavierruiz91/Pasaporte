@@ -26,7 +26,7 @@ $(document).ready(function () {//FUNCION INICIAL;
     }
 
     if (IsUpdate && VerDetalles == 0) {
-        $('#SaveCitasPasaporte').html('Actualizar')
+        $('#SaveCitasPasaporte').html('ActualizarCitasPasaporte')
         Get_Data(LlenarCampos, '/CitasPasaporte/GetCitasPasaporteById?IdCitasPaspor=' + idCitasPasaporteData);
     }
 
@@ -78,10 +78,10 @@ function LlenarcamposInicial(data) {
 
 
     }
-    $('#TipoSolicitudPasaporte').val(data.objeto.TipoSolicitudPasaporte);
-    $('#CorreoPasaporte').val(data.CorreoPasaporte);
-    $('#NombresPasaporte').val(data.NombresPasaporte);
-    $('#ApellidosPasaporte').val(data.ApellidosPasaporte);
+    $('#NombresPasaporte').val(data.objeto.NombresPasaporte);
+    $('#ApellidosPasaporte').val(data.objeto.ApellidosPasaporte);
+    $('#CelularPasaporte').val(data.objeto.CelularPasaporte);
+    $('#CorreoPasaporte').val(data.objeto.CorreoPasaporte);
     Alternar(ConsultaPasaporte);
 }
 
@@ -494,7 +494,7 @@ function Createobj() {
         Atras();
     }
     else {
-        var test = $('#NumIde').val();
+        
         var IdCitasPasaporte = 0;
         if (IsUpdate) {
             IdCitasPasaporte = idCitasPasaporteData;
