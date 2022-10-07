@@ -34,9 +34,9 @@ namespace BIOMEDICO.Controllers
         {
             return View();
         }
-        public ActionResult BuscarCitaPasaporte()
+        public ActionResult BuscarCitaPasaporte(bool ViewFree=false)
         {
-            
+            ViewBag.ViewFree = ViewFree;
             return View();
         }
        
@@ -362,9 +362,9 @@ namespace BIOMEDICO.Controllers
 
 
         [HttpGet]
-        public ActionResult Agregar()
+        public ActionResult Agregar(bool ViewFree = false)
         {
-
+            ViewBag.ViewFree = ViewFree;
             return View();
 
         }

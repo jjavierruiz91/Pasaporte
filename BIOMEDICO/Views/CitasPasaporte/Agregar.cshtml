@@ -1,8 +1,19 @@
 ﻿
 @{
-    ViewBag.Title = "Agregar";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Convert.ToBoolean(@ViewBag.ViewFree))
+    {
+        ViewBag.Title = "Agregar";
+        Layout = "~/Views/Shared/BuscarCitasPasaport.cshtml";
+    }
+    else
+    {
+        ViewBag.Title = "Agregar";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
 }
+
+
 
  <script type="text/javascript" src="https://amsul.ca/pickadate.js/vendor/pickadate/lib/picker.js"></script>
  <script type="text/javascript" src="https://amsul.ca/pickadate.js/vendor/pickadate/lib/picker.date.js"></script>
@@ -133,12 +144,12 @@
         <div class="row m-1">
 
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <label><strong>Fecha <span style="color: red;"> *</span></strong></label>
                 <input type="text" name="FechaCalen" id="FechaCalen" class="pickdate form-control" onchange="CargarSelectHora()" />
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <label><strong>Hora <span style="color: red;"> *</span></strong></label>
                 <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Hora" name="Hora" onchange="CargarSelectMInutos()">
                     <option style="border: black; border-width: 1px; border-style: solid;" value="">Seleccionar</option>

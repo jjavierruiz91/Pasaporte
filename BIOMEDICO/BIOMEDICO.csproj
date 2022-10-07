@@ -217,6 +217,7 @@
     <Compile Include="Models\Usuarios.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\Citas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
   </ItemGroup>
@@ -2897,6 +2898,7 @@
     <Content Include="Views\AgendaExcepciones\ListaConsultaAgendaExcepcionesEntregadas.cshtml" />
     <Content Include="Views\CitasPasaporte\ListaConsultaCitasPasaporteIncumplidas.cshtml" />
     <Content Include="Views\CitasPasaporte\ListaConsultaCitasPasaporteEntregado.cshtml" />
+    <Content Include="Views\Shared\BuscarCitasPasaport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

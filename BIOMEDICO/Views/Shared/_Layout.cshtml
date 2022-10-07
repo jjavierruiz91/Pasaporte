@@ -1,4 +1,14 @@
 ﻿@{
+    BIOMEDICO.Models.Usuarios dUsuarios =BIOMEDICO.Clases.Utilidades.ActiveUser;
+    if (dUsuarios == null)
+    {
+
+        Response.Redirect("~/Login/Login");
+
+    }
+   
+
+
     string V = "1";
     List<BIOMEDICO.Models.ASignarPermisos> listapermisosasignados = new List<BIOMEDICO.Models.ASignarPermisos>();
     if (BIOMEDICO.Clases.Utilidades.ActiveUser.IdUsuario != null)
@@ -6,7 +16,7 @@
         listapermisosasignados = BIOMEDICO.Clases.Utilidades.Getlistapermisos();
     }
 
-}
+    }
 <!DOCTYPE html>
 <html>
 
