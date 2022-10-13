@@ -380,8 +380,8 @@ namespace BIOMEDICO.Controllers
 
             if (!ModelState.IsValid)
                Retorno.mensaje="Datos invalidos";
-            
-           
+
+            a.CitasPasaport.FechaExpedicionDocumento = Convert.ToDateTime(a.CitasPasaport.FechaExpedicionDocumento.Value.ToShortDateString());
             try
             {
 

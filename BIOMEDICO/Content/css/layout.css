@@ -124,9 +124,8 @@ body {
 
 .page-content {
   display: -ms-flexbox;
-  display: flex;
-  -ms-flex-positive: 1;
-      flex-grow: 1; }
+ display: flex;
+  flex-grow: 1; }
 
 .content-wrapper {
   display: -ms-flexbox;
@@ -139,7 +138,6 @@ body {
 
 .content {
   padding: 1.25rem 1.25rem;
-  -ms-flex-positive: 1;
       flex-grow: 1; }
   .content::after {
     display: block;
