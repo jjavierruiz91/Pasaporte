@@ -381,7 +381,7 @@ namespace BIOMEDICO.Controllers
             if (!ModelState.IsValid)
                Retorno.mensaje="Datos invalidos";
 
-            a.CitasPasaport.FechaExpedicionDocumento = Convert.ToDateTime(a.CitasPasaport.FechaExpedicionDocumento.Value.ToShortDateString());
+            
             try
             {
 
@@ -406,6 +406,8 @@ namespace BIOMEDICO.Controllers
 
                         //int cedula = int.Parse(a.CitasPasaport.OficinaPasaporte);
                         //var DatosSucursal = db.Sucursal.FirstOrDefault(w => w.CodSucursal == cedula);
+                        a.CitasPasaport.FechaExpedicionDocumento = Convert.ToDateTime(a.CitasPasaport.FechaExpedicionDocumento.Value.ToShortDateString());
+                        a.CitasPasaport.Fecha = Convert.ToDateTime(a.CitasPasaport.Fecha.Value.ToShortDateString());
                         a.CitasPasaport.EstadoPasaporte= "ASIGNADA";
                         a.CitasPasaport.FechaRegistro = DateTime.Now;
                         a.CitasPasaport.FechaEstado = DateTime.Now;

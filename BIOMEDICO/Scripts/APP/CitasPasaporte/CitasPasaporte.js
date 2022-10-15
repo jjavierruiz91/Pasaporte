@@ -513,6 +513,7 @@ function Createobj() {
                     ApellidosPasaporte: $('#ApellidosPasaporte').val(),
                     CelularPasaporte: $('#CelularPasaporte').val(),
                     CorreoPasaporte: $('#CorreoPasaporte').val(),
+                    CorreoPasaporteRepeated: $('#CorreoPasaporteRepeated').val(),                    
                     TipoPasaporte: $('#TipoPasaporte').val(),
                     MenoresEdadPasaporte: $('#MenoresEdadPasaporte').val(),
                     ParentescoMenor: $('#ParentescoMenor').val(),

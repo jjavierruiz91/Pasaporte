@@ -57,6 +57,7 @@
           <Property Name="ApellidosPasaporte" Type="varchar(max)" />
           <Property Name="CelularPasaporte" Type="varchar(max)" />
           <Property Name="CorreoPasaporte" Type="varchar(max)" />
+          <Property Name="CorreoPasaporteRepeated" Type="varchar(max)" />
           <Property Name="TipoPasaporte" Type="varchar(max)" />
           <Property Name="MenoresEdadPasaporte" Type="varchar(max)" />
           <Property Name="ParentescoMenor" Type="varchar(max)" />
@@ -390,6 +391,7 @@
           <Property Name="ApellidosPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CelularPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CorreoPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CorreoPasaporteRepeated" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TipoPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MenoresEdadPasaporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ParentescoMenor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -526,6 +528,7 @@
                 <ScalarProperty Name="ParentescoMenor" ColumnName="ParentescoMenor" />
                 <ScalarProperty Name="MenoresEdadPasaporte" ColumnName="MenoresEdadPasaporte" />
                 <ScalarProperty Name="TipoPasaporte" ColumnName="TipoPasaporte" />
+                <ScalarProperty Name="CorreoPasaporteRepeated" ColumnName="CorreoPasaporteRepeated" />
                 <ScalarProperty Name="CorreoPasaporte" ColumnName="CorreoPasaporte" />
                 <ScalarProperty Name="CelularPasaporte" ColumnName="CelularPasaporte" />
                 <ScalarProperty Name="ApellidosPasaporte" ColumnName="ApellidosPasaporte" />

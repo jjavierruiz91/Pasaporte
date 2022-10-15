@@ -20,16 +20,14 @@
 <script defer src="~/Scripts/APP/CitasPasaporte/ListasCitasPasaporte.js"></script>
 <script defer src="~/Scripts/APP/CitasPasaporte/CitasPasaporte.js"></script>
 
-
-
-<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>CONSULTAR CITAS PASAPORTE </strong></h1>
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>SOLICITUD DE TRAMITE PASAPORTE</strong></h1>
 <hr width=100% align="right" size=200 color="black">
 
-<div class="container">
+<div class="">
 
-    <form id="FormCitasPasaporte" name="FormCitasPasaporte">
+    <form id="FormCitasMedicasDeportiva" name="FormCitasMedicasDeportiva">
 
-        <div class="row">
+        <div class="row m-1">
 
 
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -60,188 +58,184 @@
 
         </div>
 
+
     </form>
-    <script>
-        $(document).ready(function () {
-            $("#boton").click(function (event) {
-                event.preventDefault();
-                $("#boton").prop('disabled', true)
-
-                return false;
-            })
-        })
-    </script>
-    <br />
-    <br />
-    @*<div class="row" id="ConsultaPasaporte" style="display:none">*@
-    <div class="row" id="ConsultaPasaporte" style="display: none ">
-
-
-
-        <div class="col-xs-3 col-sm-3 col-md-3">
-            <label><strong>Primer Nombre</strong></label>
-            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NombresPasaporte" name="NombresPasaporte" />
-        </div>
-        <div class="col-xs-3 col-sm-3 col-md-3">
-            <label><strong>Primer Nombre</strong></label>
-            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ApellidosPasaporte" name="ApellidosPasaporte" />
-        </div>
-
-        <div class="col-xs-3 col-sm-3 col-md-3">
-            <label><strong>Segundo Nombre</strong></label>
-            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CelularPasaporte" name="CelularPasaporte" />
-        </div>
-        <div class="col-xs-3 col-sm-3 col-md-3">
-            <label><strong>Segundo Nombre</strong></label>
-            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CorreoPasaporte" name="CorreoPasaporte" />
-        </div>
-
-        <br />
-
-        <div class="col-xs-3 col-sm-3 col-md-3" style="right:inherit">
-
-            @*<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="ActualizarCitasPasaporte(' + item.IdCitasPasaporte + ')"> Tramitar</i>*@
-
-            <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="ActualizarCitasPasaporte(' + item.IdCitasPasaporte + ')">Reprogramar Cita</button>
-            @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
-
-        </div>
-        <div class="col-xs-3 col-sm-3 col-md-3" style="right:inherit">
-
-            <button type="button" class="btn btn-block btn-outline-danger btn-rounded btn-outline mt-4" onclick="ActualizarEstadoTramitados(' + item.IdCitasPasaporte + ')">Cancelar</button>
-            @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
-
-        </div>
-
-
-
-    </div>
-
 
 </div>
+<br />
+<br />
+<hr width=100% align="right" size=200 color="black">
+
+<div class="row m-0">
 
 
+     <div class="">
 
+        <form id="FormCitasPasaporte" name="FormCitasPasaporte">
 
-<footer id="footer">
-
-    <div class="">
-        <div class="container">
-            <div class="">
-                <div id="copyright">
-
-
-
-                    <!-- BEGIN: Custom advanced (www.pluginaria.com) -->
-                    <div style="text-align: center;">
-                        <hr style="color: #1051eae2;">
-                        <span style="color: #0d3c61;">
-                            <strong>Horario de Atención:</strong>
-                        </span>&nbsp;
-                        <span style="color: #000000;">Lunes a Viernes de 07:45 am - 12:45 pm y 02:45 pm - 05:45 pm</span>
-                    </div>
-                    <div style="text-align: center;">
-                        <span style="color: #000000;">
-                            <span style="color: #0d3c61;">
-                                <strong style="text-align: center;">Dirección:</strong>
-                            </span>&nbsp;Calle 16 # 12 - 120 Edificio
-                            Alfonso López Michelsen Valledupar - Cesar - Colombia
-                        </span>
-                    </div>
-                    <div style="text-align: center;">
-                        <span style="color: #000000;"></span>
-                        <span>
-                            <span style="color: #0d3c61;">
-                                <strong>
-                                    Líneas de Atención a la
-                                    Ciudadanía:
-                                </strong>
-                            </span>&nbsp;<span style="color: #000000;">
-                                01 8000 954 099 / (575)
-                                5748230
-                            </span>
-                        </span>
-                    </div>
-                    <div style="text-align: justify;">
-
-                        <div style="text-align: center;">
-                            <span style="color: #000000;">
-                                <strong>
-                                    <span style="color: #0d3c61;">Correo Institucional:</span>
-                                    &nbsp;
-                                </strong>
-                                <a href="mailto:contactenos@cesar.gov.co" style="color: #000000;">contactenos@cesar.gov.co</a>
-                                &nbsp;
-                            </span>
-                        </div>
-                        <div style="text-align: center;">
-                            <span style="color: #000000;">
-                                <span style="color: #0d3c61;">
-                                    <strong>Código Postal:</strong>&nbsp;
-                                </span>200001
-                            </span>
-                        </div>
-                        <div style="text-align: center;">
-                            <span style="color: #000000;">
-                                <span style="color: #0d3c61;">
-                                    <strong>Nit:</strong>
-                                    &nbsp;
-                                </span>892399999-1
-                            </span>
-                        </div>
-                        <div style="text-align: center;">
-                            <strong style="color: #0d3c61;">
-                                <a href="https://cesar.gov.co/d/index.php/es/2-uncategorised/2856-artpolpriv"
-                                   style="color: #0d3c61;">
-                                    Políticas
-                                    de Privacidad y Condiciones de Uso de la Información
-                                </a>
-                            </strong>
-                        </div>
-                    </div>
-                    <div>
-                        &nbsp;&nbsp;
-                    </div>
-                    <div style="text-align: center;">
-                        <img src="~/images/banner_28.png" alt="0000 2020 imggbp 01" width="800" height="90" />
-
-                    </div>
-                    <br><br>
-                </div>
+            <div class="row m-0">
 
 
 
 
 
             </div>
+
+        </form>
+        <script>
+            $(document).ready(function () {
+                $("#boton").click(function (event) {
+                    event.preventDefault();
+                    $("#boton").prop('disabled', true)
+
+                    return false;
+                })
+            })
+        </script>
+        <br />
+        <br />
+        @*<div class="row" id="ConsultaPasaporte" style="display:none">*@
+        <div class="row" id="ConsultaPasaporte" style="display: none ">
+
+
+
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <label><strong>Nombres</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NombresPasaporte" name="NombresPasaporte" disabled />
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <label><strong>Apellidos</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ApellidosPasaporte" name="ApellidosPasaporte" disabled />
+            </div>
+
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <label><strong>Telefono Celular</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CelularPasaporte" name="CelularPasaporte" disabled />
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <label><strong>Correo electronico</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CorreoPasaporte" name="CorreoPasaporte" disabled />
+            </div>
+
+            <br />
+
+            <div class="col-xs-3 col-sm-3 col-md-3" style="right:inherit">
+
+                @*<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="ActualizarCitasPasaporte(' + item.IdCitasPasaporte + ')"> Tramitar</i>*@
+
+                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="ActualizarCitasPasaporte(' + item.IdCitasPasaporte + ')">Reprogramar Cita</button>
+                @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
+
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3" style="right:inherit">
+
+                <button type="button" class="btn btn-block btn-outline-danger btn-rounded btn-outline mt-4" onclick="ActualizarEstadoTramitados(' + item.IdCitasPasaporte + ')">Cancelar</button>
+                @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
+
+            </div>
+
+
+
         </div>
+
+
     </div>
 
 
-</footer>
+    <footer id="footer">
 
-@*<script>
-        if (respuesta == null){
-                    Swal.fire({
-              title: '<strong>HTML <u>example</u></strong>',
-              icon: 'info',
-              html:
-                'You can use <b>bold text</b>, ' +
-                '<a href="//sweetalert2.github.io">links</a> ' +
-                'and other HTML tags',
-              showCloseButton: true,
-              showCancelButton: true,
-              focusConfirm: false,
-              confirmButtonText:
-                '<i class="fa fa-thumbs-up"></i> Great!',
-              confirmButtonAriaLabel: 'Thumbs up, great!',
-              cancelButtonText:
-                '<i class="fa fa-thumbs-down"></i>',
-              cancelButtonAriaLabel: 'Thumbs down'
-            })
-
-
-    </script>*@
+        <div class="">
+            <div class="container">
+                <div class="">
+                    <div id="copyright">
 
 
 
+                        <!-- BEGIN: Custom advanced (www.pluginaria.com) -->
+                        <div style="text-align: center;">
+                            <hr style="color: #1051eae2;">
+                            <span style="color: #0d3c61;">
+                                <strong>Horario de Atención:</strong>
+                            </span>&nbsp;
+                            <span style="color: #000000;">Lunes a Viernes de 07:45 am - 12:45 pm y 02:45 pm - 05:45 pm</span>
+                        </div>
+                        <div style="text-align: center;">
+                            <span style="color: #000000;">
+                                <span style="color: #0d3c61;">
+                                    <strong style="text-align: center;">Dirección:</strong>
+                                </span>&nbsp;Calle 16 # 12 - 120 Edificio
+                                Alfonso López Michelsen Valledupar - Cesar - Colombia
+                            </span>
+                        </div>
+                        <div style="text-align: center;">
+                            <span style="color: #000000;"></span>
+                            <span>
+                                <span style="color: #0d3c61;">
+                                    <strong>
+                                        Líneas de Atención a la
+                                        Ciudadanía:
+                                    </strong>
+                                </span>&nbsp;<span style="color: #000000;">
+                                    01 8000 954 099 / (575)
+                                    5748230
+                                </span>
+                            </span>
+                        </div>
+                        <div style="text-align: justify;">
+
+                            <div style="text-align: center;">
+                                <span style="color: #000000;">
+                                    <strong>
+                                        <span style="color: #0d3c61;">Correo Institucional:</span>
+                                        &nbsp;
+                                    </strong>
+                                    <a href="mailto:contactenos@cesar.gov.co" style="color: #000000;">contactenos@cesar.gov.co</a>
+                                    &nbsp;
+                                </span>
+                            </div>
+                            <div style="text-align: center;">
+                                <span style="color: #000000;">
+                                    <span style="color: #0d3c61;">
+                                        <strong>Código Postal:</strong>&nbsp;
+                                    </span>200001
+                                </span>
+                            </div>
+                            <div style="text-align: center;">
+                                <span style="color: #000000;">
+                                    <span style="color: #0d3c61;">
+                                        <strong>Nit:</strong>
+                                        &nbsp;
+                                    </span>892399999-1
+                                </span>
+                            </div>
+                            <div style="text-align: center;">
+                                <strong style="color: #0d3c61;">
+                                    <a href="https://cesar.gov.co/d/index.php/es/2-uncategorised/2856-artpolpriv"
+                                       style="color: #0d3c61;">
+                                        Políticas
+                                        de Privacidad y Condiciones de Uso de la Información
+                                    </a>
+                                </strong>
+                            </div>
+                        </div>
+                        <div>
+                            &nbsp;&nbsp;
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="~/images/banner_28.png" alt="0000 2020 imggbp 01" width="800" height="90" />
+
+                        </div>
+                        <br><br>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </footer>

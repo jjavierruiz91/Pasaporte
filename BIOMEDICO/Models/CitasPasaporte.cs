@@ -16,32 +16,27 @@ namespace BIOMEDICO.Models
     public partial class CitasPasaporte
     {
         public int IdCitasPasaporte { get; set; }
-       
         public string EstadoPasaporte { get; set; }
-       
         public string TipoSolicitudPasaporte { get; set; }
-        
-        
         public string TipoDocumentoPasaporte { get; set; }
-       
-        
-        public Nullable<long> NumDocumentoPasaporte { get; set; }
-        
-        public Nullable<System.DateTime> FechaExpedicionDocumento { get; set; }
 
-        //[Required(ErrorMessage = "El campo Nombre no puede estar vacio")]
-        //[MinLength(length: 1)]
-        //[MaxLength(length: 50)]
-        public string Nombre { get; set; }
+        [Required(ErrorMessage = "Debe introducir el numero de documento")]
+        public Nullable<long> NumDocumentoPasaporte { get; set; }
+        //[Required(ErrorMessage = "Debe introducir la fecha")]
+        public Nullable<System.DateTime> FechaExpedicionDocumento { get; set; }
         public string NombresPasaporte { get; set; }
         public string ApellidosPasaporte { get; set; }
         public string CelularPasaporte { get; set; }
+        //[Required(ErrorMessage = "Debe introducir el correo electronico")]
+        //[Compare("CorreoPasaporteRepeated")]
         public string CorreoPasaporte { get; set; }
+        public string CorreoPasaporteRepeated { get; set; }
         public string TipoPasaporte { get; set; }
         public string MenoresEdadPasaporte { get; set; }
         public string ParentescoMenor { get; set; }
         public string CuantosMenores { get; set; }
         public string NombreSucursales { get; set; }
+        //[Required(ErrorMessage = "Debe introducir la fecha")]
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<int> Hora { get; set; }
         public Nullable<int> Minutos { get; set; }
