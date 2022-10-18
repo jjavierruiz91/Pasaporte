@@ -8,27 +8,17 @@ var idCitasPasaporteData = 0;
 var VerDetalles = 'NO';
 
 $(document).ready(function () {//FUNCION INICIAL;
-    idCitasPasaporteData = getQueryVariable('IdCitasPasportReg');
-    let DocumentoPasaporte = getQueryVariable('Ced');
+    let DocumentoPasaporte = getQueryVariable('Document');
     VerDetalles = getQueryVariable('Viewdetail');
     IdCitasPasaporte = getQueryVariable('IdReg');
     Get_DataGet(CargarSelectSucursales, '/Sucursal/GetListSucursalesPasaporte');
-    if (idCitasPasaporteData > 0) {
-        IsUpdate = true;
-    }
+  
     if (DocumentoPasaporte > 0) {
-        $('#NumDocumentoPasaporte').val(DocumentoPasaporte);
-        CargarInfoinicial();
+        IsUpdate = true;
+        CargarInfoCita(DocumentoPasaporte);
     }
-    if (VerDetalles == "SI") {
-        $('#SaveCitasPasaporte').html('Atras')
-        Get_Data(LlenarCampos, '/CitasPasaporte/GetCitasPasaporteById?IdCitasPaspor=' + idCitasPasaporteData);
-    }
+   
 
-    if (IsUpdate && VerDetalles == 0) {
-        $('#SaveCitasPasaporte').html('ActualizarCitasPasaporte')
-        Get_Data(LlenarCampos, '/CitasPasaporte/GetCitasPasaporteById?IdCitasPaspor=' + idCitasPasaporteData);
-    }
 
 });
 
@@ -49,6 +39,18 @@ function MostrarAlerta(data) {
     }
 
 }
+
+function CargarInfoCita(Documento) {
+    Get_Data(LlenarDatosformulariocita, '/CitasPasaporte/BuscarCitas?Ducumento=' + Documento)
+}
+
+function LlenarDatosformulariocita(data) {
+
+    $('#ApellidosPasaporte').val(data.objeto.ApellidosPasaporte);
+    $('#ApellidosPasaporte')[0].disabled = true;
+    idCitasPasaporteData = data.objeto.IdCitasPasaporte;
+}
+
 
 
 function CargarInfoinicial() {
@@ -82,6 +84,7 @@ function LlenarcamposInicial(data) {
     $('#ApellidosPasaporte').val(data.objeto.ApellidosPasaporte);
     $('#CelularPasaporte').val(data.objeto.CelularPasaporte);
     $('#CorreoPasaporte').val(data.objeto.CorreoPasaporte);
+    $('#IdCitas').val(data.objeto.IdCitasPasaporte);
     Alternar(ConsultaPasaporte);
 }
 
@@ -563,6 +566,21 @@ function ActualizarVista(data) {
     if (!data.Error) {
         window.location.href = "../CitasPasaporte/ListaCitasPasaporte"
     }
+}
+
+function RenderUpdateCita() {
+    
+    window.location.href = "../CitasPasaporte/agregar?Document=" + $('#NumDocumentoPasaporte').val();
+    
+}
+
+function CancelarCita() {
+    Get_Data(reloadPage, "/CitasPasaporte/ActualizarEstadoTramitado?IdCitaPasaporte=" + $('#IdCitas').val())
+    
+}
+
+function reloadPage() {
+    window.location.reload();
 }
 
 

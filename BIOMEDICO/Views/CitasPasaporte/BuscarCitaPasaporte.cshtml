@@ -69,7 +69,7 @@
 <div class="row m-0">
 
 
-     <div class="">
+    <div class="">
 
         <form id="FormCitasPasaporte" name="FormCitasPasaporte">
 
@@ -101,6 +101,7 @@
 
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <label><strong>Nombres</strong></label>
+                <input type="hidden" id="IdCitas"/>
                 <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NombresPasaporte" name="NombresPasaporte" disabled />
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3">
@@ -123,13 +124,13 @@
 
                 @*<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="ActualizarCitasPasaporte(' + item.IdCitasPasaporte + ')"> Tramitar</i>*@
 
-                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="ActualizarCitasPasaporte(' + item.IdCitasPasaporte + ')">Reprogramar Cita</button>
+                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="RenderUpdateCita()">Reprogramar Cita</button>
                 @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
 
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3" style="right:inherit">
 
-                <button type="button" class="btn btn-block btn-outline-danger btn-rounded btn-outline mt-4" onclick="ActualizarEstadoTramitados(' + item.IdCitasPasaporte + ')">Cancelar</button>
+                <button type="button" class="btn btn-block btn-outline-danger btn-rounded btn-outline mt-4" onclick="CancelarCita()">Cancelar</button>
                 @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
 
             </div>
@@ -141,7 +142,7 @@
 
     </div>
 
-
+</div>
     <footer id="footer">
 
         <div class="">

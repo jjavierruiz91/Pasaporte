@@ -1,4 +1,5 @@
-﻿using BIOMEDICO.Models;
+﻿using BIOMEDICO.Clases;
+using BIOMEDICO.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -127,7 +128,7 @@ namespace BIOMEDICO.Controllers
             //JsonConvert.DeserializeObject<List<ObjDeportista>>(a);
             //if (!ModelState.IsValid)
             //    Retorno.mensaje="Datos invalidos";
-
+            Utilidades.SendEmail(Retorno.mensaje, "jjavierruiz91@gmail.com");
             try
             {
 
@@ -150,6 +151,7 @@ namespace BIOMEDICO.Controllers
                         Retorno.Error = false;
                         Retorno.mensaje = "Actualizado";
 
+                       
 
                     }
                     catch (Exception ex)
@@ -440,7 +442,7 @@ namespace BIOMEDICO.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public JsonResult ActualizarCitasPasaporte(ObjCitasPasaporte a)
+        public JsonResult EditarCitasPasaporte(ObjCitasPasaporte a)
         {
             Respuesta Retorno = new Respuesta();
             //JsonConvert.DeserializeObject<List<ObjDeportista>>(a);

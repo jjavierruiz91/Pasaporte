@@ -109,7 +109,7 @@ function ActualizarEstadoTramitados(idCitasPasport) {
 
 
 
-function ActualizarCitasPasaporte(idCitasPasport) {
+function ActualizarCitasPasapor(idCitasPasport) {
     swal({
         title: "Atención",
         text: "¿Estas seguro de actualizar la cita ?",
@@ -124,7 +124,7 @@ function ActualizarCitasPasaporte(idCitasPasport) {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(RecargarTabla, '/CitasPasaporte/ActualizarCitasPasaporte?IdCitaPasaporte=' + idCitasPasport);
+                Get_Data(RecargarTabla, '/CitasPasaporte/EditarCitasPasaporte?IdCitaPasaporte=' + idCitasPasport);
             }
             else {
                 swal.close()
