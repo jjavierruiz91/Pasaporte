@@ -45,12 +45,33 @@ function CargarInfoCita(Documento) {
 }
 
 function LlenarDatosformulariocita(data) {
-
+    $('#TipoSolicitudPasaporte').val(data.objeto.TipoSolicitudPasaporte);
+    $('#TipoSolicitudPasaporte')[0].disabled = true;
+    $('#TipoDocumentoPasaporte').val(data.objeto.TipoDocumentoPasaporte);
+    $('#TipoDocumentoPasaporte')[0].disabled = true;
+    $('#NumDocumentoPasaporte').val(data.objeto.NumDocumentoPasaporte);
+    $('#NumDocumentoPasaporte')[0].disabled = true;
+    $('#TipoPasaporte').val(data.objeto.TipoPasaporte);
+    $('#TipoPasaporte')[0].disabled = true;
+    $('#FechaExpedicionDocumento').val(JSONDateconverter(data.objeto.FechaExpedicionDocumento));
+    $('#FechaExpedicionDocumento')[0].disabled = true;
+    
+    $('#NombresPasaporte').val(data.objeto.NombresPasaporte);
+    $('#NombresPasaporte')[0].disabled = true;
     $('#ApellidosPasaporte').val(data.objeto.ApellidosPasaporte);
     $('#ApellidosPasaporte')[0].disabled = true;
+    $('#CelularPasaporte').val(data.objeto.CelularPasaporte);
+    $('#CelularPasaporte')[0].disabled = true;
+    $('#CorreoPasaporte').val(data.objeto.CorreoPasaporte);
+    $('#CorreoPasaporte')[0].disabled = true;
+    $('#CorreoPasaporteRepeated').val(data.objeto.CorreoPasaporteRepeated);
+    $('#CorreoPasaporteRepeated')[0].disabled = true;
+    $('#ParentescoMenor').val(data.objeto.ParentescoMenor);
+    $('#ParentescoMenor')[0].disabled = true;
+    $('#CuantosMenores').val(data.objeto.CuantosMenores);
+    $('#CuantosMenores')[0].disabled = true;
     idCitasPasaporteData = data.objeto.IdCitasPasaporte;
 }
-
 
 
 function CargarInfoinicial() {
@@ -547,7 +568,28 @@ function Createobj() {
         let id = 10;
 
         if (IsUpdate) {
-            Save_Data(ActualizarVista, '/CitasPasaporte/Actualizar', ObjCitasPasaporte, 'Actualizacion');
+            swal({
+                title: "Atención",
+                text: "¿Estas seguro de actualizar la cita ?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Si",
+                cancelButtonText: "No",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        swal.close()
+                        Save_Data(ActualizarVista, '/CitasPasaporte/EditarCitasPasaporte', ObjCitasPasaporte, 'Actualizacion');
+                    }
+                    else {
+                        swal.close()
+                    }
+                });
+           
+           
         }
         else {
             Save_Data(ActualizarVista, '/CitasPasaporte/Agregar', ObjCitasPasaporte, 'Guardado');
@@ -562,10 +604,8 @@ function Createobj() {
     }
 
 }
-function ActualizarVista(data) {
-    if (!data.Error) {
-        window.location.href = "../CitasPasaporte/ListaCitasPasaporte"
-    }
+function ActualizarVista() {
+    window.location.reload();
 }
 
 function RenderUpdateCita() {
@@ -575,9 +615,30 @@ function RenderUpdateCita() {
 }
 
 function CancelarCita() {
-    Get_Data(reloadPage, "/CitasPasaporte/ActualizarEstadoTramitado?IdCitaPasaporte=" + $('#IdCitas').val())
+    swal({
+        title: "Atención",
+        text: "¿Estas seguro de cancelar la cita ?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "Si",
+        cancelButtonText: "No",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },
+        function (isConfirm) {
+            if (isConfirm) {
+                swal.close()
+                Get_Data(reloadPage, "/CitasPasaporte/ActualizarEstadoCancelar?IdCitaPasaporte=" + $('#IdCitas').val())
+            }
+            else {
+                swal.close()
+            }
+        });
+    
     
 }
+
 
 function reloadPage() {
     window.location.reload();
