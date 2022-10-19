@@ -2030,9 +2030,10 @@ select[size] {
   height: 2px; }
 
 .navbar-light {
-  color: rgba(51, 51, 51, 0.85);
-  background-color: #fff;
-  border-bottom-color: rgba(0, 0, 0, 0.125); }
+    color: rgba(51, 51, 51, 0.85);
+    background-color: #f2f2f2;
+    border-bottom-color: rgba(242, 242, 242, 1);
+}
   .page-header-content + .navbar-light,
   .content + .navbar-light,
   .page-content + .navbar-light,
