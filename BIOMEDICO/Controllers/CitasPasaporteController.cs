@@ -494,6 +494,14 @@ namespace BIOMEDICO.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult EditarCitasPasaporte(bool ViewFree = false)
+        {
+            ViewBag.ViewFree = ViewFree;
+            return View();
+
+        }
+
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public JsonResult EditarCitasPasaporte(ObjCitasPasaporte a)
