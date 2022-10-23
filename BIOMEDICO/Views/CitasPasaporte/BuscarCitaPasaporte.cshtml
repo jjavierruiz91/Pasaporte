@@ -123,8 +123,17 @@
             <div class="col-xs-3 col-sm-3 col-md-3" style="right:inherit">
 
                 @*<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="ActualizarCitasPasaporte(' + item.IdCitasPasaporte + ')"> Tramitar</i>*@
+                @{
+                    if (@ViewBag.ViewFree)
+                    {
+                        <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="RenderUpdateCita(true)">Reprogramar Cita</button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="RenderUpdateCita(false)">Reprogramar Cita</button>
+                    }
+                }
 
-                <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="RenderUpdateCita()">Reprogramar Cita</button>
                 @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
 
             </div>

@@ -128,7 +128,7 @@ namespace BIOMEDICO.Controllers
             //JsonConvert.DeserializeObject<List<ObjDeportista>>(a);
             //if (!ModelState.IsValid)
             //    Retorno.mensaje="Datos invalidos";
-            Utilidades.SendEmail(Retorno.mensaje, "jjavierruiz91@gmail.com");
+           
             try
             {
 
@@ -437,7 +437,8 @@ namespace BIOMEDICO.Controllers
             if (!ModelState.IsValid)
                Retorno.mensaje="Datos invalidos";
 
-            
+          
+
             try
             {
 
@@ -472,6 +473,7 @@ namespace BIOMEDICO.Controllers
                         db.SaveChanges();
                         Retorno.Error = false;
                         Retorno.mensaje = "Cita creada";
+                        Utilidades.SendEmail("Hola,"+ Retorno.mensaje, a.CitasPasaport.CorreoPasaporte);
                     }
                     else
                     {

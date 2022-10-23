@@ -6,7 +6,7 @@
 var IsUpdate = false;
 var idCitasPasaporteData = 0;
 var VerDetalles = 'NO';
-
+var formCitas = [];
 $(document).ready(function () {//FUNCION INICIAL;
     let DocumentoPasaporte = getQueryVariable('Document');
     VerDetalles = getQueryVariable('Viewdetail');
@@ -18,9 +18,19 @@ $(document).ready(function () {//FUNCION INICIAL;
         CargarInfoCita(DocumentoPasaporte);
     }
    
-
+    initValidador();
 
 });
+
+function initValidador() {
+    formCitas = Validador("FormCitasMedicasDeportiva2", {
+        NumDocumentoPasaporte: {
+            required: true,
+            StringEmpty: true
+        }
+    }
+    );
+}
 
 function ValidarCedula() {
     let Cedula = $('#NumDocumentoPasaporte').val();
@@ -511,23 +521,27 @@ function Atras() {
 }
 
 function Createobj() {
-    document.getElementById("SaveCitasPasaporte").disabled = true;
 
-    // if (validadorFormMedicinaDeportiva.form()) {
-    if (VerDetalles == "SI") {
-        Atras();
-    }
-    else {
-        
-        var IdCitasPasaporte = 0;
-        if (IsUpdate) {
-            IdCitasPasaporte = idCitasPasaporteData;
+    if (formCitas.form()) {
+
+
+        document.getElementById("SaveCitasPasaporte").disabled = true;
+
+        // if (validadorFormMedicinaDeportiva.form()) {
+        if (VerDetalles == "SI") {
+            Atras();
         }
+        else {
+
+            var IdCitasPasaporte = 0;
+            if (IsUpdate) {
+                IdCitasPasaporte = idCitasPasaporteData;
+            }
             ObjCitasPasaporte = {
                 CitasPasaport: {
 
-       
-             IdCitasPasaporte: IdCitasPasaporte,
+
+                    IdCitasPasaporte: IdCitasPasaporte,
                     OficinaPasaporte: $('#OficinaPasaporte').val(),
                     TipoSolicitudPasaporte: $('#TipoSolicitudPasaporte').val(),
                     TipoDocumentoPasaporte: $('#TipoDocumentoPasaporte').val(),
@@ -537,7 +551,7 @@ function Createobj() {
                     ApellidosPasaporte: $('#ApellidosPasaporte').val(),
                     CelularPasaporte: $('#CelularPasaporte').val(),
                     CorreoPasaporte: $('#CorreoPasaporte').val(),
-                    CorreoPasaporteRepeated: $('#CorreoPasaporteRepeated').val(),                    
+                    CorreoPasaporteRepeated: $('#CorreoPasaporteRepeated').val(),
                     TipoPasaporte: $('#TipoPasaporte').val(),
                     MenoresEdadPasaporte: $('#MenoresEdadPasaporte').val(),
                     ParentescoMenor: $('#ParentescoMenor').val(),
@@ -554,63 +568,64 @@ function Createobj() {
                     UsuarioEstado: $('#UsuarioEstado').val(),
                     DireccionIp: $('#DireccionIp').val(),
 
-                    
 
 
-         
-     
-       
-       
+
+
+
+
+
+
+
+                }
+            }
+            let id = 10;
+
+            if (IsUpdate) {
+                swal({
+                    title: "Atención",
+                    text: "¿Estas seguro de actualizar la cita ?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Si",
+                    cancelButtonText: "No",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            swal.close()
+                            Save_Data(ActualizarVista, '/CitasPasaporte/EditarCitasPasaporte', ObjCitasPasaporte, 'Actualizacion');
+                        }
+                        else {
+                            swal.close()
+                        }
+                    });
 
 
             }
-        }
-        let id = 10;
+            else {
+                Save_Data(ActualizarVista, '/CitasPasaporte/Agregar', ObjCitasPasaporte, 'Guardado');
 
-        if (IsUpdate) {
-            swal({
-                title: "Atención",
-                text: "¿Estas seguro de actualizar la cita ?",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-danger",
-                confirmButtonText: "Si",
-                cancelButtonText: "No",
-                closeOnConfirm: false,
-                closeOnCancel: false
-            },
-                function (isConfirm) {
-                    if (isConfirm) {
-                        swal.close()
-                        Save_Data(ActualizarVista, '/CitasPasaporte/EditarCitasPasaporte', ObjCitasPasaporte, 'Actualizacion');
-                    }
-                    else {
-                        swal.close()
-                    }
-                });
-           
-           
-        }
-        else {
-            Save_Data(ActualizarVista, '/CitasPasaporte/Agregar', ObjCitasPasaporte, 'Guardado');
+                // LimpiarFormulario()
+            }
 
-            // LimpiarFormulario()
-        }
+            //} else {
+            //    SwalErrorMsj("No ingreso todos los campos por favor verifique");
+            //}
 
-        //} else {
-        //    SwalErrorMsj("No ingreso todos los campos por favor verifique");
-        //}
+        }
 
     }
-
 }
 function ActualizarVista() {
     window.location.reload();
 }
 
-function RenderUpdateCita() {
+function RenderUpdateCita(viewfree) {
     
-    window.location.href = "../CitasPasaporte/agregar?Document=" + $('#NumDocumentoPasaporte').val();
+    window.location.href = "../CitasPasaporte/agregar?ViewFree=" + viewfree +"&Document=" + $('#NumDocumentoPasaporte').val();
     
 }
 

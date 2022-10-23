@@ -12,11 +12,11 @@ namespace BIOMEDICO.Clases
 {
     public class Utilidades
     {
-        static string smtpAddress = "smtp.gmail.com";
+        static string smtpAddress = "smtp.office365.com";
         static int portNumber = 587;
         static bool enableSSL = true;
-        static string emailFromAddress = "wguerrero@kiteknology.com"; //Sender Email Address  
-        static string password = "23GCHJW5ePFsTzPJw"; //Sender Password
+        static string emailFromAddress = "mooncodetest@outlook.com"; //Sender Email Address  
+        static string password = "#Netcoresmtp"; //Sender Password
 
 
         public static  void SendEmail(string Texto, string emailTo)
@@ -24,14 +24,14 @@ namespace BIOMEDICO.Clases
             string emailToAddress = emailTo;
 
             string subject = "Atención";
-            string body = @"<html><body><div>
+            string body = @"<html><body><div style='color:red'>
                                 ¡Producto agotado! </br>"
                                 + Texto +
                             @"</div></body></html>";
 
             using (MailMessage mail = new MailMessage())
             {
-                mail.From = new MailAddress("accountservice@Widsoft.com", "Minos");
+                mail.From = new MailAddress(emailFromAddress, "Moon Support");
                 mail.To.Add(emailToAddress);
                 mail.Subject = subject;
                 mail.Body = body;
