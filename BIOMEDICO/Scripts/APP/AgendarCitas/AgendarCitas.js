@@ -88,7 +88,9 @@ function Createobj() {
               
         
 
-            }
+            },
+            FechaInit: $('#FechaCitas').val().split('a')[0],
+            FechaFin: $('#FechaCitas').val().split('a')[1],
         }
         let id = 10;
 

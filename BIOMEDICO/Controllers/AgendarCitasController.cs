@@ -2,6 +2,7 @@
 using BIOMEDICO.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -24,6 +25,8 @@ namespace BIOMEDICO.Controllers
         public struct ObjAgendaDeportiva
         {
             public AgendarCitas  CitasDeport { get; set; }
+            public DateTime FechaInit { get; set; }
+            public DateTime FechaFin { get; set; }
 
         }
 
@@ -115,12 +118,24 @@ namespace BIOMEDICO.Controllers
                 using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
                 {
+                    double DiffDays = (a.FechaFin - a.FechaInit).TotalDays;
 
+                    for (int i = 0; i < DiffDays + 1; i++)
+                    {
+                        DateTime Fechacita = a.FechaInit.AddDays(i);
 
+                        if (Fechacita.DayOfWeek == DayOfWeek.Saturday ||   Fechacita.DayOfWeek ==DayOfWeek.Sunday)
+                        {
+                            continue;
+                        }
+
+                        a.CitasDeport.FechaCitas = Fechacita;
+                        a.CitasDeport.CedSucursalCitas = "99998741";
+                        db.AgendarCitas.Add(a.CitasDeport);
+                        db.SaveChanges();
+                    }
                     
-                    a.CitasDeport.CedSucursalCitas = "99998741";
-                    db.AgendarCitas.Add(a.CitasDeport);
-                    db.SaveChanges();
+                   
 
 
                 }
