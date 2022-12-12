@@ -445,7 +445,7 @@ namespace BIOMEDICO.Controllers
                 using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
                 {
-                    var EstadoCitaDeportivaExiste = db.CitasPasaporte.FirstOrDefault(w => w.EstadoPasaporte == "ASIGNADA" && w.Hora  == a.CitasPasaport.Hora && w.Minutos==a.CitasPasaport.Minutos );
+                    var EstadoCitaDeportivaExiste = db.CitasPasaporte.FirstOrDefault(w => w.EstadoPasaporte == "ASIGNADA" && w.Fecha == a.CitasPasaport.Fecha  && w.Hora  == a.CitasPasaport.Hora && w.Minutos==a.CitasPasaport.Minutos );
                     if (EstadoCitaDeportivaExiste == null)
                     {
                         IPHostEntry host;
@@ -473,7 +473,7 @@ namespace BIOMEDICO.Controllers
                         db.SaveChanges();
                         Retorno.Error = false;
                         Retorno.mensaje = "Cita creada";
-                        Utilidades.SendEmail("Hola,"+ Retorno.mensaje, a.CitasPasaport.CorreoPasaporte);
+                        Utilidades.SendEmail("Oficina de Pasaporte de la Gobernación del Cesar,"+ Retorno.mensaje, a.CitasPasaport.CorreoPasaporte);
                     }
                     else
                     {
@@ -526,8 +526,10 @@ namespace BIOMEDICO.Controllers
                         {
 
                             CitasDeportivaExiste.IdCitasPasaporte = a.CitasPasaport.IdCitasPasaporte;
+                            CitasDeportivaExiste.Fecha = a.CitasPasaport.Fecha;
+                            CitasDeportivaExiste.Hora = a.CitasPasaport.Hora;
+                            CitasDeportivaExiste.Minutos = a.CitasPasaport.Minutos;
 
-                            CitasDeportivaExiste.EstadoPasaporte = "FINALIZADO";
 
                         }
 
