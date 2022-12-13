@@ -34,6 +34,7 @@
           <Property Name="HoraIniciocitas" Type="datetime" />
           <Property Name="HoraFinCitas" Type="datetime" />
           <Property Name="FechaCitas" Type="datetime" />
+          <Property Name="NumCitasAgenda" Type="int" />
         </EntityType>
         <EntityType Name="ASignarPermisos">
           <Key>
@@ -331,9 +332,9 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
           <EntitySet Name="Sucursal" EntityType="BIOMEDICOModel.Sucursal" />
-          <EntitySet Name="AgendarCitas" EntityType="BIOMEDICOModel.AgendarCitas" />
           <EntitySet Name="AgendaExcepciones" EntityType="BIOMEDICOModel.AgendaExcepciones" />
           <EntitySet Name="CitasPasaporte" EntityType="BIOMEDICOModel.CitasPasaporte" />
+          <EntitySet Name="AgendarCitas" EntityType="BIOMEDICOModel.AgendarCitas" />
           </EntityContainer>
         <EntityType Name="Sucursal">
           <Key>
@@ -346,16 +347,6 @@
           <Property Name="Direcccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Telefono" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
           <Property Name="Correo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="AgendarCitas">
-          <Key>
-            <PropertyRef Name="IdAgendarCitas" />
-          </Key>
-          <Property Name="IdAgendarCitas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CedSucursalCitas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="HoraIniciocitas" Type="DateTime" Precision="3" />
-          <Property Name="HoraFinCitas" Type="DateTime" Precision="3" />
-          <Property Name="FechaCitas" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="AgendaExcepciones">
           <Key>
@@ -406,6 +397,17 @@
           <Property Name="UsuarioRegistra" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioEstado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DireccionIp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AgendarCitas">
+          <Key>
+            <PropertyRef Name="IdAgendarCitas" />
+          </Key>
+          <Property Name="IdAgendarCitas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CedSucursalCitas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HoraIniciocitas" Type="DateTime" Precision="3" />
+          <Property Name="HoraFinCitas" Type="DateTime" Precision="3" />
+          <Property Name="FechaCitas" Type="DateTime" Precision="3" />
+          <Property Name="NumCitasAgenda" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -479,17 +481,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AgendarCitas">
-            <EntityTypeMapping TypeName="BIOMEDICOModel.AgendarCitas">
-              <MappingFragment StoreEntitySet="AgendarCitas">
-                <ScalarProperty Name="FechaCitas" ColumnName="FechaCitas" />
-                <ScalarProperty Name="HoraFinCitas" ColumnName="HoraFinCitas" />
-                <ScalarProperty Name="HoraIniciocitas" ColumnName="HoraIniciocitas" />
-                <ScalarProperty Name="CedSucursalCitas" ColumnName="CedSucursalCitas" />
-                <ScalarProperty Name="IdAgendarCitas" ColumnName="IdAgendarCitas" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AgendaExcepciones">
             <EntityTypeMapping TypeName="BIOMEDICOModel.AgendaExcepciones">
               <MappingFragment StoreEntitySet="AgendaExcepciones">
@@ -539,6 +530,18 @@
                 <ScalarProperty Name="TipoSolicitudPasaporte" ColumnName="TipoSolicitudPasaporte" />
                 <ScalarProperty Name="EstadoPasaporte" ColumnName="EstadoPasaporte" />
                 <ScalarProperty Name="IdCitasPasaporte" ColumnName="IdCitasPasaporte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgendarCitas">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.AgendarCitas">
+              <MappingFragment StoreEntitySet="AgendarCitas">
+                <ScalarProperty Name="NumCitasAgenda" ColumnName="NumCitasAgenda" />
+                <ScalarProperty Name="FechaCitas" ColumnName="FechaCitas" />
+                <ScalarProperty Name="HoraFinCitas" ColumnName="HoraFinCitas" />
+                <ScalarProperty Name="HoraIniciocitas" ColumnName="HoraIniciocitas" />
+                <ScalarProperty Name="CedSucursalCitas" ColumnName="CedSucursalCitas" />
+                <ScalarProperty Name="IdAgendarCitas" ColumnName="IdAgendarCitas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

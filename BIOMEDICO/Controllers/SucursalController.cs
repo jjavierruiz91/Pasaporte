@@ -69,6 +69,7 @@ namespace BIOMEDICO.Controllers
 
                 {
                     var SucursadlPasport = db.Sucursal.ToList();
+                    var CitasDeport = db.AgendarCitas.ToList();
                     foreach (var item in SucursadlPasport)
                     {
                         var agendas = db.AgendarCitas.Where(w => w.CedSucursalCitas == item.CodSucursal.ToString()).ToList();
@@ -85,10 +86,13 @@ namespace BIOMEDICO.Controllers
                     {
                         int HOraInt = Convert.ToDateTime(item.HoraIniciocitas).Hour;
                         int Horafin = Convert.ToDateTime(item.HoraFinCitas).Hour;
+                        int NumCitasAgendas = (int)item.NumCitasAgenda;
 
                         int SumeMinutos = (Horafin - HOraInt) * 60;
 
-                        int NUmCitas = SumeMinutos / 20;
+                        int SumeMinutos2 = SumeMinutos / NumCitasAgendas;
+                        //int NUmCitas = SumeMinutos / 20;
+                        int NUmCitas = NumCitasAgendas;
                         HorariosSucursales Horario = new HorariosSucursales();
                         int Contandorminutos = 0;
                         for (int i = 0; i < NUmCitas; i++)
@@ -105,7 +109,7 @@ namespace BIOMEDICO.Controllers
                             }
                             else
                             {
-                                Contandorminutos += 20;
+                                Contandorminutos += SumeMinutos2 ;
                                 DateTime NewhOra = Convert.ToDateTime(item.HoraIniciocitas).AddMinutes(Contandorminutos);
                                 Horario = new HorariosSucursales
                                 {

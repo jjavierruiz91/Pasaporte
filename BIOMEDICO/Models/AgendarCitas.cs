@@ -19,5 +19,6 @@ namespace BIOMEDICO.Models
         public Nullable<System.DateTime> HoraIniciocitas { get; set; }
         public Nullable<System.DateTime> HoraFinCitas { get; set; }
         public Nullable<System.DateTime> FechaCitas { get; set; }
+        public Nullable<int> NumCitasAgenda { get; set; }
     }
 }

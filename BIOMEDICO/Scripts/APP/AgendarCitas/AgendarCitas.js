@@ -39,6 +39,7 @@ function LlenarCampos(data) {
     $('#HoraIniciocitas').val(JSONDateconverter(data.objeto.HoraIniciocitas));
     $('#HoraFinCitas').val(JSONDateconverter(data.objeto.HoraFinCitas));
     $('#FechaCitas').val(JSONDateconverter(data.objeto.FechaCitas));
+    $('#NumCitasAgenda').val(data.objeto.NumCitasAgenda);
     $('#ObservacionesCitasMedicas').val(data.objeto.ObservacionesCitasMedicas);
   
 
@@ -84,6 +85,7 @@ function Createobj() {
                 HoraIniciocitas: $('#HoraIniciocitas').val(),
                 HoraFinCitas: $('#HoraFinCitas').val(),
                 FechaCitas: $('#FechaCitas').val(),
+                NumCitasAgenda: $('#NumCitasAgenda').val(),
                 ObservacionesCitasMedicas: $('#ObservacionesCitasMedicas').val(),
               
         

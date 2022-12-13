@@ -173,6 +173,7 @@ namespace BIOMEDICO.Controllers
                             AgendaCitasDeportivaExiste.HoraIniciocitas = a.CitasDeport.HoraIniciocitas;
                             AgendaCitasDeportivaExiste.HoraFinCitas = a.CitasDeport.HoraFinCitas;
                             AgendaCitasDeportivaExiste.FechaCitas = a.CitasDeport.FechaCitas;
+                            AgendaCitasDeportivaExiste.NumCitasAgenda = a.CitasDeport.NumCitasAgenda;
 
 
                         }
