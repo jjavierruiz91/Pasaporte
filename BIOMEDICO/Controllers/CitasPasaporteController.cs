@@ -472,8 +472,8 @@ namespace BIOMEDICO.Controllers
                         db.CitasPasaporte.Add(a.CitasPasaport);
                         db.SaveChanges();
                         Retorno.Error = false;
-                        Retorno.mensaje = "Cita creada";
-                        Utilidades.SendEmail("Oficina de Pasaporte de la Gobernación del Cesar,"+ Retorno.mensaje, a.CitasPasaport.CorreoPasaporte);
+                        Retorno.mensaje = "cita creada con satisfacciòn ";
+                        Utilidades.SendEmail("Bienvenidos,"+ Retorno.mensaje, a.CitasPasaport.CorreoPasaporte, a.CitasPasaport.NombresPasaporte, a.CitasPasaport.ApellidosPasaporte);
                     }
                     else
                     {

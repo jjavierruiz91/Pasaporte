@@ -20,14 +20,16 @@ namespace BIOMEDICO.Clases
         static string password = "Sistemas2021"; //Sender Password #Netcoresmtp
 
 
-        public static  void SendEmail(string Texto, string emailTo)
+        public static  void SendEmail(string Texto, string emailTo , string NombresPasaporte ,  string ApellidosPasaporte)
         {
             string emailToAddress = emailTo;
 
             string subject = "OFICINA PASAPORTE GOBERNACIÓN DEL CESAR";
             string body = @"<html><body><div style='color:black'>
+                                                
+                            
                                 <strong> OFICINA PASAPORTE GOBERNACIÓN DEL CESAR </strong>
-
+                            
                                 <p> 
 
                     El  <strong> pasaporte ordinario  </strong> tiene un valor de $ 271.000 pesos colombianos ($115.000 que corresponden a Cancillería y $156.000 que corresponden al impuesto Departamental
@@ -52,8 +54,10 @@ namespace BIOMEDICO.Clases
 
                             </br>"
 
-                                + Texto +
-                               
+                              + Texto +" "+ NombresPasaporte +" "+ ApellidosPasaporte +
+
+
+
 
                             @"</div></body></html>";
 
