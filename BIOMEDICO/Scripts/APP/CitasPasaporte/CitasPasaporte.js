@@ -448,7 +448,7 @@ function joinTime(horario) {
     let FechasElect = $('#FechaCalen').val();
     let Sucursales = $('#Sucursales').val();
 
-
+    let contado = 0;
     $.each(horario, function (index, item) {
         let hora = item.Hora;
         let HorariosMInutos = DatosHorario.filter(w => JSONDateconverter(w.Fecha, true).split(' ')[0] == FechasElect && w.CodSucursal == Sucursales && w.Hora == parseInt(hora));
@@ -456,12 +456,15 @@ function joinTime(horario) {
 
         $.each(HorariosMInutos, function (indexminutos, itemMinutos) {
             let objHorario = { Hora: hora, minutos: itemMinutos.Minutos };
+            
+            if ((objHorario.Hora >= 12 && objHorario.minutos > 45) && (objHorario.Hora <= 13)) {
 
-            if ((hora >= 12 &&  itemMinutos.Minutos > 45) && hora <=13) {
+            } else if ((objHorario.Hora <= 14 && objHorario.minutos < 45) && (objHorario.Hora >= 13)) {
 
-            }else if ((hora >= 12 &&  itemMinutos.Minutos > 45) && (hora <= 14 && itemMinutos.Minutos < 45)) {
+            } else if ((objHorario.Hora >= 13) && (objHorario.Hora <= 13 && objHorario.minutos <= 59)) {
 
-            } else {
+            }
+            else {
                 Arrayhorario.push(objHorario)
             }
             
