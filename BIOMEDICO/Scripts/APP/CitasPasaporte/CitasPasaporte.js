@@ -404,6 +404,9 @@ function ConvertFormatDate(Horarios) {
 
     let HoraSet = Horarios.Hora;
     switch (Horarios.Hora) {
+        case 13:
+            HoraSet = 01;
+            break;
         case 14:
             HoraSet = 02;
             break;
@@ -421,9 +424,9 @@ function ConvertFormatDate(Horarios) {
             break;
     }
 
-    let MinutosSet = Horarios.minutos < 9 ? "0" + Horarios.minutos : Horarios.minutos;
+    let MinutosSet = Horarios.minutos < 10 ? "0" + Horarios.minutos : Horarios.minutos;
 
-    if (Horarios.Hora > 12) {
+    if (Horarios.Hora >= 12) {
         return HoraSet + ":" + MinutosSet + ' PM';
 
     } else {
@@ -454,15 +457,13 @@ function joinTime(horario) {
         $.each(HorariosMInutos, function (indexminutos, itemMinutos) {
             let objHorario = { Hora: hora, minutos: itemMinutos.Minutos };
 
-            if (hora >= 12 && hora <=13) {
+            if ((hora >= 12 &&  itemMinutos.Minutos > 45) && hora <=13) {
 
-            }else if (hora >= 12 && (hora <= 14 && itemMinutos.Minutos < 45)) {
+            }else if ((hora >= 12 &&  itemMinutos.Minutos > 45) && (hora <= 14 && itemMinutos.Minutos < 45)) {
 
             } else {
                 Arrayhorario.push(objHorario)
             }
-
-
             
 
         })
