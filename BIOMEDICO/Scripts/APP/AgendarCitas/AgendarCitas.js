@@ -3,15 +3,33 @@
 
 }
 
+var ListTestTemporal = [];//--array
+var TestCitasDepor = {
+    HoraIniciocitas: $('#HoraIniciocitas').val(),
+    HoraFinCitas: $('#HoraFinCitas').val(),
+    FechaCitas: $('#FechaCitas').val(),
+    NumCitasAgenda: $('#NumCitasAgenda').val(),
+   
+}
 
 //var validadorFormDeportista = [];
 var IsUpdate = false;
 var idAgendarData = 0;
+var tablaTestTemporal = [];
 var VerDetalles = 'NO';
 
 $(document).ready(function () {//FUNCION INICIAL;
     idAgendarData = getQueryVariable('IdCitasReg');
     VerDetalles = getQueryVariable('Viewdetail');
+    RenderTable('datatable-Test', [0, 1, 2], null, {
+        "paging": true,
+        "ordering": false,
+        "info": true,
+        "searching": true,
+    });
+
+    tablaTestTemporal = $('#datatable-Test').DataTable();
+
     if (idAgendarData > 0) {
         IsUpdate = true;
     }
@@ -31,7 +49,7 @@ $(document).ready(function () {//FUNCION INICIAL;
 
 
 function LlenarCampos(data) {
-/*    (JSONDateconverter(data.objeto.Evolucionfisioterapia[0].FechaTratamiento));*/
+
     $('#IdAgendarCitas').val(data.objeto.IdAgendarCitas);
     $('#CedEspecialistaCitas').val(data.objeto.CedEspecialistaCitas);
     $('#NombrEspecilistaCitas').val(data.objeto.NombrEspecilistaCitas);
@@ -65,7 +83,7 @@ function Atras() {
 function Createobj() {
     document.getElementById("SaveAgendaCita").disabled = true;
 
-    // if (validadorFormMedicinaDeportiva.form()) {
+    
     if (VerDetalles == "SI") {
         Atras();
     }
@@ -84,13 +102,16 @@ function Createobj() {
                 NotificacionCampoCitas: $('#NotificacionCampoCitas').val(),
                 HoraIniciocitas: $('#HoraIniciocitas').val(),
                 HoraFinCitas: $('#HoraFinCitas').val(),
-                FechaCitas: $('#FechaCitas').val(),
+                FechaInit: $('#FechaCitas').val().split('a')[0],
+                FechaFin: $('#FechaCitas').val().split('a')[1],
+                //FechaCitas: $('#FechaCitas').val(),
                 NumCitasAgenda: $('#NumCitasAgenda').val(),
                 ObservacionesCitasMedicas: $('#ObservacionesCitasMedicas').val(),
               
         
 
             },
+            ListTestCitasTemporal: ListTestTemporal,
             FechaInit: $('#FechaCitas').val().split('a')[0],
             FechaFin: $('#FechaCitas').val().split('a')[1],
         }
@@ -102,12 +123,10 @@ function Createobj() {
         else {
             Save_Data(ActualizarVista, '/AgendarCitas/Agregar', ObjAgendaDeportiva, 'Guardado');
 
-            // LimpiarFormulario()
+            
         }
-
-        //} else {
-        //    SwalErrorMsj("No ingreso todos los campos por favor verifique");
-        //}
+       
+        
 
     }
 
@@ -126,6 +145,49 @@ function LimpiarFormulario() {
     $('#HoraIniciocitas').val('')
     $('#HoraFinCitas').val('')
     $('#FechaCitas').val('')
+    $('#NumCitasAgenda').val('')
     
 }
 
+function AddTest() {
+   
+
+    ListTestTemporal.push({
+        HoraIniciocitas: $('#HoraIniciocitas').val(),       
+        HoraFinCitas: $('#HoraFinCitas').val(),
+        FechaCitas: $('#FechaCitas').val(),
+        FechaInit: $('#FechaCitas').val().split('a')[0],
+        FechaFin: $('#FechaCitas').val().split('a')[1],
+        NumCitasAgenda: $('#NumCitasAgenda').val()
+       
+    });
+    CargartablatestTemporal(ListTestTemporal);
+    Limpiarcampos();
+}
+
+function Limpiarcampos() {
+    $('#HoraIniciocitas').val('');
+    $('#HoraFinCitas').val('');
+    $('#FechaCitas').val('');
+    $('#NumCitasAgenda').val('');
+    
+}
+
+function CargartablatestTemporal(Lista) {
+    tablaTestTemporal.clear().draw();
+    $.each(Lista, function (index, item) {
+        tablaTestTemporal.row.add([
+            item.HoraIniciocitas,
+            item.HoraFinCitas,
+            item.FechaCitas,
+            item.NumCitasAgenda
+           
+
+
+
+        ]).draw(false);
+
+
+
+    });
+}

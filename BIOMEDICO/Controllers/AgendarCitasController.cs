@@ -24,10 +24,20 @@ namespace BIOMEDICO.Controllers
         }
         public struct ObjAgendaDeportiva
         {
-            public AgendarCitas  CitasDeport { get; set; }
+            public AgendarCitas CitasDeport { get; set; }
             public DateTime FechaInit { get; set; }
             public DateTime FechaFin { get; set; }
+            public List<Agendalist> ListTestCitasTemporal { get; set; }
 
+        }
+
+        public struct Agendalist
+        {
+            public Nullable<System.DateTime> HoraIniciocitas { get; set; }
+            public Nullable<System.DateTime> HoraFinCitas { get; set; }
+            public DateTime FechaInit { get; set; }
+            public DateTime FechaFin { get; set; }
+            public Nullable<int> NumCitasAgenda { get; set; }
         }
 
         public struct Respuesta
@@ -39,7 +49,7 @@ namespace BIOMEDICO.Controllers
 
         }
 
-        
+
 
         [HttpGet]
         public JsonResult GetListaAgendaDeportiva()
@@ -50,7 +60,7 @@ namespace BIOMEDICO.Controllers
 
             {
 
-                var CitasDeport = db.AgendarCitas.ToList().OrderByDescending(o => o.IdAgendarCitas); 
+                var CitasDeport = db.AgendarCitas.ToList().OrderByDescending(o => o.IdAgendarCitas);
                 foreach (var item in CitasDeport)
                 {
 
@@ -118,24 +128,44 @@ namespace BIOMEDICO.Controllers
                 using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
                 {
-                    double DiffDays = (a.FechaFin - a.FechaInit).TotalDays;
 
-                    for (int i = 0; i < DiffDays + 1; i++)
+
+                    foreach (var item in a.ListTestCitasTemporal)
                     {
-                        DateTime Fechacita = a.FechaInit.AddDays(i);
-
-                        if (Fechacita.DayOfWeek == DayOfWeek.Saturday ||   Fechacita.DayOfWeek ==DayOfWeek.Sunday)
+                        double DiffDays = (item.FechaFin - item.FechaInit).TotalDays;
+                        for (int i = 0; i < DiffDays + 1; i++)
                         {
-                            continue;
-                        }
+                            DateTime Fechacita = item.FechaInit.AddDays(i);
 
-                        a.CitasDeport.FechaCitas = Fechacita;
-                        a.CitasDeport.CedSucursalCitas = "99998741";
-                        db.AgendarCitas.Add(a.CitasDeport);
-                        db.SaveChanges();
+                            if (Fechacita.DayOfWeek == DayOfWeek.Saturday || Fechacita.DayOfWeek == DayOfWeek.Sunday)
+                            {
+                                continue;
+                            }
+
+                            AgendarCitas citas = new AgendarCitas
+                            {
+                                CedSucursalCitas = "99998741",
+                                FechaCitas = Fechacita,
+                                HoraFinCitas = item.HoraFinCitas,
+                                HoraIniciocitas = item.HoraIniciocitas,
+                                NumCitasAgenda = item.NumCitasAgenda
+                            };
+
+
+                            db.AgendarCitas.Add(citas);
+
+
+
+                            //a.CitasDeport.FechaCitas = Fechacita;
+                            //a.CitasDeport.CedSucursalCitas = "99998741";
+                            // db.AgendarCitas.Add(a.CitasDeport);
+                            db.SaveChanges();
+                        }
                     }
-                    
-                   
+
+
+
+
 
 
                 }
@@ -143,7 +173,7 @@ namespace BIOMEDICO.Controllers
             catch (Exception ex)
             {
                 String Error = ex.Message;
-                //ModelState.AddModelError("", "Error al agregar deportistas" + ex.Message);
+                //ModelState.AddModelError("", "Error al agregar agenda de citas" + ex.Message);
                 Retorno.Error = true;
                 Retorno.mensaje = "Error al agregar";
             }
@@ -155,7 +185,7 @@ namespace BIOMEDICO.Controllers
         public JsonResult Actualizar(ObjAgendaDeportiva a)
         {
             Respuesta Retorno = new Respuesta();
-          
+
             try
             {
 

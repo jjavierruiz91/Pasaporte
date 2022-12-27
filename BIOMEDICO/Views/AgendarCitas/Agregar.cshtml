@@ -17,17 +17,17 @@
 
 
             @*<div class="col-xs-4 col-sm-4 col-md-4">
-            <label><strong>Identificación Especialista</strong></label>
-            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CedEspecialistaCitas" name="CedEspecialistaCitas" />
-        </div>*@
+                <label><strong>Identificación Especialista</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CedEspecialistaCitas" name="CedEspecialistaCitas" />
+            </div>*@
             @*<div class="col-xs-4 col-sm-4 col-md-4">
-            <label><strong>Nombre Especialista</strong></label>
-            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NombrEspecilistaCitas" name="NombrEspecilistaCitas" />
-        </div>*@
+                <label><strong>Nombre Especialista</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NombrEspecilistaCitas" name="NombrEspecilistaCitas" />
+            </div>*@
             @*<div class="col-xs-4 col-sm-4 col-md-4">
-            <label><strong>NotificacionCampoCitas Especialista</strong></label>
-            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NotificacionCampoCitas" name="NotificacionCampoCitas" />
-        </div>*@
+                <label><strong>NotificacionCampoCitas Especialista</strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NotificacionCampoCitas" name="NotificacionCampoCitas" />
+            </div>*@
             <div class="col-xs-4 col-sm-4 col-md-4">
                 <label><strong> Hora Inicio citas</strong></label>
                 <input style="border: black; border-width: 1px; border-style: solid;" type="time" class="form-control" id="HoraIniciocitas" name="HoraIniciocitas" value="07:45" />
@@ -45,7 +45,26 @@
 
                 <input name="date_range" style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="FechaCitas" />
             </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <button type="button" onclick="AddTest()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="btnadd" name="btnadd">agregar</button>
+            </div>
 
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="table-responsive row col-xl-12 ">
+            <table class="table" id="datatable-Test">
+                <thead>
+                    <tr class="ColorTabla">
+                        <th>Hora Inicio citas</th>
+                        <th>Hora Fin Citas</th>
+                        <th>Fecha Citas</th>
+                        <th>Numero Citas</th>
+
+                    </tr>
+                </thead>
+            </table>
         </div>
     </form>
     <script>

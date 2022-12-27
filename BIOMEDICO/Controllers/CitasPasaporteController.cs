@@ -442,7 +442,9 @@ namespace BIOMEDICO.Controllers
             try
             {
 
-                using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+                using (
+                    
+                    Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
                 {
                     var EstadoCitaDeportivaExiste = db.CitasPasaporte.FirstOrDefault(w => w.EstadoPasaporte == "ASIGNADA" && w.Fecha == a.CitasPasaport.Fecha  && w.Hora  == a.CitasPasaport.Hora && w.Minutos==a.CitasPasaport.Minutos );

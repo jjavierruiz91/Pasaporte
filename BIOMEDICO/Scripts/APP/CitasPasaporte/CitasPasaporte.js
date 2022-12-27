@@ -457,7 +457,7 @@ function joinTime(horario) {
         $.each(HorariosMInutos, function (indexminutos, itemMinutos) {
             let objHorario = { Hora: hora, minutos: itemMinutos.Minutos };
             
-            if ((objHorario.Hora >= 12 && objHorario.minutos > 45) && (objHorario.Hora <= 13)) {
+          /*  if ((objHorario.Hora >= 12 && objHorario.minutos > 45) && (objHorario.Hora <= 13)) {
 
             } else if ((objHorario.Hora <= 14 && objHorario.minutos < 45) && (objHorario.Hora >= 13)) {
 
@@ -466,9 +466,9 @@ function joinTime(horario) {
             }
             else {
                 Arrayhorario.push(objHorario)
-            }
+            }*/
             
-
+            Arrayhorario.push(objHorario)
         })
 
 
