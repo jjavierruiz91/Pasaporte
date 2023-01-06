@@ -30,6 +30,7 @@ namespace BIOMEDICO.Clases
                              
 
                                 <strong> OFICINA PASAPORTE GOBERNACIÓN DEL CESAR </strong>
+                                    </br>
 
                                      {Texto}"" ""{NombresPasaporte}"" "" {ApellidosPasaporte}
                                 <p> 
