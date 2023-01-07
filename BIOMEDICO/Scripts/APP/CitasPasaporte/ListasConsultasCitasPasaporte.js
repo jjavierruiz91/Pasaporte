@@ -1,7 +1,7 @@
 ﻿var tablaCitasPasaporte = [];
 $(document).ready(function () {
 
-    RenderTable('datatable-pasaportetramitadas', [0, 1, 2, 3, 4, 5, 6, 7, 8], null, {
+    RenderTable('datatable-pasaportetramitadas', [0, 1, 2, 3, 4, 5, 6, 7, 8,9], null, {
         "paging": true,
         "ordering": false,
         "info": true,
@@ -50,6 +50,7 @@ function CargarTabla(data) {
                 item.Fecha == undefined ? '' : JSONDateconverter(item.Fecha),
                 item.Hora + ": " + item.Minutos,
                 item.TipoDocumentoPasaporte,
+                item.NumDocumentoPasaporte,
                 item.NombresPasaporte,
                 item.ApellidosPasaporte,
                 item.TipoPasaporte,

@@ -35,6 +35,10 @@ namespace BIOMEDICO.Controllers
         {
             return View();
         }
+        public ActionResult ListaConsultaCitasPasaporteCancelado()
+        {
+            return View();
+        }
         public ActionResult BuscarCitaPasaporte(bool ViewFree=false)
         {
             ViewBag.ViewFree = ViewFree;
@@ -95,7 +99,7 @@ namespace BIOMEDICO.Controllers
             var DatosCitasPass = new CitasPasaporte();
             using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
             {
-                DatosCitasPass = db.CitasPasaporte.FirstOrDefault(w => w.NumDocumentoPasaporte == Identificacion);
+                DatosCitasPass = db.CitasPasaporte.FirstOrDefault(w => w.NumDocumentoPasaporte == Identificacion && w.EstadoPasaporte == "ASIGNADA");
             }
             return Json(DatosCitasPass, JsonRequestBehavior.AllowGet);
         }
@@ -366,6 +370,34 @@ namespace BIOMEDICO.Controllers
 
             return Json(ret, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public JsonResult GetListCitasPasaporteCancelada()
+        {
+            Respuesta ret = new Respuesta();
+            string result = "";
+            using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+
+            {
+
+                var CitasPasaport = db.CitasPasaporte.Where(w => w.EstadoPasaporte == "CANCELADO").ToList();
+                foreach (var item in CitasPasaport)
+                {
+
+                }
+
+                ret.objeto = CitasPasaport; //ocupacion = DAtosocupacion };//, datosFamiliar=DatosFamiliar };
+
+                //result = JsonConvert.SerializeObject(ret, Formatting.Indented,
+                //new JsonSerializerSettings
+                //{
+                //   ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                //});
+
+            }
+
+            return Json(ret, JsonRequestBehavior.AllowGet);
+        }
         [HttpGet]
         public JsonResult GetListCitasPasaporteEntregado()
         {
@@ -474,8 +506,10 @@ namespace BIOMEDICO.Controllers
                         db.CitasPasaporte.Add(a.CitasPasaport);
                         db.SaveChanges();
                         Retorno.Error = false;
-                        Retorno.mensaje = "cita creada con satisfacciòn ";
-                        Utilidades.SendEmail("Bienvenidos,"+ Retorno.mensaje, a.CitasPasaport.CorreoPasaporte, a.CitasPasaport.NombresPasaporte, a.CitasPasaport.ApellidosPasaporte);
+                        Retorno.mensaje = "Oficina Pasaporte Gobernacion del Cesar.! ";
+                        Utilidades.SendEmail(a.CitasPasaport.CorreoPasaporte, a.CitasPasaport.NombresPasaporte, a.CitasPasaport.ApellidosPasaporte, a.CitasPasaport.IdCitasPasaporte,(long) a.CitasPasaport.NumIdentificacion, (DateTime)a.CitasPasaport.Fecha, (int)a.CitasPasaport.Hora, (int) a.CitasPasaport.Minutos);
+                        
+                        //Utilidades.SendEmail("Hola,"+ Retorno.mensaje, a.CitasPasaport.CorreoPasaporte, a.CitasPasaport.NombresPasaporte, a.CitasPasaport.ApellidosPasaporte);
                     }
                     else
                     {

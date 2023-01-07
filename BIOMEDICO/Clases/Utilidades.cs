@@ -20,7 +20,7 @@ namespace BIOMEDICO.Clases
         static string password = "Sistemas2021"; //Sender Password #Netcoresmtp
 
 
-        public static  void SendEmail(string Texto, string emailTo , string NombresPasaporte ,  string ApellidosPasaporte)
+        public static  void SendEmail( string emailTo , string NombresPasaporte ,  string ApellidosPasaporte, int IdCitasPasaporte, long NumIdentificacion, DateTime Fecha, int Hora, int Minutos)
         {
             string emailToAddress = emailTo;
 
@@ -30,10 +30,15 @@ namespace BIOMEDICO.Clases
                              
 
                                 <strong> OFICINA PASAPORTE GOBERNACIÓN DEL CESAR </strong>
+                                    </br>                                    
+                                    </br>
                                     </br>
 
-                                     {Texto}"" ""{NombresPasaporte}"" "" {ApellidosPasaporte}
+
+                                     <strong> Hola, {NombresPasaporte} {ApellidosPasaporte}</strong>
                                 <p> 
+                        Su solicitud de cita para tramitar el pasaporte radicada con el número <strong> {IdCitasPasaporte}{NumIdentificacion} </strong> se encuentra agendada para el día {Fecha.Date.Day}-{Fecha.Date.Month}-{Fecha.Date.Year} a la hora {Hora}:{Minutos}  . 
+                        Recuerde que la atención para el trámite inicia desde las 7:45am a 12:45 pm y de 2:45pm a 4:00 pm por orden de llegada.
 
                     El  <strong> pasaporte ordinario  </strong> tiene un valor de $ 271.000 pesos colombianos ($115.000 que corresponden a Cancillería y $156.000 que corresponden al impuesto Departamental
                         y timbre Nacional), valor que puede ser cancelado en efectivo o con tarjeta crédito y/o débito. </br>

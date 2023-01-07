@@ -2592,6 +2592,7 @@
     <Content Include="Scripts\APP\AgendarCitas\AgendarCitas.js" />
     <Content Include="Scripts\APP\AgendarCitas\ListaCitasAgendadas.js" />
     <Content Include="Scripts\APP\CitasPasaporte\CitasPasaporte.js" />
+    <Content Include="Scripts\APP\CitasPasaporte\ListaConsultaCancelado.js" />
     <Content Include="Scripts\APP\CitasPasaporte\ListaConsultaCitasPasaporteEntregado.js" />
     <Content Include="Scripts\APP\CitasPasaporte\ListaConsultaCitasPasaporteIncumplidas.js" />
     <Content Include="Scripts\APP\CitasPasaporte\ListasCitasPasaporte.js" />
@@ -2899,6 +2900,7 @@
     <Content Include="Views\CitasPasaporte\ListaConsultaCitasPasaporteIncumplidas.cshtml" />
     <Content Include="Views\CitasPasaporte\ListaConsultaCitasPasaporteEntregado.cshtml" />
     <Content Include="Views\Shared\BuscarCitasPasaport.cshtml" />
+    <Content Include="Views\CitasPasaporte\ListaConsultaCitasPasaporteCancelado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

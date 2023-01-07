@@ -36,19 +36,67 @@ function ValidarCedula() {
     let Cedula = $('#NumDocumentoPasaporte').val();
     Get_Data(MostrarAlerta, '/CitasPasaporte/BuscarCedulaPass?Identificacion=' + Cedula)
 }
+//function MostrarAlerta(data) {
+
+//    if (data != null || data != undefined) {
+//        swal({
+//            title: "Atención",
+//            text: "¡El usuario ya tiene una cita agendada.!",
+//            type: "warning",
+//            //showCancelButton: true,
+//            //confirmButtonClass: "btn-danger",
+//            confirmButtonText: "Ok",
+
+//        },
+//          function () {
+//                window.location.href = 'http://127.0.0.1:5501/index.html';
+//          });
+
+
+
+//    }
+//}
+
 function MostrarAlerta(data) {
+
     if (data != null || data != undefined) {
         swal({
-            title: "Atención",
-            text: "¡El usuario ya tiene una cita agendada.!",
+            title: "El usuario ya tiene una cita agendada.!",
+            text: "No se pueden agendar dos citas para el mismo usuario",
             type: "warning",
             /*showCancelButton: true,*/
-            /*   confirmButtonClass: "btn-danger",*/
-            confirmButtonText: "Ok",
-        });
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "OK",
+           /* cancelButtonText: "No, jamás",*/
+            closeOnConfirm: false,
+            closeOnCancel: false
+            
+        },
+         
+            function (isConfirm) {
+                if (isConfirm) {
+                    swal("¡Gobernacion del cesar!",
+                        "Gracias por utilizar nuestros servicios",
+                        "success");
+                    timer: 90000000
+                    
+                } else {
+                    swal("¡Gobernacion del cesar!",
+                        "Gracias por utilizar nuestros servicios",
+                        "error");
+                    
+                }
+                window.location.href = 'https://localhost:44379/CitasPasaporte/Agregar';
+            });
+        
+//                
     }
-
+    
 }
+
+    
+
+
 
 function CargarInfoCita(Documento) {
     Get_Data(LlenarDatosformulariocita, '/CitasPasaporte/BuscarCitas?Ducumento=' + Documento)

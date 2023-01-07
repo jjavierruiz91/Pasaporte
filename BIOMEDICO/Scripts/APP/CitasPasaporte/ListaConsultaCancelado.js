@@ -1,7 +1,7 @@
 ﻿var tablaCitasPasaporte = [];
 $(document).ready(function () {
 
-    RenderTable('datatable-pasaporteentregadas', [0, 1, 2, 3, 4, 5, 6, 7,8], null, {
+    RenderTable('datatable-pasaportecancelado', [0, 1, 2, 3, 4, 5, 6, 7, 8], null, {
         "paging": true,
         "ordering": false,
         "info": true,
@@ -27,17 +27,17 @@ $(document).ready(function () {
         ]
     });
 
-    tablaCitasPasaporte = $('#datatable-pasaporteentregadas').DataTable();
-    Get_Data(CargarTabla, '/CitasPasaporte/GetListCitasPasaporteEntregado')
+    tablaCitasPasaporte = $('#datatable-pasaportecancelado').DataTable();
+    Get_Data(CargarTabla, '/CitasPasaporte/GetListCitasPasaporteCancelada')
 
 });
 var Arraycitasglobal = [];
 function CargarTabla(data) {
     tablaCitasPasaporte.clear().draw();
-    let CitasPasaportEntregado = data.objeto;
-    Arraycitasglobal = CitasPasaportEntregado;
-    console.log(CitasPasaportEntregado);
-    $.each(CitasPasaportEntregado, function (index, item) {
+    let CitasPasaport = data.objeto;
+    Arraycitasglobal = CitasPasaport;
+    console.log(CitasPasaport);
+    $.each(CitasPasaport, function (index, item) {
         if (item.Fecha != null) {
             let Fecha;
             if (item.Fecha != null) {
@@ -57,10 +57,10 @@ function CargarTabla(data) {
 
 
 
-                ////'<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdCitaMedica + ')" ></i>&ensp;' +
-                ////'<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizardEportistaData(' + item.IdCitasPasaporte + ')"></i>&ensp;' +
-                ////'<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdCitasPasaporte + ')" ></i>&ensp;' +
-                //'<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="ActualizarEstadollTramitado(' + item.IdCitasPasaporte + ')" > Entregar</i>&ensp;'
+                //'<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdCitaMedica + ')" ></i>&ensp;' +
+                //'<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizardEportistaData(' + item.IdCitasPasaporte + ')"></i>&ensp;' +
+                //'<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdCitasPasaporte + ')" ></i>&ensp;' +
+                //'<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="EstadoEntregado(' + item.IdCitasPasaporte + ')" > Entregar</i>&ensp;'
 
             ]).draw(false);
 
