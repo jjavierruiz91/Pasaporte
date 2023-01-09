@@ -163,7 +163,9 @@ function LlenarcamposInicial(data) {
     $('#TipoDocumentoPasaporte').val(data.objeto.TipoDocumentoPasaporte);
     $('#NumIdentificacion').val(data.objeto.NumIdentificacion);
     $('#Fecha').val(JSONDateconverter(data.objeto.Fecha));
- 
+    $('#Hora').val(data.objeto.Hora +" : " + data.objeto.Minutos); 
+    /*$('#Minutos').val(data.objeto.Minutos);*/
+   
     
     $('#NombresPasaporte').val(data.objeto.NombresPasaporte);
     $('#ApellidosPasaporte').val(data.objeto.ApellidosPasaporte);
