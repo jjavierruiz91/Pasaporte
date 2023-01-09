@@ -53,7 +53,7 @@
                 @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
 
             </div>
-
+            
 
 
         </div>
@@ -95,58 +95,69 @@
         <br />
         <br />
         @*<div class="row" id="ConsultaPasaporte" style="display:none">*@
-        <div class="row" id="ConsultaPasaporte" style="display: none ">
+    <div class="row" id="ConsultaPasaporte" style="display: none ">
+        
+        
+        
+
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Tipo Solicitud</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="TipoSolicitudPasaporte" name="TipoSolicitudPasaporte" disabled />
+        </div>
+        
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Fecha Cita Agendada</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="Fecha" name="Fecha" disabled />
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Nombres</strong></label>
+            <input type="hidden" id="IdCitas" />
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NombresPasaporte" name="NombresPasaporte" disabled />
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Apellidos</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ApellidosPasaporte" name="ApellidosPasaporte" disabled />
+        </div>
+
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Telefono Celular</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CelularPasaporte" name="CelularPasaporte" disabled />
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Correo electronico</strong></label>
+            <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CorreoPasaporte" name="CorreoPasaporte" disabled />
+        </div>
 
 
+        <br />
 
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <label><strong>Nombres</strong></label>
-                <input type="hidden" id="IdCitas"/>
-                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="NombresPasaporte" name="NombresPasaporte" disabled />
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <label><strong>Apellidos</strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="ApellidosPasaporte" name="ApellidosPasaporte" disabled />
-            </div>
+        <div class="col-xs-3 col-sm-3 col-md-3" style="right:inherit">
 
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <label><strong>Telefono Celular</strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CelularPasaporte" name="CelularPasaporte" disabled />
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <label><strong>Correo electronico</strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" id="CorreoPasaporte" name="CorreoPasaporte" disabled />
-            </div>
-
-            <br />
-
-            <div class="col-xs-3 col-sm-3 col-md-3" style="right:inherit">
-
-                @*<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="ActualizarCitasPasaporte(' + item.IdCitasPasaporte + ')"> Tramitar</i>*@
-                @{
-                    if (@ViewBag.ViewFree)
-                    {
-                        <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="RenderUpdateCita(true)">Reprogramar Cita</button>
-                    }
-                    else
-                    {
-                        <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="RenderUpdateCita(false)">Reprogramar Cita</button>
-                    }
+            @*<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="ActualizarCitasPasaporte(' + item.IdCitasPasaporte + ')"> Tramitar</i>*@
+            @{
+                if (@ViewBag.ViewFree)
+                {
+                    <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="RenderUpdateCita(true)">Reprogramar Cita</button>
                 }
+                else
+                {
+                    <button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="RenderUpdateCita(false)">Reprogramar Cita</button>
+                }
+            }
 
-                @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
-
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3" style="right:inherit">
-
-                <button type="button" class="btn btn-block btn-outline-danger btn-rounded btn-outline mt-4" onclick="CancelarCita()">Cancelar</button>
-                @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
-
-            </div>
-
-
+            @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
 
         </div>
+        <div class="col-xs-3 col-sm-3 col-md-3" style="right:inherit">
+
+            <button type="button" class="btn btn-block btn-outline-danger btn-rounded btn-outline mt-4" onclick="CancelarCita()">Cancelar</button>
+            @*<button type="button" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" onclick="Alternar(ConsultaPasaporte)">Buscar</button>*@
+
+        </div>
+
+
+
+    </div>
 
 
     </div>

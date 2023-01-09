@@ -66,7 +66,7 @@ function MostrarAlerta(data) {
             type: "warning",
             /*showCancelButton: true,*/
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "OK",
+            confirmButtonText: "Gracias por su visita",
            /* cancelButtonText: "No, jamás",*/
             closeOnConfirm: false,
             closeOnCancel: false
@@ -159,10 +159,18 @@ function LlenarcamposInicial(data) {
 
 
     }
+    $('#TipoSolicitudPasaporte').val(data.objeto.TipoSolicitudPasaporte);
+    $('#TipoDocumentoPasaporte').val(data.objeto.TipoDocumentoPasaporte);
+    $('#NumIdentificacion').val(data.objeto.NumIdentificacion);
+    $('#Fecha').val(JSONDateconverter(data.objeto.Fecha));
+ 
+    
     $('#NombresPasaporte').val(data.objeto.NombresPasaporte);
     $('#ApellidosPasaporte').val(data.objeto.ApellidosPasaporte);
     $('#CelularPasaporte').val(data.objeto.CelularPasaporte);
     $('#CorreoPasaporte').val(data.objeto.CorreoPasaporte);
+    
+   
     $('#IdCitas').val(data.objeto.IdCitasPasaporte);
     Alternar(ConsultaPasaporte);
 }
@@ -371,14 +379,14 @@ function CargarSelectFecha() {
             text: "No tenemos agenda disponibles!",
             type: "warning",
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Muchas Gacias!",
+            confirmButtonText: "Gracias por su visita!",
 
 
         });
 
         return;
 
-
+       
 
     }
 
@@ -657,6 +665,7 @@ function Createobj() {
                         if (isConfirm) {
                             swal.close()
                             Save_Data(ActualizarVista, '/CitasPasaporte/EditarCitasPasaporte', ObjCitasPasaporte, 'Actualizacion');
+                            /*window.location.href = 'http://127.0.0.1:5501/index.html';*/
                         }
                         else {
                             swal.close()
@@ -667,6 +676,7 @@ function Createobj() {
             }
             else {
                 Save_Data(ActualizarVista, '/CitasPasaporte/Agregar', ObjCitasPasaporte, 'Guardado');
+                /*window.location.href = 'http://127.0.0.1:5501/index.html';*/
 
                 // LimpiarFormulario()
             }
