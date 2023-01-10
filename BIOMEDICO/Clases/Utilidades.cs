@@ -29,16 +29,19 @@ namespace BIOMEDICO.Clases
 
             string subject = "OFICINA PASAPORTE GOBERNACIÓN DEL CESAR";
             string body = $@"<html><body><div style='color:black'>
-                                                
+                                         
+                            <dl>
+                              <dt>  <strong> OFICINA PASAPORTE GOBERNACIÓN DEL CESAR </strong></dt>
+                              
+                            </dl>       
                              
-
-                                <strong> OFICINA PASAPORTE GOBERNACIÓN DEL CESAR </strong>
+                  <strong> Hola, </strong>
                                     </br>                                    
                                     </br>
                                     
-                                     <strong> Hola, {NombresPasaporte} {ApellidosPasaporte}</strong>
+                                     <strong>  {NombresPasaporte} {ApellidosPasaporte}</strong>
                                 <p> 
-                        Su solicitud de cita para tramitar el pasaporte radicada con el número <strong> {IdCitasPasaporte}{NumIdentificacion} </strong> se encuentra agendada para el día {Fecha.Date.Day}-{Fecha.Date.Month}-{Fecha.Date.Year} a la hora {Hora}:{Minutos}  . 
+                        Su solicitud de cita para tramitar el pasaporte radicada con el número <strong> {IdCitasPasaporte}{NumIdentificacion} </strong> se encuentra agendada para el día  <strong> {Fecha.Date.Day}-{Fecha.Date.Month}-{Fecha.Date.Year}</strong> a la hora  <strong> {Hora}:{Minutos} </strong> . 
                         Recuerde que la atención para el trámite inicia desde las 7:45am a 12:45 pm y de 2:45pm a 5:00 pm por orden de la cita agendada.
 
                     El  <strong> pasaporte ordinario  </strong> tiene un valor de $ 302.463 pesos colombianos ($121.463 que corresponden a Cancillería y $181.000 que corresponden al impuesto Departamental
@@ -49,9 +52,12 @@ namespace BIOMEDICO.Clases
                         Se debe diligenciar la <a href=""https://tramitesmre.cancilleria.gov.co/tramites/enlinea/registrarCiudadano.xhtml"" class=""btn-get-started"" target=""Black"">solicitud por medio electrónico</a> para agilizar el trámite en la oficina expedidora. (https://tramitesmre.cancilleria.gov.co/tramites/enlinea/registrarCiudadano.xhtml)
                          Agradecemos presentar esta comunicación impresa el día de la cita</br>
                     </br>                      
-                    </br>   
+                            <dl>
+                              <dt>  <strong>  <strong> Requisitos para mayores de edad </strong></strong></dt>
+                              
+                            </dl>  
 
-                        <strong> Requisitos para mayores de edad </strong> </br>
+                        </br>
                             <ol>
                               <li>Recuerde que el día de la cita debe acercarse personalmente en la oficina que selecciono y presentar los documentos solicitados para el trámite, 
                                     la toma de la fotografía, el registro de huellas y la firma.  <strong>No es necesario llevar fotos </strong></li> </br>
@@ -132,18 +138,20 @@ namespace BIOMEDICO.Clases
                                </br>                               
                                </br> 
 
-                            Cordialmente, </br> 
+                            </br> 
 
+                            <dl>
+                              <dt> Cordialmente,</dt>                            
+                              <dt> Oficina de Pasaporte</dt>
+                              <dt> Gobernación del Cesar</dt>
+                              <dt>Teléfono: + (575) 5748230 Ext 109</dt>
+                              <dt>Celular: + (57) 3158677270</dt>                             
+                              <dt>Valledupar – Cesar - Colombia</dt>
+                              <dt>pasaportes@gobcesar.gov.co</dt>
+                              
+                            </dl>
 
-
-                            Oficina de Pasaporte </br> 
-                            Gobernación del Cesar</br> 
-                            Teléfono: + (575) 5748230 Ext 109</br> 
-                            Celular: + (57) 3158677270</br> 
-                            Valledupar – Cesar - Colombia</br> 
-                            pasaportes@gobcesar.gov.co</br> 
-
-
+                             
                     </p> 
 
 
