@@ -19,7 +19,7 @@ namespace BIOMEDICO.Clases
         static bool enableSSL = true;
         static string emailFromAddress = "info@saludcesar.gov.co"; //Sender Email Address  mooncodetest@outlook.com
         //static string emailFromAddress = "pasaportegobcesar@outlook.com"; //Sender Email Address  mooncodetest@outlook.com
-        static string password = "info2022"; //Sender Password #Netcoresmtp
+        static string password = "uwwhknfmvprmahmi"; //Sender Password #Netcoresmtp
         //static string password = "Sistemas2021"; //Sender Password #Netcoresmtp
 
 
@@ -47,8 +47,9 @@ namespace BIOMEDICO.Clases
                     El  <strong> pasaporte ejecutivo  </strong> tiene un valor de $ 397.521 pesos colombianos ($216.521 que corresponden a Cancillería y $181.000 que corresponden al impuesto Departamental 
                         y timbre Nacional), valor que puede ser cancelado en efectivo o con tarjeta crédito y/o débito. </br>
                         Se debe diligenciar la <a href=""https://tramitesmre.cancilleria.gov.co/tramites/enlinea/registrarCiudadano.xhtml"" class=""btn-get-started"" target=""Black"">solicitud por medio electrónico</a> para agilizar el trámite en la oficina expedidora. (https://tramitesmre.cancilleria.gov.co/tramites/enlinea/registrarCiudadano.xhtml)
-
-                         Agradecemos presentar esta comunicación impresa el día de la cita
+                         Agradecemos presentar esta comunicación impresa el día de la cita</br>
+                    </br>                      
+                    </br>   
 
                         <strong> Requisitos para mayores de edad </strong> </br>
                             <ol>
@@ -128,6 +129,9 @@ namespace BIOMEDICO.Clases
                                 
                                 <strong> Nota:  La oficina expedidora, de considerarlo necesario, podrá solicitar la presentación del certificado de nacionalidad, con el fin de verificar la identidad del solicitante. </strong>
                                </br> 
+                               </br>                               
+                               </br> 
+
                             Cordialmente, </br> 
 
 
@@ -140,7 +144,7 @@ namespace BIOMEDICO.Clases
                             pasaportes@gobcesar.gov.co</br> 
 
 
-</p> 
+                    </p> 
 
 
                             </br></div></body></html>";
