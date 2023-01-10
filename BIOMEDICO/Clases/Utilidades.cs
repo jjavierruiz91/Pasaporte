@@ -13,11 +13,14 @@ namespace BIOMEDICO.Clases
 {
     public class Utilidades
     {
-        static string smtpAddress = "smtp.office365.com";
+        static string smtpAddress = "smtp.gmail.com";
+        //static string smtpAddress = "smtp.office365.com";
         static int portNumber = 587;
         static bool enableSSL = true;
-        static string emailFromAddress = "pasaportegobcesar@outlook.com"; //Sender Email Address  mooncodetest@outlook.com
-        static string password = "Sistemas2021"; //Sender Password #Netcoresmtp
+        static string emailFromAddress = "info@saludcesar.gov.co"; //Sender Email Address  mooncodetest@outlook.com
+        //static string emailFromAddress = "pasaportegobcesar@outlook.com"; //Sender Email Address  mooncodetest@outlook.com
+        static string password = "info2022"; //Sender Password #Netcoresmtp
+        //static string password = "Sistemas2021"; //Sender Password #Netcoresmtp
 
 
         public static  void SendEmail( string emailTo , string NombresPasaporte ,  string ApellidosPasaporte, int IdCitasPasaporte, long NumIdentificacion, DateTime Fecha, int Hora, int Minutos)
