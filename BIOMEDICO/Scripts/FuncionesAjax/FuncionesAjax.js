@@ -26,7 +26,7 @@
                             else {
                                 swal.close()
                             }
-                            window.location.href = 'http://127.0.0.1:5501/index.html';
+                           /*window.location.href = 'http://127.0.0.1:5501/index.html';*/
                         });
                     
                     
@@ -79,7 +79,7 @@ function Update_Data(callbacksussces, Url, ObjetoGuardar, TituloMensaje, Recarga
                         closeOnConfirm: true,
                     });
                 }
-                window.location.href = 'http://127.0.0.1:5501/index.html';
+                /*window.location.href = 'http://127.0.0.1:5501/index.html';*/
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(errorThrown);

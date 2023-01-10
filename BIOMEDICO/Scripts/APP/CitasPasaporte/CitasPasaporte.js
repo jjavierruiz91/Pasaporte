@@ -678,7 +678,7 @@ function Createobj() {
             }
             else {
                 Save_Data(ActualizarVista, '/CitasPasaporte/Agregar', ObjCitasPasaporte, 'Guardado');
-                /*window.location.href = 'http://127.0.0.1:5501/index.html';*/
+              
 
                 // LimpiarFormulario()
             }
@@ -692,7 +692,8 @@ function Createobj() {
     }
 }
 function ActualizarVista() {
-    window.location.reload();
+    window.location.href = 'http://127.0.0.1:5501/index.html';
+            
 }
 
 function RenderUpdateCita(viewfree) {

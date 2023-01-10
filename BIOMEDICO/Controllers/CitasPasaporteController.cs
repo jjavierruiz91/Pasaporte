@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -507,7 +508,13 @@ namespace BIOMEDICO.Controllers
                         db.SaveChanges();
                         Retorno.Error = false;
                         Retorno.mensaje = "Oficina Pasaporte Gobernacion del Cesar.! ";
-                        Utilidades.SendEmail(a.CitasPasaport.CorreoPasaporte, a.CitasPasaport.NombresPasaporte, a.CitasPasaport.ApellidosPasaporte, a.CitasPasaport.IdCitasPasaporte,(long) a.CitasPasaport.NumIdentificacion, (DateTime)a.CitasPasaport.Fecha, (int)a.CitasPasaport.Hora, (int) a.CitasPasaport.Minutos);
+
+                        Task sendmail = Task.Factory.StartNew(() =>
+                        {
+                            Utilidades.SendEmail(a.CitasPasaport.CorreoPasaporte, a.CitasPasaport.NombresPasaporte, a.CitasPasaport.ApellidosPasaporte, a.CitasPasaport.IdCitasPasaporte, (long)a.CitasPasaport.NumIdentificacion, (DateTime)a.CitasPasaport.Fecha, (int)a.CitasPasaport.Hora, (int)a.CitasPasaport.Minutos);
+
+                        });
+
                         
                         //Utilidades.SendEmail("Hola,"+ Retorno.mensaje, a.CitasPasaport.CorreoPasaporte, a.CitasPasaport.NombresPasaporte, a.CitasPasaport.ApellidosPasaporte);
                     }
