@@ -49,7 +49,7 @@ namespace BIOMEDICO.Clases
 
                     El  <strong> pasaporte ejecutivo  </strong> tiene un valor de $ 397.521 pesos colombianos ($216.521 que corresponden a Cancillería y $181.000 que corresponden al impuesto Departamental 
                         y timbre Nacional), valor que puede ser cancelado en efectivo o con tarjeta crédito y/o débito. </br>
-                        Se debe diligenciar la <a href=""https://tramitesmre.cancilleria.gov.co/tramites/enlinea/registrarCiudadano.xhtml"" class=""btn-get-started"" target=""Black"">solicitud por medio electrónico</a> para agilizar el trámite en la oficina expedidora. (https://tramitesmre.cancilleria.gov.co/tramites/enlinea/registrarCiudadano.xhtml)
+                        Se debe diligenciar la <a href=""https://tramitesmre.cancilleria.gov.co/tramites/enlinea/registrarCiudadano.xhtml"" class=""btn-get-started"" target=""Black"">solicitud por medio electrónico</a> para agilizar el trámite en la oficina expedidora. https://tramitesmre.cancilleria.gov.co/tramites/enlinea/registrarCiudadano.xhtml
                          Agradecemos presentar esta comunicación impresa el día de la cita</br>
                     </br>                      
                             <dl>
