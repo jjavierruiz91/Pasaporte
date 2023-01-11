@@ -11,7 +11,7 @@ $(document).ready(function () {//FUNCION INICIAL;
     let DocumentoPasaporte = getQueryVariable('Document');
     VerDetalles = getQueryVariable('Viewdetail');
     IdCitasPasaporte = getQueryVariable('IdReg');
-    Get_DataGet(CargarSelectSucursales, '/Sucursal/GetListSucursalesPasaporte');
+    Get_DataGet(CargarSelectSucursales, '/Admin/Sucursal/GetListSucursalesPasaporte');
 
     if (DocumentoPasaporte > 0) {
         IsUpdate = true;
@@ -34,7 +34,7 @@ function initValidador() {
 
 function ValidarCedula() {
     let Cedula = $('#NumDocumentoPasaporte').val();
-    Get_Data(MostrarAlerta, '/CitasPasaporte/BuscarCedulaPass?Identificacion=' + Cedula)
+    Get_Data(MostrarAlerta, '/Admin/CitasPasaporte/BuscarCedulaPass?Identificacion=' + Cedula)
 }
 //function MostrarAlerta(data) {
 
@@ -99,7 +99,7 @@ function MostrarAlerta(data) {
 
 
 function CargarInfoCita(Documento) {
-    Get_Data(LlenarDatosformulariocita, '/CitasPasaporte/BuscarCitas?Ducumento=' + Documento)
+    Get_Data(LlenarDatosformulariocita, '/Admin/CitasPasaporte/BuscarCitas?Ducumento=' + Documento)
 }
 
 function LlenarDatosformulariocita(data) {
@@ -134,7 +134,7 @@ function LlenarDatosformulariocita(data) {
 
 function CargarInfoinicial() {
     var ValueCitaPasaporte = $('#NumDocumentoPasaporte').val();
-    Get_Data(LlenarcamposInicial, '/CitasPasaporte/BuscarCitas?Ducumento=' + ValueCitaPasaporte)
+    Get_Data(LlenarcamposInicial, '/Admin/CitasPasaporte/BuscarCitas?Ducumento=' + ValueCitaPasaporte)
 }
 
 
@@ -666,7 +666,7 @@ function Createobj() {
                     function (isConfirm) {
                         if (isConfirm) {
                             swal.close()
-                            Save_Data(ActualizarVista, '/CitasPasaporte/EditarCitasPasaporte', ObjCitasPasaporte, 'Actualizacion');
+                            Save_Data(ActualizarVista, '/Admin/CitasPasaporte/EditarCitasPasaporte', ObjCitasPasaporte, 'Actualizacion');
                             /*window.location.href = 'http://127.0.0.1:5501/index.html';*/
                         }
                         else {
@@ -677,7 +677,7 @@ function Createobj() {
 
             }
             else {
-                Save_Data(ActualizarVista, '/CitasPasaporte/Agregar', ObjCitasPasaporte, 'Guardado');
+                Save_Data(ActualizarVista, '/Admin/CitasPasaporte/Agregar', ObjCitasPasaporte, 'Guardado');
               
 
                 // LimpiarFormulario()
@@ -698,7 +698,7 @@ function ActualizarVista() {
 
 function RenderUpdateCita(viewfree) {
 
-    window.location.href = "../CitasPasaporte/agregar?ViewFree=" + viewfree + "&Document=" + $('#NumDocumentoPasaporte').val();
+    window.location.href = "/Admin/CitasPasaporte/agregar?ViewFree=" + viewfree + "&Document=" + $('#NumDocumentoPasaporte').val();
 
 }
 
@@ -717,7 +717,7 @@ function CancelarCita() {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(reloadPage, "/CitasPasaporte/ActualizarEstadoCancelar?IdCitaPasaporte=" + $('#IdCitas').val())
+                Get_Data(reloadPage, "/Admin/CitasPasaporte/ActualizarEstadoCancelar?IdCitaPasaporte=" + $('#IdCitas').val())
             }
             else {
                 swal.close()

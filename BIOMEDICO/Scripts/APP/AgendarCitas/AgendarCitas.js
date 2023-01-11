@@ -35,12 +35,12 @@ $(document).ready(function () {//FUNCION INICIAL;
     }
     if (VerDetalles == "SI") {
         $('#SaveAgendaCita').html('Atras')
-        Get_Data(LlenarCampos, '/AgendarCitas/GetAgendaCitasDeportivaById?IdAgendaDepor=' + idAgendarData);
+        Get_Data(LlenarCampos, '/Admin/AgendarCitas/GetAgendaCitasDeportivaById?IdAgendaDepor=' + idAgendarData);
     }
 
     if (IsUpdate && VerDetalles == 0) {
         $('#SaveAgendaCita').html('Actualizar')
-        Get_Data(LlenarCampos, '/AgendarCitas/GetAgendaCitasDeportivaById?IdAgendaDepor=' + idAgendarData);
+        Get_Data(LlenarCampos, '/Admin/AgendarCitas/GetAgendaCitasDeportivaById?IdAgendaDepor=' + idAgendarData);
     }
 
 });
@@ -118,10 +118,10 @@ function Createobj() {
         let id = 10;
 
         if (IsUpdate) {
-            Save_Data(ActualizarVista, '/AgendarCitas/Actualizar', ObjAgendaDeportiva, 'Actualizacion');
+            Save_Data(ActualizarVista, '/Admin/AgendarCitas/Actualizar', ObjAgendaDeportiva, 'Actualizacion');
         }
         else {
-            Save_Data(ActualizarVista, '/AgendarCitas/Agregar', ObjAgendaDeportiva, 'Guardado');
+            Save_Data(ActualizarVista, '/Admin/AgendarCitas/Agregar', ObjAgendaDeportiva, 'Guardado');
 
             
         }
@@ -133,7 +133,7 @@ function Createobj() {
 }
 function ActualizarVista(data) {
     if (!data.Error) {
-        window.location.href = "../AgendarCitas/ListaAgendaDeportiva"
+        window.location.href = "/Admin/AgendarCitas/ListaAgendaDeportiva"
     }
 }
 

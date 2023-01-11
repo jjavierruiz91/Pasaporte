@@ -28,7 +28,7 @@ $(document).ready(function () {
     });
 
     tablaCitasPasaporte = $('#datatable-pasaportetramitadas').DataTable();
-    Get_Data(CargarTabla, '/CitasPasaporte/GetListConsultaCitasPasaporte')
+    Get_Data(CargarTabla, '/Admin/CitasPasaporte/GetListConsultaCitasPasaporte')
 
 });
 var Arraycitasglobal = [];
@@ -73,13 +73,13 @@ function CargarTabla(data) {
 
 
 function ActualizardEportistaData(idCitasPasport) {
-    window.location.href = '../CitasPasaporte/Agregar?IdReg=' + idCitasPasport + +'&IsUpdate=true';
+    window.location.href = '/Admin/CitasPasaporte/Agregar?IdReg=' + idCitasPasport + +'&IsUpdate=true';
 
 }
 
 
 function DetalleData(idCitasPasport) {
-    window.location.href = '../CitasPasaporte/Agregar?IdReg=' + idCitasPasport + "&Viewdetail=SI";
+    window.location.href = '/Admin/CitasPasaporte/Agregar?IdReg=' + idCitasPasport + "&Viewdetail=SI";
 
 }
 
@@ -99,7 +99,7 @@ function EstadoEntregado(idCitasPasport) {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(RecargarTabla, '/CitasPasaporte/ActualizarEstadoEntregado?IdCitaPasaporte=' + idCitasPasport);
+                Get_Data(RecargarTabla, '/Admin/CitasPasaporte/ActualizarEstadoEntregado?IdCitaPasaporte=' + idCitasPasport);
             }
             else {
                 swal.close()
@@ -108,5 +108,5 @@ function EstadoEntregado(idCitasPasport) {
 }
 
 function RecargarTabla() {
-    Get_Data(CargarTabla, '/CitasPasaporte/GetListConsultaCitasPasaporte')
+    Get_Data(CargarTabla, '/Admin/CitasPasaporte/GetListConsultaCitasPasaporte')
 }

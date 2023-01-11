@@ -28,7 +28,7 @@ $(document).ready(function () {
     });
 
     TablaAgendarcitasDeportiva = $('#datatable-agendarcitas').DataTable();
-    Get_Data(CargarTabla, '/AgendarCitas/GetListaAgendaDeportiva')
+    Get_Data(CargarTabla, '/Admin/AgendarCitas/GetListaAgendaDeportiva')
 
 });
 
@@ -64,11 +64,11 @@ function CargarTabla(data) {
 
 
 function ActualizardEportistaData(idAgendarCitadepor) {
-    window.location.href = '../AgendarCitas/Agregar?IdCitasReg=' + idAgendarCitadepor;
+    window.location.href = '/Admin/AgendarCitas/Agregar?IdCitasReg=' + idAgendarCitadepor;
 
 }
 function DetalleData(idAgendarCitadepor) {
-    window.location.href = '../AgendarCitas/Agregar?IdCitasReg=' + idAgendarCitadepor + "&Viewdetail=SI";
+    window.location.href = '/Admin/AgendarCitas/Agregar?IdCitasReg=' + idAgendarCitadepor + "&Viewdetail=SI";
 
 }
 
@@ -88,7 +88,7 @@ function Eliminar(IdAgendarCita) {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(RecargarTabla, '/AgendarCitas/Eliminar?idAgendarCitaDep=' + IdAgendarCita);
+                Get_Data(RecargarTabla, '/Admin/AgendarCitas/Eliminar?idAgendarCitaDep=' + IdAgendarCita);
             }
             else {
                 swal.close()
@@ -97,5 +97,5 @@ function Eliminar(IdAgendarCita) {
 }
 
 function RecargarTabla() {
-    Get_Data(CargarTabla, '/AgendarCitas/GetListaAgendaDeportiva')
+    Get_Data(CargarTabla, '/Admin/AgendarCitas/GetListaAgendaDeportiva')
 }

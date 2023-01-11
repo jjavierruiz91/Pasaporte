@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 
     tablaCitasPasaporte = $('#datatable-pasaporte').DataTable();
-    Get_Data(CargarTabla, '/CitasPasaporte/GetListCitasPasaporte')
+    Get_Data(CargarTabla, '/Admin/CitasPasaporte/GetListCitasPasaporte')
 
 });
 var Arraycitasglobal = [];
@@ -76,13 +76,13 @@ function CargarTabla(data) {
 
 
 function ActualizardEportistaData(idCitasPasport) {
-    window.location.href = '../CitasPasaporte/Agregar?IdCitasPasportReg=' + idCitasPasport +'&IsUpdate=true';
+    window.location.href = '/Admin/CitasPasaporte/Agregar?IdCitasPasportReg=' + idCitasPasport +'&IsUpdate=true';
 
 }
 
 
 function DetalleData(idCitasPasport) {
-    window.location.href = '../CitasPasaporte/Agregar?IdCitasPasportReg=' + idCitasPasport + "&Viewdetail=SI";
+    window.location.href = '/Admin/CitasPasaporte/Agregar?IdCitasPasportReg=' + idCitasPasport + "&Viewdetail=SI";
 
 }
 function ActualizarEstadoTramitados(idCitasPasport) {
@@ -100,7 +100,7 @@ function ActualizarEstadoTramitados(idCitasPasport) {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(RecargarTabla, '/CitasPasaporte/ActualizarEstadoTramitado?IdCitaPasaporte=' + idCitasPasport);
+                Get_Data(RecargarTabla, '/Admin/CitasPasaporte/ActualizarEstadoTramitado?IdCitaPasaporte=' + idCitasPasport);
             }
             else {
                 swal.close()
@@ -125,7 +125,7 @@ function ActualizarCitasPasapor(idCitasPasport) {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(RecargarTabla, '/CitasPasaporte/EditarCitasPasaporte?IdCitaPasaporte=' + idCitasPasport);
+                Get_Data(RecargarTabla, '/Admin/CitasPasaporte/EditarCitasPasaporte?IdCitaPasaporte=' + idCitasPasport);
             }
             else {
                 swal.close()
@@ -134,5 +134,5 @@ function ActualizarCitasPasapor(idCitasPasport) {
 }
 
 function RecargarTabla() {
-    Get_Data(CargarTabla, '/CitasPasaporte/GetListCitasPasaporte')
+    Get_Data(CargarTabla, '/Admin/CitasPasaporte/GetListCitasPasaporte')
 }

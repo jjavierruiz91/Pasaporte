@@ -28,7 +28,7 @@ $(document).ready(function () {
     });
 
     tablaCitasPasaporte = $('#datatable-pasaportecancelado').DataTable();
-    Get_Data(CargarTabla, '/CitasPasaporte/GetListCitasPasaporteCancelada')
+    Get_Data(CargarTabla, '/Admin/CitasPasaporte/GetListCitasPasaporteCancelada')
 
 });
 var Arraycitasglobal = [];

@@ -28,7 +28,7 @@ $(document).ready(function () {
     });
 
     tablaCitasPasaporte = $('#datatable-pasaporteentregadas').DataTable();
-    Get_Data(CargarTabla, '/CitasPasaporte/GetListCitasPasaporteEntregado')
+    Get_Data(CargarTabla, '/Admin/CitasPasaporte/GetListCitasPasaporteEntregado')
 
 });
 var Arraycitasglobal = [];

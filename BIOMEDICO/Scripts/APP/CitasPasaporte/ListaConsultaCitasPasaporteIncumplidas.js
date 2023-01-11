@@ -28,7 +28,7 @@ $(document).ready(function () {
     });
 
     tablaCitasPasaporte = $('#datatable-pasaporteincumplidas').DataTable();
-    Get_Data(CargarTabla, '/CitasPasaporte/GetListCitasPasaporteImcumplida')
+    Get_Data(CargarTabla, '/Admin/CitasPasaporte/GetListCitasPasaporteImcumplida')
 
 });
 var Arraycitasglobal = [];
