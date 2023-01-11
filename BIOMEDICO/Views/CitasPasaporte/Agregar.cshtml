@@ -329,7 +329,7 @@
 
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+            <input class="form-check-input" type="checkbox" id="Checkbox" value="Checkbox" onchange="toggleButton()">
             <label class="form-check-label" for="inlineCheckbox2">
                 <strong>
                     ACEPTO: La información suministrada en el formulario será utilizada por la Oficina de Pasaportes para el manejo y gestión de servicios o trámites efectuados por la entidad de acuerdo a lo establecido en la Ley 1581 de 2012.
@@ -347,11 +347,22 @@
 
 </div>
 
+<script>
+    function toggleButton() {
+        
+        var Checkbox = $('#Checkbox').val();
 
+        if (Checkbox) {
+            $('#SaveCitasPasaporte').attr('disabled', false);
+        } else {
+            $('#SaveCitasPasaporte').attr('disabled', true);
+        }
+    }
+</script>
 
 
     <div class="col-xs-6 col-sm-6 col-md-6">
-        <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveCitasPasaporte">Guardar</button>
+        <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveCitasPasaporte" disabled>Guardar</button>
     </div>
 
 

@@ -86,7 +86,8 @@ function MostrarAlerta(data) {
                         "error");
                     
                 }
-                window.location.href = 'https://localhost:44379/CitasPasaporte/Agregar';
+                window.location.href = ' http://localhost:8052/CitasPasaporte/Agregar';
+                
             });
         
 //                
@@ -692,8 +693,8 @@ function Createobj() {
     }
 }
 function ActualizarVista() {
-    window.location.href = 'http://127.0.0.1:5501/index.html';
-            
+    window.location.reload();
+
 }
 
 function RenderUpdateCita(viewfree) {
