@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 
     tablaAgendaExcepciones = $('#datatable-agendapasaporte').DataTable();
-    Get_Data(CargarTabla, '/AgendaExcepciones/GetListAgendaExcepciones')
+    Get_Data(CargarTabla, '/Admin/AgendaExcepciones/GetListAgendaExcepciones')
 
 });
 
@@ -70,13 +70,13 @@ function CargarTabla(data) {
 
 
 function ActualizardEportistaData(IdCitaAgendaExcepciones) {
-    window.location.href = '../AgendaExcepciones/Agregar?IdCitasPasportReg=' + IdCitaAgendaExcepciones + '&IsUpdate=true';
+    window.location.href = '/Admin/AgendaExcepciones/Agregar?IdCitasPasportReg=' + IdCitaAgendaExcepciones + '&IsUpdate=true';
 
 }
 
 
 function DetalleData(IdCitaAgendaExcepciones) {
-    window.location.href = '../AgendaExcepciones/Agregar?IdCitasPasportReg=' + IdCitaAgendaExcepciones + "&Viewdetail=SI";
+    window.location.href = '/Admin/AgendaExcepciones/Agregar?IdCitasPasportReg=' + IdCitaAgendaExcepciones + "&Viewdetail=SI";
 
 }
 function CambiarEstado(IdCitaAgendaExcepciones) {
@@ -94,7 +94,7 @@ function CambiarEstado(IdCitaAgendaExcepciones) {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(RecargarTabla, '/AgendaExcepciones/ActualizarEstado?IdCitaAgendaExcepciones=' + IdCitaAgendaExcepciones);
+                Get_Data(RecargarTabla, '/Admin/AgendaExcepciones/ActualizarEstado?IdCitaAgendaExcepciones=' + IdCitaAgendaExcepciones);
             }
             else {
                 swal.close()
@@ -118,7 +118,7 @@ function Eliminar(IdCitaAgendaExcepciones) {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(RecargarTabla, '/AgendaExcepciones/Eliminar?IdCitasDepor=' + IdCitaAgendaExcepciones);
+                Get_Data(RecargarTabla, '/Admin/AgendaExcepciones/Eliminar?IdCitasDepor=' + IdCitaAgendaExcepciones);
             }
             else {
                 swal.close()
@@ -127,5 +127,5 @@ function Eliminar(IdCitaAgendaExcepciones) {
 }
 
 function RecargarTabla() {
-    Get_Data(CargarTabla, '/AgendaExcepciones/GetListAgendaExcepciones')
+    Get_Data(CargarTabla, '/Admin/AgendaExcepciones/GetListAgendaExcepciones')
 }

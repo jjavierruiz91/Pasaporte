@@ -28,7 +28,7 @@ $(document).ready(function () {
     });
 
     TablaSucursalPasaporte = $('#datatable-Sucursales').DataTable();
-    Get_Data(CargarTabla, '/Sucursal/GetListSucursalesPasaporte')
+    Get_Data(CargarTabla, '/Admin/Sucursal/GetListSucursalesPasaporte')
 
 });
 
@@ -61,11 +61,11 @@ function CargarTabla(data) {
 
 
 function ActualizardEportistaData(SucursadlPasport) {
-    window.location.href = '../Sucursal/Agregar?IdReg=' + SucursadlPasport;
+    window.location.href = '/Admin/Sucursal/Agregar?IdReg=' + SucursadlPasport;
 
 }
 function DetalleData(SucursadlPasport) {
-    window.location.href = '../Sucursal/Agregar?IdReg=' + SucursadlPasport + "&Viewdetail=SI";
+    window.location.href = '/Admin/Sucursal/Agregar?IdReg=' + SucursadlPasport + "&Viewdetail=SI";
 
 }
 
@@ -85,7 +85,7 @@ function Eliminar(IdSucursal) {
         function (isConfirm) {
             if (isConfirm) {
                 swal.close()
-                Get_Data(RecargarTabla, '/Sucursal/Eliminar?idMedicoDep=' + IdSucursal);
+                Get_Data(RecargarTabla, '/Admin/Sucursal/Eliminar?idMedicoDep=' + IdSucursal);
             }
             else {
                 swal.close()
@@ -94,5 +94,5 @@ function Eliminar(IdSucursal) {
 }
 
 function RecargarTabla() {
-    Get_Data(CargarTabla, '/Sucursal/GetListSucursalesPasaporte')
+    Get_Data(CargarTabla, '/Admin/Sucursal/GetListSucursalesPasaporte')
 }

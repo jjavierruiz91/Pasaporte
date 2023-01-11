@@ -19,12 +19,12 @@ $(document).ready(function () {//FUNCION INICIAL;
    
     if (VerDetalles == "SI") {
         $('#SaveAgendaExcepciones').html('Atras')
-        Get_Data(LlenarCampos, '/AgendaExcepciones/GetAgendaExcepcionesById?IDAgendaExcepciones=' + IdAgendaExcepcionesData);
+        Get_Data(LlenarCampos, '/Admin/AgendaExcepciones/GetAgendaExcepcionesById?IDAgendaExcepciones=' + IdAgendaExcepcionesData);
     }
 
     if (IsUpdate && VerDetalles == 0) {
         $('#SaveAgendaExcepciones').html('Actualizar')
-        Get_Data(LlenarCampos, '/AgendaExcepciones/GetAgendaExcepcionesById?IDAgendaExcepciones=' + IdAgendaExcepcionesData);
+        Get_Data(LlenarCampos, '/Admin/AgendaExcepciones/GetAgendaExcepcionesById?IDAgendaExcepciones=' + IdAgendaExcepcionesData);
     }
 
 });
@@ -87,10 +87,10 @@ function Createobj() {
         let id = 10;
 
         if (IsUpdate) {
-            Save_Data(ActualizarVista, '/AgendaExcepciones/Actualizar', ObjCitasAgendaExcepciones, 'Actualizacion');
+            Save_Data(ActualizarVista, '/Admin/AgendaExcepciones/Actualizar', ObjCitasAgendaExcepciones, 'Actualizacion');
         }
         else {
-            Save_Data(ActualizarVista, '/AgendaExcepciones/Agregar', ObjCitasAgendaExcepciones, 'Guardado');
+            Save_Data(ActualizarVista, '/Admin/AgendaExcepciones/Agregar', ObjCitasAgendaExcepciones, 'Guardado');
 
             // LimpiarFormulario()
         }
@@ -104,7 +104,7 @@ function Createobj() {
 
 function ActualizarVista(data) {
     if (!data.Error) {
-        window.location.href = "../AgendaExcepciones/ListaAgendaExcepciones"
+        window.location.href = "/Admin/AgendaExcepciones/ListaAgendaExcepciones"
     }
 }
 

@@ -15,12 +15,12 @@ $(document).ready(function () {//FUNCION INICIAL;
     }
     if (VerDetalles == "SI") {
         $('#SaveSucursal').html('Atras')
-        Get_Data(LlenarCampos, '/Sucursal/GetSucursaPasaporteById?IdsucursarPasapor=' + IdSucursalData);
+        Get_Data(LlenarCampos, '/Admin/Sucursal/GetSucursaPasaporteById?IdsucursarPasapor=' + IdSucursalData);
     }
 
     if (IsUpdate && VerDetalles == 0) {
         $('#SaveSucursal').html('Actualizar')
-        Get_Data(LlenarCampos, '/Sucursal/GetSucursaPasaporteById?IdsucursarPasapor=' + IdSucursalData);
+        Get_Data(LlenarCampos, '/Admin/Sucursal/GetSucursaPasaporteById?IdsucursarPasapor=' + IdSucursalData);
     }
 
 });
@@ -103,10 +103,10 @@ function Createobj() {
         let id = 10;
 
         if (IsUpdate) {
-            Save_Data(ActualizarVista, '/Sucursal/Actualizar', ObjSucursalPasaporte, 'Actualizacion');
+            Save_Data(ActualizarVista, '/Admin/Sucursal/Actualizar', ObjSucursalPasaporte, 'Actualizacion');
         }
         else {
-            Save_Data(ActualizarVista, '/Sucursal/Agregar', ObjSucursalPasaporte, 'Guardado');
+            Save_Data(ActualizarVista, '/Admin/Sucursal/Agregar', ObjSucursalPasaporte, 'Guardado');
 
             // LimpiarFormulario()
         }
@@ -120,7 +120,7 @@ function Createobj() {
 }
 function ActualizarVista(data) {
     if (!data.Error) {
-        window.location.href = "../Sucursal/ListaSucursalPasaporte"
+        window.location.href = "/Admin/Sucursal/ListaSucursalPasaporte"
     }
 }
 
