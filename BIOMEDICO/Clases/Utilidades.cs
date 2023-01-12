@@ -150,8 +150,9 @@ namespace BIOMEDICO.Clases
                               <dt>pasaportes@gobcesar.gov.co</dt>
                               
                             </dl>
-
-                             
+                            </br> 
+                            </br> 
+                             <dt style=""color:red;"">  <strong> Nota: Este correo electrónico es una notificación automática y se envió desde una dirección que no puede aceptar correo electrónico entrante. Por favor, no responda a este mensaje. </strong></dt>
                     </p> 
 
 
