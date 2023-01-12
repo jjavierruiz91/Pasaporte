@@ -41,7 +41,7 @@ namespace BIOMEDICO.Clases
                                     
                                      <strong>  {NombresPasaporte} {ApellidosPasaporte}</strong>
                                 <p> 
-                        Su solicitud de cita para tramitar el pasaporte radicada con el número <strong> {IdCitasPasaporte}{NumIdentificacion} </strong> se encuentra agendada para el día  <strong> {Fecha.Date.Day}-{Fecha.Date.Month}-{Fecha.Date.Year}</strong> a la hora  <strong> {Hora}:{Minutos} </strong> . 
+                        Su solicitud de cita para tramitar el pasaporte radicada con el número <strong> {IdCitasPasaporte}{NumIdentificacion} </strong> se encuentra agendada para el día  <strong> {Fecha.Date.Day}-{Fecha.Date.Month}-{Fecha.Date.Year}</strong> a la hora  <strong> {Hora}:{Minutos} </strong>. </br>
                         Recuerde que la atención para el trámite inicia desde las 7:45am a 12:45 pm y de 2:45pm a 5:00 pm por orden de la cita agendada.
 
                     El  <strong> pasaporte ordinario  </strong> tiene un valor de $ 302.463 pesos colombianos ($121.463 que corresponden a Cancillería y $181.000 que corresponden al impuesto Departamental
