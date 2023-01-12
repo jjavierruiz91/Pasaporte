@@ -86,7 +86,7 @@ function MostrarAlerta(data) {
                         "error");
                     
                 }
-                window.location.href = ' http://localhost:8052/CitasPasaporte/Agregar';
+                window.location.href = '/Admin/CitasPasaporte/agregar?ViewFree=';
                 
             });
         

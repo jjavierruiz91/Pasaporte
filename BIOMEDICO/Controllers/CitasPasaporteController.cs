@@ -148,6 +148,7 @@ namespace BIOMEDICO.Controllers
 
                             
                             CitasDeportivaExiste.EstadoPasaporte = "TRAMITADA";
+                            CitasDeportivaExiste.UsuarioEstado = Utilidades.ActiveUser.NomUsuario + " " + Utilidades.ActiveUser.ApeUsuario;
 
                         }
 
@@ -204,6 +205,7 @@ namespace BIOMEDICO.Controllers
 
 
                             CitasDeportivaExiste.EstadoPasaporte = "ENTREGADO";
+                            CitasDeportivaExiste.UsuarioEstado = Utilidades.ActiveUser.NomUsuario + " " + Utilidades.ActiveUser.ApeUsuario;
 
                         }
 
@@ -258,6 +260,7 @@ namespace BIOMEDICO.Controllers
 
 
                             CitasDeportivaExiste.EstadoPasaporte = "CANCELADO";
+                            CitasDeportivaExiste.UsuarioEstado = Utilidades.ActiveUser.NomUsuario + " " + Utilidades.ActiveUser.ApeUsuario;
 
                         }
 
@@ -504,6 +507,7 @@ namespace BIOMEDICO.Controllers
                         a.CitasPasaport.FechaRegistro = DateTime.Now;
                         a.CitasPasaport.FechaEstado = DateTime.Now;
                         a.CitasPasaport.UsuarioRegistra = localIP;
+                        a.CitasPasaport.UsuarioEstado = Utilidades.ActiveUser.NomUsuario + " " + Utilidades.ActiveUser.ApeUsuario;
                         db.CitasPasaporte.Add(a.CitasPasaport);
                         db.SaveChanges();
                         Retorno.Error = false;
@@ -572,6 +576,7 @@ namespace BIOMEDICO.Controllers
                             CitasDeportivaExiste.Fecha = a.CitasPasaport.Fecha;
                             CitasDeportivaExiste.Hora = a.CitasPasaport.Hora;
                             CitasDeportivaExiste.Minutos = a.CitasPasaport.Minutos;
+                            CitasDeportivaExiste.UsuarioEstado = Utilidades.ActiveUser.NomUsuario + " " + Utilidades.ActiveUser.ApeUsuario;
 
 
                         }
@@ -599,7 +604,7 @@ namespace BIOMEDICO.Controllers
                 String Error = ex.Message;
                 //ModelState.AddModelError("", "Error al agregar deportistas" + ex.Message);
                 Retorno.Error = true;
-                Retorno.mensaje = "Error al agregar nutricionista";
+                Retorno.mensaje = "Error al agregar cita pasaporte";
             }
             return Json(Retorno);
         }
