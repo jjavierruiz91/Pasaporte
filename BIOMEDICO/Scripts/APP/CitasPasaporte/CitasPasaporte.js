@@ -698,9 +698,9 @@ function ActualizarVista() {
 }
 
 function ActualizarVistaPro() {
-  
-   window.location.href = '../CitasPasaporte/BuscarCitaPasaporte'; 
-
+    
+    window.location.reload();
+    
 }
 
 function RenderUpdateCita(viewfree) {
@@ -742,13 +742,26 @@ function reloadPage() {
 
 function LimpiarFormulario() {
 
-    $('#IdCitasPasaporte').val('')
+    $('#IdCitasPasaporte').val('')    
+    $('#OficinaPasaporte').val('')
+    $('#TipoSolicitudPasaporte').val('')
+    $('#TipoDocumentoPasaporte').val('')
+    $('#NumDocumentoPasaporte').val('')
+    $('#FechaExpedicionDocumento').val('')
+    $('#NombresPasaporte').val('')
+    $('#ApellidosPasaporte').val('')
+    $('#CelularPasaporte').val('')
+    $('#CorreoPasaporte').val('')
+    $('#CorreoPasaporteRepeated').val('')
+    $('#TipoPasaporte').val('')
+    $('#MenoresEdadPasaporte').val('')
+    $('#ParentescoMenor').val('')
+    $('#Sucursales').val('')
+    $('#CuantosMenores').val('')
     $('#Sucursales').val('')
     $('#FechaCalen').val('')
     $('#Hora').val('')
-    $('#Minutos').val(''),
-        $('#Segundos').val('')
-
+    $('#Minutos').val('')
 
 }
 

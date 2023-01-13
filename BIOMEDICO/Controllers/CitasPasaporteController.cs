@@ -260,7 +260,8 @@ namespace BIOMEDICO.Controllers
 
 
                             CitasDeportivaExiste.EstadoPasaporte = "CANCELADO";
-                            CitasDeportivaExiste.UsuarioEstado = Utilidades.ActiveUser.NomUsuario + " " + Utilidades.ActiveUser.ApeUsuario;
+
+                            //CitasDeportivaExiste.UsuarioEstado = Utilidades.ActiveUser.NomUsuario + " " + Utilidades.ActiveUser.ApeUsuario;
 
                         }
 
@@ -507,6 +508,10 @@ namespace BIOMEDICO.Controllers
                         a.CitasPasaport.FechaRegistro = DateTime.Now;
                         a.CitasPasaport.FechaEstado = DateTime.Now;
                         a.CitasPasaport.UsuarioRegistra = localIP;
+                        if (a.CitasPasaport.UsuarioEstado == null)
+                        {
+                            a.CitasPasaport.UsuarioEstado = "PUBLICO";
+                        }else
                         a.CitasPasaport.UsuarioEstado = Utilidades.ActiveUser.NomUsuario + " " + Utilidades.ActiveUser.ApeUsuario;
                         db.CitasPasaporte.Add(a.CitasPasaport);
                         db.SaveChanges();
@@ -576,7 +581,12 @@ namespace BIOMEDICO.Controllers
                             CitasDeportivaExiste.Fecha = a.CitasPasaport.Fecha;
                             CitasDeportivaExiste.Hora = a.CitasPasaport.Hora;
                             CitasDeportivaExiste.Minutos = a.CitasPasaport.Minutos;
-                            CitasDeportivaExiste.UsuarioEstado = Utilidades.ActiveUser.NomUsuario + " " + Utilidades.ActiveUser.ApeUsuario;
+                            if (a.CitasPasaport.UsuarioEstado == null)
+                            {
+                                a.CitasPasaport.UsuarioEstado = "PUBLICO";
+                            }
+                            else
+                                CitasDeportivaExiste.UsuarioEstado = Utilidades.ActiveUser.NomUsuario + " " + Utilidades.ActiveUser.ApeUsuario;
 
 
                         }
@@ -584,7 +594,7 @@ namespace BIOMEDICO.Controllers
                         db.SaveChanges();
 
                         Retorno.Error = false;
-                        Retorno.mensaje = "Actualizado";
+                        Retorno.mensaje = "Su cita ha sido actualizada satisfactoriamente";
 
 
                     }
