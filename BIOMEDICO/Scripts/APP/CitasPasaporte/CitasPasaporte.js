@@ -698,7 +698,8 @@ function ActualizarVista() {
 }
 
 function ActualizarVistaPro() {
-    window.location.href = '../CitasPasaporte/BuscarCitaPasaporte'; 
+  
+   window.location.href = '../CitasPasaporte/BuscarCitaPasaporte'; 
 
 }
 
