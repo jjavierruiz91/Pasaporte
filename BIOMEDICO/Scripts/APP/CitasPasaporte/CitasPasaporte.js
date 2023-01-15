@@ -667,7 +667,7 @@ function Createobj() {
                     function (isConfirm) {
                         if (isConfirm) {
                             swal.close()
-                            Save_Data(ActualizarVistaPro, '/Admin/CitasPasaporte/EditarCitasPasaporte', ObjCitasPasaporte, 'Actualizacion');
+                            Save_Data(ActualizarVista, '/Admin/CitasPasaporte/EditarCitasPasaporte', ObjCitasPasaporte, 'Actualizacion');
                             /*window.location.href = 'http://127.0.0.1:5501/index.html';*/
                         }
                         else {
@@ -693,8 +693,7 @@ function Createobj() {
     }
 }
 function ActualizarVista() {
-    window.location.reload();
-
+    window.history.back();
 }
 
 function ActualizarVistaPro() {
