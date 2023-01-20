@@ -678,7 +678,7 @@ function Createobj() {
 
             }
             else {
-                Save_Data(ActualizarVista, '/Admin/CitasPasaporte/Agregar', ObjCitasPasaporte, 'Guardado');
+                Save_Data(ActualizarVistaPro, '/Admin/CitasPasaporte/Agregar', ObjCitasPasaporte, 'Guardado');
               
 
                 // LimpiarFormulario()
