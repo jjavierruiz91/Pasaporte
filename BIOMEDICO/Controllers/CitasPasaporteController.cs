@@ -453,6 +453,37 @@ namespace BIOMEDICO.Controllers
             return Json(ret, JsonRequestBehavior.AllowGet);
         }
 
+        //[HttpGet]
+        //public JsonResult BuscarHorarioCitas(ObjCitasPasaporte a)
+        //{
+        //    Respuesta respuesta = new Respuesta();
+
+        //    var DatosCitasPasaport = new CitasPasaporte();
+        //    using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+        //    {
+        //        try
+        //        {
+        //            DatosCitasPasaport = db.CitasPasaporte.FirstOrDefault(w => w.Fecha == a.CitasPasaport.Fecha && w.Hora == a.CitasPasaport.Hora && w.Minutos == a.CitasPasaport.Minutos);
+        //            if (DatosCitasPasaport == null)
+        //            {
+        //                respuesta.Error = false;
+        //                respuesta.mensaje = "No existe el registro";
+        //            }
+        //            else
+        //            {
+        //                respuesta.Error = false;
+        //                respuesta.objeto = DatosCitasPasaport;
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            respuesta.mensaje = ex.Message;
+        //            respuesta.Error = true;
+        //        }
+
+        //    }
+        //    return Json(respuesta, JsonRequestBehavior.AllowGet);
+        //}
 
         [HttpGet]
         public ActionResult Agregar(bool ViewFree = false)
@@ -507,12 +538,13 @@ namespace BIOMEDICO.Controllers
                         a.CitasPasaport.EstadoPasaporte= "ASIGNADA";
                         a.CitasPasaport.FechaRegistro = DateTime.Now;
                         a.CitasPasaport.FechaEstado = DateTime.Now;
-                        a.CitasPasaport.UsuarioRegistra = localIP;
-                        if (a.CitasPasaport.UsuarioEstado == null)
-                        {
-                            a.CitasPasaport.UsuarioEstado = "PUBLICO";
-                        }else
-                        a.CitasPasaport.UsuarioEstado = Utilidades.ActiveUser.NomUsuario + " " + Utilidades.ActiveUser.ApeUsuario;
+                         if (a.CitasPasaport.UsuarioRegistra == null)
+                            {
+                            a.CitasPasaport.UsuarioRegistra = "PUBLICO";
+                            }else
+
+                            a.CitasPasaport.UsuarioRegistra = Utilidades.ActiveUser.NomUsuario + " " + Utilidades.ActiveUser.ApeUsuario;
+
                         db.CitasPasaporte.Add(a.CitasPasaport);
                         db.SaveChanges();
                         Retorno.Error = false;
@@ -529,8 +561,11 @@ namespace BIOMEDICO.Controllers
                     }
                     else
                     {
-                        Retorno.Error = false;
+                        Retorno.Error = true;
                         Retorno.mensaje = "Error! ya existe una cita creada para esta hora";
+                        
+
+
                     }
 
 

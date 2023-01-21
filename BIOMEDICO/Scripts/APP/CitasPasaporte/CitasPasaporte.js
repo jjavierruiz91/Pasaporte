@@ -591,6 +591,14 @@ function Atras() {
     window.history.back();
 }
 
+
+function ValidarDisponibilidad() {
+    
+
+}
+
+
+
 function Createobj() {
 
     if (formCitas.form()) {

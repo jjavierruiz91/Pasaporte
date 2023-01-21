@@ -53,10 +53,10 @@ function CargarTabla(data) {
                 item.NumDocumentoPasaporte,
                 item.NombresPasaporte,
                 item.ApellidosPasaporte,
-                item.TipoPasaporte,
+               
 
 
-
+                '<i class="btn btn-outline-primary btn-group-sm fa fa-medkit" title="Tramitarcita" onclick="ActualizarEstadoTramitados(' + item.IdCitasPasaporte + ')" > Tramitar</i>&ensp;' 
                 ////'<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdCitaMedica + ')" ></i>&ensp;' +
                 ////'<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizardEportistaData(' + item.IdCitasPasaporte + ')"></i>&ensp;' +
                 ////'<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdCitasPasaporte + ')" ></i>&ensp;' +
@@ -72,4 +72,29 @@ function CargarTabla(data) {
 }
 
 
+function ActualizarEstadoTramitados(idCitasPasport) {
+    swal({
+        title: "Atención",
+        text: "¿Estas seguro de tramitar la cita ?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn-danger",
+        confirmButtonText: "Si",
+        cancelButtonText: "No",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },
+        function (isConfirm) {
+            if (isConfirm) {
+                swal.close()
+                Get_Data(RecargarTabla, '/Admin/CitasPasaporte/ActualizarEstadoTramitado?IdCitaPasaporte=' + idCitasPasport);
+            }
+            else {
+                swal.close()
+            }
+        });
+}
 
+function RecargarTabla() {
+    Get_Data(CargarTabla, '/Admin/CitasPasaporte/GetListCitasPasaporteImcumplida')
+}
