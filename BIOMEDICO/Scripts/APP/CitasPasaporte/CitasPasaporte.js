@@ -67,35 +67,35 @@ function MostrarAlerta(data) {
             /*showCancelButton: true,*/
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Gracias por su visita",
-           /* cancelButtonText: "No, jamás",*/
+            /* cancelButtonText: "No, jamás",*/
             closeOnConfirm: false,
             closeOnCancel: false
-            
+
         },
-         
+
             function (isConfirm) {
                 if (isConfirm) {
                     swal("¡Gobernacion del cesar!",
                         "Gracias por utilizar nuestros servicios",
                         "success");
                     timer: 90000000
-                    
+
                 } else {
                     swal("¡Gobernacion del cesar!",
                         "Gracias por utilizar nuestros servicios",
                         "error");
-                    
+
                 }
                 window.location.href = '/Admin/CitasPasaporte/agregar?ViewFree=';
-                
+
             });
-        
-//                
+
+        //                
     }
-    
+
 }
 
-    
+
 
 
 
@@ -164,16 +164,16 @@ function LlenarcamposInicial(data) {
     $('#TipoDocumentoPasaporte').val(data.objeto.TipoDocumentoPasaporte);
     $('#NumIdentificacion').val(data.objeto.NumIdentificacion);
     $('#Fecha').val(JSONDateconverter(data.objeto.Fecha));
-    $('#Hora').val(data.objeto.Hora +" : " + data.objeto.Minutos); 
+    $('#Hora').val(data.objeto.Hora + " : " + data.objeto.Minutos);
     /*$('#Minutos').val(data.objeto.Minutos);*/
-   
-    
+
+
     $('#NombresPasaporte').val(data.objeto.NombresPasaporte);
     $('#ApellidosPasaporte').val(data.objeto.ApellidosPasaporte);
     $('#CelularPasaporte').val(data.objeto.CelularPasaporte);
     $('#CorreoPasaporte').val(data.objeto.CorreoPasaporte);
-    
-   
+
+
     $('#IdCitas').val(data.objeto.IdCitasPasaporte);
     Alternar(ConsultaPasaporte);
 }
@@ -389,7 +389,7 @@ function CargarSelectFecha() {
 
         return;
 
-       
+
 
     }
 
@@ -489,7 +489,7 @@ function ConvertFormatDate(Horarios) {
         return HoraSet + ":" + MinutosSet + ' PM';
 
     } else {
-        return HoraSet + ":" + MinutosSet  + ' AM';;
+        return HoraSet + ":" + MinutosSet + ' AM';;
     }
 }
 
@@ -515,18 +515,18 @@ function joinTime(horario) {
 
         $.each(HorariosMInutos, function (indexminutos, itemMinutos) {
             let objHorario = { Hora: hora, minutos: itemMinutos.Minutos };
-            
-          /*  if ((objHorario.Hora >= 12 && objHorario.minutos > 45) && (objHorario.Hora <= 13)) {
 
-            } else if ((objHorario.Hora <= 14 && objHorario.minutos < 45) && (objHorario.Hora >= 13)) {
+            /*  if ((objHorario.Hora >= 12 && objHorario.minutos > 45) && (objHorario.Hora <= 13)) {
+  
+              } else if ((objHorario.Hora <= 14 && objHorario.minutos < 45) && (objHorario.Hora >= 13)) {
+  
+              } else if ((objHorario.Hora >= 13) && (objHorario.Hora <= 13 && objHorario.minutos <= 59)) {
+  
+              }
+              else {
+                  Arrayhorario.push(objHorario)
+              }*/
 
-            } else if ((objHorario.Hora >= 13) && (objHorario.Hora <= 13 && objHorario.minutos <= 59)) {
-
-            }
-            else {
-                Arrayhorario.push(objHorario)
-            }*/
-            
             Arrayhorario.push(objHorario)
         })
 
@@ -592,14 +592,39 @@ function Atras() {
 }
 
 
-function ValidarDisponibilidad() {
-    
+function ValidarDisponibilidad(obj) {
+    Validate_Data(Get_Datadisponibilidad, '/Admin/CitasPasaporte/BuscarHorarioCitas', obj);
+
+
+}
+var CitaDisponible = true;
+var ObjectSavecita;
+function Get_Datadisponibilidad(NoDisponible) {
+    if (NoDisponible) {
+        swal({
+            title: "Oficina Pasaporte Gobernación Del Cesar",
+            text: "Ya tenemos una cita creada para esta hora!",
+            type: "warning",
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "OK",
+
+
+        });
+       /* alert("Error! ya existe una cita creada para esta hora")*/
+        CitaDisponible = false;
+        Get_DataGet(CargarSelectSucursales, '/Admin/Sucursal/GetListSucursalesPasaporte');
+        document.getElementById("SaveCitasPasaporte").disabled = false;
+        /*$('#Fecha').val('');*/
+        $('#FechaCalen').val('').change();
+        $('#Hora').val('').change();
+    } else {
+        CitaDisponible = true;
+    }
+
 
 }
 
-
-
-function Createobj() {
+async function Createobj() {
 
     if (formCitas.form()) {
 
@@ -658,56 +683,58 @@ function Createobj() {
 
                 }
             }
-            let id = 10;
+            /*let id = 10;*/
+            //ObjectSavecita = ObjCitasPasaporte;
+            await ValidarDisponibilidad(ObjCitasPasaporte);
 
-            if (IsUpdate) {
-                swal({
-                    title: "Atención",
-                    text: "¿Estas seguro de actualizar la cita ?",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Si",
-                    cancelButtonText: "No",
-                    closeOnConfirm: false,
-                    closeOnCancel: false
-                },
-                    function (isConfirm) {
-                        if (isConfirm) {
-                            swal.close()
-                            Save_Data(ActualizarVista, '/Admin/CitasPasaporte/EditarCitasPasaporte', ObjCitasPasaporte, 'Actualizacion');
-                            /*window.location.href = 'http://127.0.0.1:5501/index.html';*/
-                        }
-                        else {
-                            swal.close()
-                        }
-                    });
+            if (CitaDisponible) {
+                if (IsUpdate) {
+                    swal({
+                        title: "Atención",
+                        text: "¿Estas seguro de actualizar la cita ?",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonClass: "btn-danger",
+                        confirmButtonText: "Si",
+                        cancelButtonText: "No",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    },
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                swal.close()
+                                Save_Data(ActualizarVista, '/Admin/CitasPasaporte/EditarCitasPasaporte', ObjCitasPasaporte, 'Actualizacion');
+
+                            }
+                            else {
+                                swal.close()
+                            }
+                        });
 
 
+                }
+                else {
+                    Save_Data(ActualizarVistaPro, '/Admin/CitasPasaporte/Agregar', ObjCitasPasaporte, 'Guardado');
+
+                }
             }
-            else {
-                Save_Data(ActualizarVistaPro, '/Admin/CitasPasaporte/Agregar', ObjCitasPasaporte, 'Guardado');
-              
 
-                // LimpiarFormulario()
-            }
-
-            //} else {
-            //    SwalErrorMsj("No ingreso todos los campos por favor verifique");
-            //}
 
         }
 
+
     }
+
 }
+
 function ActualizarVista() {
     window.history.back();
 }
 
 function ActualizarVistaPro() {
-    
+
     window.location.reload();
-    
+
 }
 
 function RenderUpdateCita(viewfree) {
@@ -718,7 +745,6 @@ function RenderUpdateCita(viewfree) {
 
 function CancelarCita() {
     swal({
-        title: "Atención",
         text: "¿Estas seguro de cancelar la cita ?",
         type: "warning",
         showCancelButton: true,
@@ -749,7 +775,7 @@ function reloadPage() {
 
 function LimpiarFormulario() {
 
-    $('#IdCitasPasaporte').val('')    
+    $('#IdCitasPasaporte').val('')
     $('#OficinaPasaporte').val('')
     $('#TipoSolicitudPasaporte').val('')
     $('#TipoDocumentoPasaporte').val('')

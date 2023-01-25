@@ -453,37 +453,37 @@ namespace BIOMEDICO.Controllers
             return Json(ret, JsonRequestBehavior.AllowGet);
         }
 
-        //[HttpGet]
-        //public JsonResult BuscarHorarioCitas(ObjCitasPasaporte a)
-        //{
-        //    Respuesta respuesta = new Respuesta();
+        [HttpPost]
+        public JsonResult BuscarHorarioCitas(ObjCitasPasaporte a)
+        {
+            Respuesta respuesta = new Respuesta();
 
-        //    var DatosCitasPasaport = new CitasPasaporte();
-        //    using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
-        //    {
-        //        try
-        //        {
-        //            DatosCitasPasaport = db.CitasPasaporte.FirstOrDefault(w => w.Fecha == a.CitasPasaport.Fecha && w.Hora == a.CitasPasaport.Hora && w.Minutos == a.CitasPasaport.Minutos);
-        //            if (DatosCitasPasaport == null)
-        //            {
-        //                respuesta.Error = false;
-        //                respuesta.mensaje = "No existe el registro";
-        //            }
-        //            else
-        //            {
-        //                respuesta.Error = false;
-        //                respuesta.objeto = DatosCitasPasaport;
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            respuesta.mensaje = ex.Message;
-        //            respuesta.Error = true;
-        //        }
+            var DatosCitasPasaport = new CitasPasaporte();
+            using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+            {
+                try
+                {
+                    DatosCitasPasaport = db.CitasPasaporte.FirstOrDefault(w => w.Fecha == a.CitasPasaport.Fecha && w.Hora == a.CitasPasaport.Hora && w.Minutos == a.CitasPasaport.Minutos);
+                    if (DatosCitasPasaport == null)
+                    {
+                        respuesta.Error = false;
+                        respuesta.mensaje = "LIBRE";
+                    }
+                    else
+                    {
+                        respuesta.Error = true;
+                        respuesta.mensaje = "OCUPADO";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    respuesta.mensaje = ex.Message;
+                    respuesta.Error = true;
+                }
 
-        //    }
-        //    return Json(respuesta, JsonRequestBehavior.AllowGet);
-        //}
+            }
+            return Json(respuesta, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpGet]
         public ActionResult Agregar(bool ViewFree = false)

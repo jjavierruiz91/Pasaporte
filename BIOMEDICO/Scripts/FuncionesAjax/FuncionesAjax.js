@@ -26,10 +26,10 @@
                             else {
                                 swal.close()
                             }
-                           /*window.location.href = 'http://127.0.0.1:5501/index.html';*/
+                            /*window.location.href = 'http://127.0.0.1:5501/index.html';*/
                         });
-                    
-                    
+
+
                 }
                 else {
                     //SwalErrorMsj(data.mensaje);
@@ -119,7 +119,7 @@ function Get_DataGet(callbacksussces, Url, ParametroString, IsCargandoOn, callba
 function Get_Data(callbacksussces, Url) {
     var form_data = new FormData();
     //var Obj = { UserName: DataUser.UserName, Password: DataUser.Password, Telefono: ParametroString, IdUser: DataUser.IdUser };
-    var formURL = SetUrlForQueryLocal(Url );
+    var formURL = SetUrlForQueryLocal(Url);
     $.ajax( //con json
         {
             url: formURL,
@@ -127,7 +127,7 @@ function Get_Data(callbacksussces, Url) {
             dataType: "json",
             //data: JSON.stringify(Obj),
             contentType: "application/json",
-            processData: false,            
+            processData: false,
             success: function (data, textStatus, jqXHR) {
                 if (!data.Error) {
                     callbacksussces(data)
@@ -148,7 +148,7 @@ function SetUrlForQueryLocal(stringrelativeserver) {
 
     return window.location.origin + stringrelativeserver;
 
-//    return window.location.origin + "/CentroBiomedico" + stringrelativeserver;
+    //    return window.location.origin + "/CentroBiomedico" + stringrelativeserver;
 }
 
 function GetDataOpcion(callbacksussces, Url, Parametro, ParametroString, IsCargandoOn, callbackerror) {
@@ -220,4 +220,27 @@ function Del_DataPost(callbacksussces, Url, Parametro, ParametroString,) {
                 swal.close()
             }
         });
+}
+
+function Validate_Data(callbacksussces, Url, ObjetoGuardar) {
+    var formURL = SetUrlForQueryLocal(Url);
+    $.ajax(
+        {
+            url: formURL,
+            type: "POST",
+            dataType: "json",
+            data: JSON.stringify(ObjetoGuardar),
+            contentType: "application/json",
+            async:false,
+            success: function (data, textStatus, jqXHR) {
+
+                callbacksussces(data.Error)
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        });
+
+
 }
