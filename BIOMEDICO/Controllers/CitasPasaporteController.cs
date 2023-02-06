@@ -538,7 +538,7 @@ namespace BIOMEDICO.Controllers
                         a.CitasPasaport.EstadoPasaporte= "ASIGNADA";
                         a.CitasPasaport.FechaRegistro = DateTime.Now;
                         a.CitasPasaport.FechaEstado = DateTime.Now;
-                         if (a.CitasPasaport.UsuarioRegistra == null)
+                         if (Utilidades.ActiveUser.NomUsuario == null)
                             {
                             a.CitasPasaport.UsuarioRegistra = "PUBLICO";
                             }else

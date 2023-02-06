@@ -31,7 +31,7 @@
 
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <label><strong>Tipo Solicitud <span style="color: red;"> *</span></strong> </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoSolicitudPasaporte" name="TipoSolicitudPasaporte">
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoSolicitudPasaporte" name="TipoSolicitudPasaporte"  onchange="CamposObligatorios()">
                     <option value="">Seleccionar</option>
                     <option value="Pasaporte Primera Vez">Pasaporte Primera Vez</option>
                     <option value="Renovacion Pasaporte">Renovacion Pasaporte</option>
@@ -82,7 +82,7 @@
         </div>*@
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <label><strong>Tipo Pasaporte <span style="color: red;"> *</span></strong> </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoPasaporte" name="TipoPasaporte">
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoPasaporte" name="TipoPasaporte" >
                     <option value="">Seleccionar</option>
                     <option value="Pasaporte Ordinario">Pasaporte Ordinario 32 páginas ($ 302.463)Pesos colombianos</option>
                     <option value="Pasaporte Ejecutivo">Pasaporte Ejecutivo 48 páginas ($ 397.521)Pesos colombianos</option>
@@ -93,30 +93,30 @@
 
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <label><strong>Nombres <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPasaporte" name="NombresPasaporte" placeholder="Digite su nombre completo" />
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPasaporte" name="NombresPasaporte" placeholder="Digite su nombre completo" onchange="ValidarCedula()"/>
                 <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <label><strong>Apellidos<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPasaporte" name="ApellidosPasaporte" placeholder="Digite sus apellidos completos" />
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPasaporte" name="ApellidosPasaporte" placeholder="Digite sus apellidos completos" onchange="ValidarCedula()"/>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <label><strong>Fecha Expedición Documento<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaExpedicionDocumento" name="FechaExpedicionDocumento" placeholder="Digite la fecha de expedicion de su documento" />
+                <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaExpedicionDocumento" name="FechaExpedicionDocumento" placeholder="Digite la fecha de expedicion de su documento" onchange="ValidarCedula()" />
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <label><strong>Correo electrónico<span style="color: red;"> *</span></strong> </label>
-                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" type="email" id="CorreoPasaporte" name="CorreoPasaporte" placeholder="Digite su correo electronico" type="email" />
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" type="email" id="CorreoPasaporte" name="CorreoPasaporte" placeholder="Digite su correo electronico" onchange="ValidarEmail()"/>
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <label><strong>Confirmar su correo electrónico<span style="color: red;"> *</span></strong> </label>
-                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" type="email" id="CorreoPasaporteRepeated" name="CorreoPasaporteRepeated" placeholder="Digite su correo electronico" type="email" onchange="comprobarClave()" />
+                <input style="border: black; border-width: 1px; border-style: solid;" class="form-control" type="email" id="CorreoPasaporteRepeated" name="CorreoPasaporteRepeated" placeholder="Digite su correo electronico" onchange="comprobarClave()" />
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <label><strong>Telefono / Celular <span style="color: red;"> *</span></strong> </label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="CelularPasaporte" name="CelularPasaporte" placeholder="Digite su numero de celular" />
+                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="CelularPasaporte" name="CelularPasaporte" placeholder="Digite su numero de celular" onchange="ValidarCedula()"/>
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
@@ -343,7 +343,7 @@
 
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="checkbox" value="checkbox" onchange="toggleButton()">
+            <input class="form-check-input" type="checkbox" id="checkbox" value="checkbox" onchange="toggleButton(),ValidarCedula()">
             <label class="form-check-label" for="inlineCheckbox2">
                 <strong>
                     ACEPTO: La información suministrada en el formulario será utilizada por la Oficina de Pasaportes para el manejo y gestión de servicios o trámites efectuados por la entidad de acuerdo a lo establecido en la Ley 1581 de 2012.<br />

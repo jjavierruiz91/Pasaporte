@@ -11,28 +11,42 @@ namespace BIOMEDICO.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CitasPasaporte
     {
         public int IdCitasPasaporte { get; set; }
         public string EstadoPasaporte { get; set; }
+        [Required]
         public string TipoSolicitudPasaporte { get; set; }
+        [Required]
         public string TipoDocumentoPasaporte { get; set; }
+        [Required]
         public Nullable<long> NumDocumentoPasaporte { get; set; }
+        [Required]
         public Nullable<System.DateTime> FechaExpedicionDocumento { get; set; }
+        [Required]
         public string NombresPasaporte { get; set; }
+        [Required]
         public string ApellidosPasaporte { get; set; }
+        [Required]
         public string CelularPasaporte { get; set; }
+        [Required]
         public string CorreoPasaporte { get; set; }
+        [Required]
         public string CorreoPasaporteRepeated { get; set; }
+        [Required]
         public string TipoPasaporte { get; set; }
         public string MenoresEdadPasaporte { get; set; }
         public string ParentescoMenor { get; set; }
         public string CuantosMenores { get; set; }
         public string NombreSucursales { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
+        [Required]
         public Nullable<int> Hora { get; set; }
+        [Required]
         public Nullable<int> Minutos { get; set; }
+        [Required]
         public Nullable<long> NumIdentificacion { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
         public Nullable<System.DateTime> FechaEstado { get; set; }

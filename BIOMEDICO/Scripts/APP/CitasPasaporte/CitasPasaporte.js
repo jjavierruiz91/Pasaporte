@@ -22,11 +22,56 @@ $(document).ready(function () {//FUNCION INICIAL;
 
 });
 
+                          
 function initValidador() {
     formCitas = Validador("FormCitasMedicasDeportiva2", {
         NumDocumentoPasaporte: {
             required: true,
             StringEmpty: true
+        },
+        TipoSolicitudPasaporte: {
+            required: true,
+         
+        },
+        TipoDocumentoPasaporte: {
+            required: true,
+            
+        },
+        FechaExpedicionDocumento: {
+            required: true,
+         
+        },
+        NombresPasaporte: {
+            required: true,
+            
+        },
+        ApellidosPasaporte: {
+            required: true,
+            
+        },
+        CelularPasaporte: {
+            required: true,
+        
+        },
+        CorreoPasaporte: {
+            required: true,
+           
+        },
+        CorreoPasaporteRepeated: {
+            required: true,
+            
+        },
+        TipoPasaporte: {
+            required: true,
+            
+        },
+        Hora: {
+            required: true,
+            
+        },
+        Minutos: {
+            required: true,
+           
         }
     }
     );
@@ -36,26 +81,49 @@ function ValidarCedula() {
     let Cedula = $('#NumDocumentoPasaporte').val();
     Get_Data(MostrarAlerta, '/Admin/CitasPasaporte/BuscarCedulaPass?Identificacion=' + Cedula)
 }
-//function MostrarAlerta(data) {
 
-//    if (data != null || data != undefined) {
-//        swal({
-//            title: "Atención",
-//            text: "¡El usuario ya tiene una cita agendada.!",
-//            type: "warning",
-//            //showCancelButton: true,
-//            //confirmButtonClass: "btn-danger",
-//            confirmButtonText: "Ok",
+function ValidarEmail() {
 
-//        },
-//          function () {
-//                
-//          });
+    // Get our input reference.
+    var emailField = document.getElementById('CorreoPasaporte');
+
+    // Define our regular expression.
+    var validEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    // Using test we can check if the text match the pattern
+    if (validEmail.test(emailField.value)) {
+        
+        return true;
+    } else {
+        swal({
+            title: "Oficina De Pasaporte - Cesar",
+            text: "El correo digitado es invalido, por favor verificar.",
+            type: "error",
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "OK",
 
 
+        });
+        return false;
+    }
+}
 
-//    }
-//}
+function CamposObligatorios() {
+        
+        swal({
+            title: "Atención",
+            text: "¡Todos los campos del formulario son obligatorios.!",
+            type: "warning",
+            //showCancelButton: true,
+            //confirmButtonClass: "btn-danger",
+            confirmButtonText: "Ok",
+
+        });
+    
+                       
+      
+   
+}
 
 function MostrarAlerta(data) {
 
@@ -146,7 +214,7 @@ function LlenarcamposInicial(data) {
 
         /*swal("Good job!", "You clicked the button!", "success");*/
         swal({
-            title: "Oficina Pasaporte Gobernación Del Cesar",
+            title: "Oficina De Pasaporte Gobernación Del Cesar",
             text: "Usted no tiene citas agendadas!",
             type: "warning",
             confirmButtonColor: "#DD6B55",
@@ -378,7 +446,7 @@ function CargarSelectFecha() {
 
     if (DatosHorario.length == 0) {
         swal({
-            title: "Oficina Pasaporte Gobernación Del Cesar",
+            title: "Oficina De Pasaporte Gobernación Del Cesar",
             text: "No tenemos agenda disponibles!",
             type: "warning",
             confirmButtonColor: "#DD6B55",
@@ -597,12 +665,13 @@ function ValidarDisponibilidad(obj) {
 
 
 }
+
 var CitaDisponible = true;
 var ObjectSavecita;
 function Get_Datadisponibilidad(NoDisponible) {
     if (NoDisponible) {
         swal({
-            title: "Oficina Pasaporte Gobernación Del Cesar",
+            title: "Oficina De Pasaporte Gobernación Del Cesar",
             text: "Ya tenemos una cita creada para esta hora!",
             type: "warning",
             confirmButtonColor: "#DD6B55",
@@ -724,7 +793,17 @@ async function Createobj() {
 
 
     }
+    else {
+        swal({
+            title: "Atención",
+            text: "¡Todos los campos del formulario son obligatorios.!",
+            type: "error",
+            //showCancelButton: true,
+            //confirmButtonClass: "btn-danger",
+            confirmButtonText: "Ok",
+        });
 
+    }
 }
 
 function ActualizarVista() {
@@ -797,4 +876,5 @@ function LimpiarFormulario() {
     $('#Minutos').val('')
 
 }
+
 
